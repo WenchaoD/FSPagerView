@@ -121,7 +121,6 @@ class BasicExampleViewController: UIViewController,UITableViewDataSource,UITable
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let collectionView: UICollectionView!
         return self.sectionTitles[section]
     }
     

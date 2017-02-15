@@ -145,18 +145,20 @@ class FSPagerViewLayout: UICollectionViewLayout {
         guard let collectionView = self.collectionView else {
             return proposedContentOffset
         }
+        var proposedContentOffset = proposedContentOffset
         let proposedContentOffsetX: CGFloat = {
+            let translation = -collectionView.panGestureRecognizer.translation(in: collectionView).x
             var offset: CGFloat = round(proposedContentOffset.x/self.itemSpan)*self.itemSpan
-            let translation = collectionView.panGestureRecognizer.translation(in: collectionView).x
             let minFlippingDistance = min(0.5 * self.itemSpan,150)
+            let originalContentOffsetX = collectionView.contentOffset.x - translation
             if abs(translation) <= minFlippingDistance {
-                if abs(velocity.x) >= 0.3 {
+                if abs(velocity.x) >= 0.3 && abs(proposedContentOffset.x-originalContentOffsetX) <= self.itemSpan*0.5 {
                     offset += self.itemSpan * (velocity.x)/abs(velocity.x)
                 }
             }
             return offset
         }()
-        let proposedContentOffset = CGPoint(x: proposedContentOffsetX, y: proposedContentOffset.y)
+        proposedContentOffset = CGPoint(x: proposedContentOffsetX, y: proposedContentOffset.y)
         return proposedContentOffset
     }
     

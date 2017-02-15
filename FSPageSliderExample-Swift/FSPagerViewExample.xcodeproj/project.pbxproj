@@ -18,7 +18,6 @@
 		F9C694311E40C583007084B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9C694261E40C583007084B6 /* LaunchScreen.storyboard */; };
 		F9C694321E40C583007084B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9C694281E40C583007084B6 /* Main.storyboard */; };
 		F9C694331E40C583007084B6 /* BasicExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C6942A1E40C583007084B6 /* BasicExampleViewController.swift */; };
-		F9C694341E40C583007084B6 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9C6942B1E40C583007084B6 /* Info.plist */; };
 		F9C694351E40C583007084B6 /* PageControlExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C6942C1E40C583007084B6 /* PageControlExampleViewController.swift */; };
 		F9C694361E40C583007084B6 /* TransformerExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C6942E1E40C583007084B6 /* TransformerExampleViewController.swift */; };
 		F9C6945A1E40C720007084B6 /* FSPagerViewExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C694591E40C720007084B6 /* FSPagerViewExampleUITests.swift */; };
@@ -292,7 +291,6 @@
 				F9C694731E40C8DA007084B6 /* 1_2.jpg in Resources */,
 				F9C694301E40C583007084B6 /* Assets.xcassets in Resources */,
 				F9C6947A1E40C8DA007084B6 /* 3.jpg in Resources */,
-				F9C694341E40C583007084B6 /* Info.plist in Resources */,
 				F9C694721E40C8DA007084B6 /* 1_1.jpg in Resources */,
 				F9C6947D1E40C8DA007084B6 /* 6.jpg in Resources */,
 				F9C6947C1E40C8DA007084B6 /* 5.jpg in Resources */,
