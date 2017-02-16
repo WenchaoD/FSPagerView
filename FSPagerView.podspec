@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
   s.name             = "FSPagerView"
   s.version          = "0.1.0"
-  s.summary          = "FSPagerView is an elegant Screen Slide Library implemented primarily with UICollectionView. It is extremely helpful for making Banner、Product Show、Welcome Pages、Screen/ViewController Sliders."
+  s.summary          = "FSPagerView is an elegant Screen Slide Library for making Banner、Product Show、Welcome/Guide Pages、Screen/ViewController Sliders."
   
   s.homepage         = "https://github.com/WenchaoD/FSPagerView"
   s.license          = 'MIT'
@@ -13,6 +13,6 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '8.0'
   s.requires_arc = true
   s.framework    = 'UIKit'
-  s.source_files = 'FSPagerView/*.{h,m}'
+  s.source_files = 'FSPagerView/*.swift'
 
 end
