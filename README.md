@@ -172,6 +172,14 @@ The current page, highlighted by the page control. Default is 0.
 pageControl.currentPage = 1
 ```
 
+### contentHorizontalAlignment
+The horizontal alignment of content within the control’s bounds. Default is center.
+
+**e.g.**
+```swift
+pageControl.contentHorizontalAlignment = .right
+```
+
 ### setStrokeColor:forState:
 Sets the stroke color for page indicators to use for the specified state. (selected/normal).
 
@@ -233,9 +241,9 @@ pod FSPagerView
 * [Implement FSPagerViewDataSource](#implement_fspagerviewdatasource)
 * [Implement FSPagerViewDelegate](#implement_fspagerviewdelegate)
 
-### 1. Get start <a id='get_start'></a>
+### 1. Get started <a id='get_start'></a>
 
-* Get start with code
+* Get started with code
 
 ```swift
 // Create a pager view
@@ -249,7 +257,7 @@ let pageControl = FSPagerControl(frame: frame2)
 self.view.addSubview(pageControl)
 ```
 
-* Get start with Interface Builder <br/>
+* Get started with Interface Builder <br/>
 1、Simply drag **UIView** instance into your View Controller, Change the `Custom Class` to `FSPagerView`. (Or `FSPageControl`) <br/>
 2、Link the `dataSource` and `delegate` property of **FSPagerView** to your View Controller. <br/>
 3、Register a cell class.

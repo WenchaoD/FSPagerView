@@ -51,6 +51,7 @@ open class FSPageControl: UIControl {
         }
     }
     
+    /// The horizontal alignment of content within the control’s bounds. Default is center.
     open override var contentHorizontalAlignment: UIControlContentHorizontalAlignment {
         didSet {
             self.setNeedsLayout()
