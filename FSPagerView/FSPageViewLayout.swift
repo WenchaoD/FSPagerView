@@ -187,24 +187,6 @@ class FSPagerViewLayout: UICollectionViewLayout {
         return frame
     }
     
-    internal func nextIndexPath(for indexPath: IndexPath) -> IndexPath {
-        let section = indexPath.section
-        let item = indexPath.item + 1
-        if item >= self.numberOfItems {
-            return IndexPath(item: 0, section: min(section+1,self.numberOfSections-1))
-        }
-        return IndexPath(item: item, section: section)
-    }
-    
-    internal func previousIndexPath(for indexPath: IndexPath) -> IndexPath {
-        let section = indexPath.section
-        let item = indexPath.item - 1
-        if item < 0 {
-            return IndexPath(item: self.numberOfItems-1, section: max(section-1,0))
-        }
-        return IndexPath(item: item, section: section)
-    }
-    
     // MARK:- Private functions
     
     fileprivate func commonInit() {
