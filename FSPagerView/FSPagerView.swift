@@ -9,6 +9,19 @@
 import UIKit
 
 @objc
+public protocol FSPagerViewTransitionAnimatior: NSObjectProtocol {
+    /// Customize your switching animation
+    @objc(applyTransformToAttributes:forPosition: itemSpan:)
+    func applyTransform(to attributes: UICollectionViewLayoutAttributes,
+                        for position: CGFloat,
+                        and itemSpan: CGFloat)
+    
+    /// Get proposed interitem spacing percent
+    @objc
+    func proposedInteritemSpacingPercent() -> CGFloat
+}
+
+@objc
 public protocol FSPagerViewDataSource: NSObjectProtocol {
     
     /// Asks your data source object for the number of items in the pager view.
@@ -137,9 +150,8 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     }
     
     /// The transformer of the pager view
-    open var transformer: FSPagerViewTransformer? {
+    open var transformer: FSPagerViewTransitionAnimatior? {
         didSet {
-            self.transformer?.pagerView = self
             self.collectionViewLayout.forceInvalidate()
         }
     }

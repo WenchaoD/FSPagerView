@@ -69,8 +69,8 @@ class FSPagerViewLayout: UICollectionViewLayout {
         }()
         
         self.actualInteritemSpacing = {
-            if let transformer = pagerView.transformer {
-                return transformer.proposedInteritemSpacing()
+            if pagerView.transformer != nil {
+                return pagerView.itemSize.width*pagerView.transformer!.proposedInteritemSpacingPercent()
             }
             return pagerView.interitemSpacing
         }()
@@ -221,7 +221,7 @@ class FSPagerViewLayout: UICollectionViewLayout {
         }
         let ruler = collectionView.bounds.midX
         let position = (attributes.center.x-ruler)/self.itemSpan
-        transformer.applyTransform(to: attributes, for: position)
+        transformer.applyTransform(to: attributes, for: position, and: self.itemSpan)
     }
 
 }

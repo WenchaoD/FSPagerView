@@ -21,9 +21,8 @@ public enum FSPagerViewTransformerType: Int {
     case invertedFerrisWheel
 }
 
-open class FSPagerViewTransformer: NSObject {
+open class FSPagerViewTransformer: NSObject, FSPagerViewTransitionAnimatior {
     
-    open internal(set) weak var pagerView: FSPagerView?
     open internal(set) var type: FSPagerViewTransformerType = .none
     
     open var minimumScale: CGFloat = 0.65
@@ -47,11 +46,10 @@ open class FSPagerViewTransformer: NSObject {
     }
     
     // Apply transform to attributes - zIndex: Int, frame: CGRect, alpha: CGFloat, transform: CGAffineTransform or transform3D: CATransform3D.
-    open func applyTransform(to attributes: UICollectionViewLayoutAttributes, for position: CGFloat) {
-        guard let pagerView = self.pagerView else {
-            return
-        }
-        let itemSpan = pagerView.collectionViewLayout.itemSpan
+    open func applyTransform(to attributes: UICollectionViewLayoutAttributes,
+                                  for position: CGFloat,
+                                  and itemSpan: CGFloat) {
+
         switch self.type {
         case .none:
             break
@@ -156,7 +154,7 @@ open class FSPagerViewTransformer: NSObject {
             var transform = CGAffineTransform.identity
             switch position {
             case -5 ... 5:
-                let itemSpacing = attributes.bounds.width+self.proposedInteritemSpacing()
+                let itemSpacing = attributes.bounds.width+attributes.size.width*self.proposedInteritemSpacingPercent()
                 let count: CGFloat = 14
                 let circle: CGFloat = CGFloat(M_PI) * 2.0
                 let radius = itemSpacing * count / circle
@@ -179,24 +177,19 @@ open class FSPagerViewTransformer: NSObject {
     }
     
     // An interitem spacing proposed by transformer class. This will override the default interitemSpacing provided by page slider.
-    open func proposedInteritemSpacing() -> CGFloat {
-        guard let pagerView = self.pagerView else {
-            return 0
-        }
+    open func proposedInteritemSpacingPercent() -> CGFloat {
         switch self.type {
         case .overlap:
-            return pagerView.itemSize.width * -self.minimumScale * 0.6
+            return -self.minimumScale * 0.6
         case .linear:
-            return pagerView.itemSize.width * -self.minimumScale * 0.2
+            return -self.minimumScale * 0.2
         case .coverFlow:
-            return -pagerView.itemSize.width * sin(CGFloat(M_PI_4)/4.0*3.0)
+            return sin(CGFloat(M_PI_4)/4.0*3.0)
         case .ferrisWheel,.invertedFerrisWheel:
-            return -pagerView.itemSize.width * 0.15
+            return 0.15
         default:
-            break
+            return 1
         }
-        return pagerView.interitemSpacing
     }
-    
 }
 
