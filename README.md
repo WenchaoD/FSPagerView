@@ -237,11 +237,11 @@ pod FSPagerView
 ```
 
 ## Tutorial
-* [Get start](#get_start)
+* [Get started](#get_started)
 * [Implement FSPagerViewDataSource](#implement_fspagerviewdatasource)
 * [Implement FSPagerViewDelegate](#implement_fspagerviewdelegate)
 
-### 1. Get started <a id='get_start'></a>
+### 1. Get started <a id='get_started'></a>
 
 * Get started with code
 
