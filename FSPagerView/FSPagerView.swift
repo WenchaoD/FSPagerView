@@ -153,6 +153,11 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         return self.collectionView.isTracking
     }
     
+    open var scrollOffset: CGFloat {
+        let scrollOffset = Double(self.collectionView.contentOffset.x.divided(by: self.collectionViewLayout.itemSpan))
+        return fmod(CGFloat(scrollOffset), CGFloat(Double(self.numberOfItems)))
+    }
+    
     // MARK: - Public readonly-properties
     
     open fileprivate(set) dynamic var currentIndex: Int = 0
@@ -312,7 +317,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if self.numberOfItems > 0 {
             // In case someone is using KVO
-            let currentIndex = lround(Double(scrollView.contentOffset.x.divided(by: self.collectionViewLayout.itemSpan))) % self.numberOfItems
+            let currentIndex = lround(Double(self.scrollOffset))
             if (currentIndex != self.currentIndex) {
                 self.currentIndex = currentIndex
             }
