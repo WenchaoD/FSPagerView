@@ -142,6 +142,10 @@ open class FSPageControl: UIControl {
     }
     
     /// Sets the stroke color for page indicators to use for the specified state. (selected/normal).
+    ///
+    /// - Parameters:
+    ///   - strokeColor: The stroke color to use for the specified state.
+    ///   - state: The state that uses the specified stroke color.
     @objc(setStrokeColor:forState:)
     open func setStrokeColor(_ strokeColor: UIColor?, for state: UIControlState) {
         guard self.strokeColors[state] != strokeColor else {
@@ -152,6 +156,10 @@ open class FSPageControl: UIControl {
     }
     
     /// Sets the fill color for page indicators to use for the specified state. (selected/normal).
+    ///
+    /// - Parameters:
+    ///   - fillColor: The fill color to use for the specified state.
+    ///   - state: The state that uses the specified fill color.
     @objc(setFillColor:forState:)
     open func setFillColor(_ fillColor: UIColor?, for state: UIControlState) {
         guard self.fillColors[state] != fillColor else {
@@ -162,6 +170,10 @@ open class FSPageControl: UIControl {
     }
     
     /// Sets the image for page indicators to use for the specified state. (selected/normal).
+    ///
+    /// - Parameters:
+    ///   - image: The image to use for the specified state.
+    ///   - state: The state that uses the specified image.
     @objc(setImage:forState:)
     open func setImage(_ image: UIImage?, for state: UIControlState) {
         guard self.images[state] != image else {
@@ -171,8 +183,13 @@ open class FSPageControl: UIControl {
         self.setNeedsUpdateIndicators()
     }
     
-    /// Sets the alpha value for page indicators to use for the specified state. (selected/normal).
     @objc(setAlpha:forState:)
+    
+    /// Sets the alpha value for page indicators to use for the specified state. (selected/normal).
+    ///
+    /// - Parameters:
+    ///   - alpha: The alpha value to use for the specified state.
+    ///   - state: The state that uses the specified alpha.
     open func setAlpha(_ alpha: CGFloat, for state: UIControlState) {
         guard self.alphas[state] != alpha else {
             return
@@ -182,6 +199,10 @@ open class FSPageControl: UIControl {
     }
     
     /// Sets the path for page indicators to use for the specified state. (selected/normal).
+    ///
+    /// - Parameters:
+    ///   - path: The path to use for the specified state.
+    ///   - state: The state that uses the specified path.
     @objc(setPath:forState:)
     open func setPath(_ path: UIBezierPath?, for state: UIControlState) {
         guard self.paths[state] != path else {

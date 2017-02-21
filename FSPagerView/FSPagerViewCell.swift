@@ -9,11 +9,8 @@
 import UIKit
 
 open class FSPagerViewCell: UICollectionViewCell {
-
-    fileprivate let kvoContext = UnsafeMutableRawPointer(bitPattern: 0)
-    fileprivate let selectionColor = UIColor(white: 0.2, alpha: 0.2)
     
-    internal weak var _textLabel: UILabel?
+    /// Returns the label used for the main textual content of the pager view cell.
     open var textLabel: UILabel? {
         if let _ = _textLabel {
             return _textLabel
@@ -33,8 +30,8 @@ open class FSPagerViewCell: UICollectionViewCell {
         _textLabel = textLabel
         return textLabel
     }
-
-    internal weak var _imageView: UIImageView?
+    
+    /// Returns the image view of the pager view cell. Default is nil.
     open var imageView: UIImageView? {
         if let _ = _imageView {
             return _imageView
@@ -44,6 +41,12 @@ open class FSPagerViewCell: UICollectionViewCell {
         _imageView = imageView
         return imageView
     }
+    
+    internal weak var _textLabel: UILabel?
+    internal weak var _imageView: UIImageView?
+    
+    fileprivate let kvoContext = UnsafeMutableRawPointer(bitPattern: 0)
+    fileprivate let selectionColor = UIColor(white: 0.2, alpha: 0.2)
     
     fileprivate weak var _selectedForegroundView: UIView?
     fileprivate var selectedForegroundView: UIView? {

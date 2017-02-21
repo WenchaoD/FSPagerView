@@ -5,6 +5,10 @@
 //  Created by Wenchao Ding on 17/12/2016.
 //  Copyright © 2016 Wenchao Ding. All rights reserved.
 //
+//  https://github.com/WenchaoD
+//
+//  FSPagerView is an elegant Screen Slide Library implemented primarily with UICollectionView. It is extremely helpful for making Banner、Product Show、Welcome/Guide Pages、Screen/ViewController Sliders.
+//
 
 import UIKit
 
@@ -122,7 +126,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     }
     
     
-    /// The background view of the pager view
+    /// The background view of the pager view.
     @IBInspectable
     open var backgroundView: UIView? {
         didSet {
@@ -136,7 +140,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         }
     }
     
-    /// The transformer of the pager view
+    /// The transformer of the pager view.
     open var transformer: FSPagerViewTransformer? {
         didSet {
             self.transformer?.pagerView = self
@@ -352,6 +356,11 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     
     // MARK: - Public functions
     
+    /// Register a class for use in creating new pager view cells.
+    ///
+    /// - Parameters:
+    ///   - cellClass: The class of a cell that you want to use in the pager view.
+    ///   - identifier: The reuse identifier to associate with the specified class. This parameter must not be nil and must not be an empty string.
     @objc(registerClass:forCellWithReuseIdentifier:)
     open func register(_ cellClass: Swift.AnyClass?, forCellWithReuseIdentifier identifier: String) {
         guard let cellClass = cellClass, cellClass.isSubclass(of: FSPagerViewCell.self) else {
@@ -360,6 +369,12 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         self.collectionView.register(cellClass, forCellWithReuseIdentifier: identifier)
     }
     
+    /// Returns a reusable cell object located by its identifier
+    ///
+    /// - Parameters:
+    ///   - identifier: The reuse identifier for the specified cell. This parameter must not be nil.
+    ///   - index: The index specifying the location of the cell.
+    /// - Returns: A valid FSPagerViewCell object.
     @objc(dequeueReusableCellWithReuseIdentifier:atIndex:)
     open func dequeueReusableCell(withReuseIdentifier identifier: String, at index: Int) -> FSPagerViewCell {
         let indexPath = IndexPath(item: index, section: self.dequeingSection)
@@ -367,23 +382,39 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         return cell
     }
     
+    /// Reloads all of the data for the collection view.
     @objc(reloadData)
     open func reloadData() {
         self.collectionView.reloadData()
     }
     
+    /// Selects the item at the specified index and optionally scrolls it into view.
+    ///
+    /// - Parameters:
+    ///   - index: The index path of the item to select.
+    ///   - animated: Specify true to animate the change in the selection or false to make the change without animating it.
     @objc(selectItemAtIndex:animated:)
     open func selectItem(at index: Int, animated: Bool) {
         let indexPath = self.nearbyIndexPath(for: index)
         self.collectionView.selectItem(at: indexPath, animated: animated, scrollPosition: .centeredHorizontally)
     }
     
+    /// Deselects the item at the specified index.
+    ///
+    /// - Parameters:
+    ///   - index: The index of the item to deselect.
+    ///   - animated: Specify true to animate the change in the selection or false to make the change without animating it.
     @objc(deselectItemAtIndex:animated:)
     open func deselectItem(at index: Int, animated: Bool) {
         let indexPath = self.nearbyIndexPath(for: index)
         self.collectionView.deselectItem(at: indexPath, animated: animated)
     }
     
+    /// Scrolls the pager view contents until the specified item is visible.
+    ///
+    /// - Parameters:
+    ///   - index: The index of the item to scroll into view.
+    ///   - animated: Specify true to animate the scrolling behavior or false to adjust the pager view’s visible content immediately.
     @objc(scrollToItemAtIndex:animated:)
     open func scrollToItem(at index: Int, animated: Bool) {
         guard index < self.numberOfItems else {

@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name             = "FSPagerView"
-  s.version          = "0.1.1"
+  s.version          = "0.2.0"
   s.summary          = "FSPagerView is an elegant Screen Slide Library for making Banner、Product Show、Welcome/Guide Pages、Screen/ViewController Sliders."
   
   s.homepage         = "https://github.com/WenchaoD/FSPagerView"

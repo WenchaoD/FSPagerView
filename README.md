@@ -1,6 +1,8 @@
 # FSPagerView
 
-| <font size="4"><b>SWIFT</b></font> | [<font size="4"><b>OBJECTIVE-C</b></font>](https://github.com/WenchaoD/FSPagerView/blob/master/README-OBJECTIVE-C.md) |
+[![Platform](https://img.shields.io/badge/platform-iOS%207-blue.svg?style=flat)](http://cocoadocs.org/docsets/FSPagerView)
+
+| <font size="5"><b>SWIFT</b></font> | [<font size="5"><b>OBJECTIVE-C</b></font>](https://github.com/WenchaoD/FSPagerView/blob/master/README-OBJECTIVE-C.md) |
 |---|---|
 
 **FSPagerView** is an elegant Screen Slide Library implemented primarily with ***UICollectionView***. It is extremely helpful for making Banner、Product Show、Welcome/Guide Pages、Screen/ViewController Sliders.

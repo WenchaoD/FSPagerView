@@ -187,17 +187,18 @@ class FSPagerViewLayout: UICollectionViewLayout {
         return frame
     }
     
-    // MARK:- Private functions
-    
-    fileprivate func commonInit() {
-        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveNotification(notification:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
-    }
-    
+    // MARK:- Notification
     @objc
     fileprivate func didReceiveNotification(notification: Notification) {
         if self.pagerView?.itemSize == .zero {
             self.adjustCollectionViewBounds()
         }
+    }
+    
+    // MARK:- Private functions
+    
+    fileprivate func commonInit() {
+        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveNotification(notification:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
     
     fileprivate func adjustCollectionViewBounds() {
