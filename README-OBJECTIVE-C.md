@@ -220,8 +220,9 @@ Sets the path for page indicators to use for the specified state. (selected/norm
 ```
 
 ## Installation
-* Manually 
+* Manually
 * Cocoapods
+* Carthage
 
 ### Manually
 1. ***[Download](#)*** the source code.
@@ -232,6 +233,11 @@ Sets the path for page indicators to use for the specified state. (selected/norm
 ```ruby
 use_frameworks!
 pod FSPagerView
+```
+
+### Carthage
+```ruby
+github "WenchaoD/FSPagerView"
 ```
 
 ## Tutorial

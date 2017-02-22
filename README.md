@@ -1,8 +1,9 @@
 # FSPagerView
 
-[![Platform](https://img.shields.io/badge/platform-iOS%207-blue.svg?style=flat)](http://cocoadocs.org/docsets/FSPagerView)
-[![Version](https://img.shields.io/cocoapods/v/FSPagerView.svg?style=flat)](http://cocoadocs.org/docsets/FSCalendar) <br/>
-[![Languages](https://img.shields.io/badge/language-swift%20|%20objc-FF69B4.svg?style=plastic)](#)
+[![Languages](https://img.shields.io/badge/language-swift%20|%20objc-FF69B4.svg?style=plastic)](#) <br/>
+[![Platform](https://img.shields.io/badge/platform-iOS%207-blue.svg?style=plastic)](http://cocoadocs.org/docsets/FSPagerView)
+[![Version](https://img.shields.io/cocoapods/v/FSPagerView.svg?style=plastic)](http://cocoadocs.org/docsets/FSCalendar) 
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=plastic)](https://github.com/Carthage/Carthage)
 
 | <font size="5"><b>SWIFT</b></font> | [<font size="5"><b>OBJECTIVE-C</b></font>](https://github.com/WenchaoD/FSPagerView/blob/master/README-OBJECTIVE-C.md) |
 |---|---|
@@ -228,6 +229,7 @@ pageControl.setPath(UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 8, height: 8)
 ## Installation
 * Manually
 * Cocoapods
+* Carthage
 
 ### Manually
 1. ***[Download](#)*** the source code.
@@ -238,6 +240,11 @@ pageControl.setPath(UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 8, height: 8)
 ```ruby
 use_frameworks!
 pod FSPagerView
+```
+
+### Carthage
+```ruby
+github "WenchaoD/FSPagerView"
 ```
 
 ## Tutorial
