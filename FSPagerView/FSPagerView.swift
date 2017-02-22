@@ -368,10 +368,17 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     ///   - identifier: The reuse identifier to associate with the specified class. This parameter must not be nil and must not be an empty string.
     @objc(registerClass:forCellWithReuseIdentifier:)
     open func register(_ cellClass: Swift.AnyClass?, forCellWithReuseIdentifier identifier: String) {
-        guard let cellClass = cellClass, cellClass.isSubclass(of: FSPagerViewCell.self) else {
-            fatalError("Cell class must be subclass of FSPagerViewCell")
-        }
         self.collectionView.register(cellClass, forCellWithReuseIdentifier: identifier)
+    }
+    
+    /// Register a nib file for use in creating new pager view cells.
+    ///
+    /// - Parameters:
+    ///   - nib: The nib object containing the cell object. The nib file must contain only one top-level object and that object must be of the type FSPagerViewCell.
+    ///   - identifier: The reuse identifier to associate with the specified nib file. This parameter must not be nil and must not be an empty string.
+    @objc(registerNib:forCellWithReuseIdentifier:)
+    open func register(_ nib: UINib?, forCellWithReuseIdentifier identifier: String) {
+        self.collectionView.register(nib, forCellWithReuseIdentifier: identifier)
     }
     
     /// Returns a reusable cell object located by its identifier
@@ -383,8 +390,11 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     @objc(dequeueReusableCellWithReuseIdentifier:atIndex:)
     open func dequeueReusableCell(withReuseIdentifier identifier: String, at index: Int) -> FSPagerViewCell {
         let indexPath = IndexPath(item: index, section: self.dequeingSection)
-        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! FSPagerViewCell
-        return cell
+        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
+        guard cell.isKind(of: FSPagerViewCell.self) else {
+            fatalError("Cell class must be subclass of FSPagerViewCell")
+        }
+        return cell as! FSPagerViewCell
     }
     
     /// Reloads all of the data for the collection view.
