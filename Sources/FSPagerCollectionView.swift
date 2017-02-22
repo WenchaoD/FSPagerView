@@ -16,6 +16,7 @@ class FSPagerViewCollectionView: UICollectionView {
         return self.superview?.superview as? FSPagerView
     }
     
+    #if !os(tvOS)
     override var scrollsToTop: Bool {
         set {
             super.scrollsToTop = false
@@ -24,6 +25,7 @@ class FSPagerViewCollectionView: UICollectionView {
             return false
         }
     }
+    #endif
     
     override var contentInset: UIEdgeInsets {
         set {
@@ -47,14 +49,16 @@ class FSPagerViewCollectionView: UICollectionView {
         super.init(coder: aDecoder)
         self.commonInit()
     }
-
+    
     fileprivate func commonInit() {
         self.contentInset = .zero
-        self.scrollsToTop = false
-        self.isPagingEnabled = false
         self.decelerationRate = UIScrollViewDecelerationRateFast
         self.showsVerticalScrollIndicator = false
         self.showsHorizontalScrollIndicator = false
+        #if !os(tvOS)
+            self.scrollsToTop = false
+            self.isPagingEnabled = false
+        #endif
     }
     
 }

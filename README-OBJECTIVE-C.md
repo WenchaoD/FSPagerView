@@ -1,10 +1,12 @@
 # FSPagerView
 
-[![Platform](https://img.shields.io/badge/platform-iOS%207-blue.svg?style=flat)](http://cocoadocs.org/docsets/FSPagerView)
-[![Version](https://img.shields.io/cocoapods/v/FSPagerView.svg?style=flat)](http://cocoadocs.org/docsets/FSCalendar) <br/>
-[![Languages](https://img.shields.io/badge/language-swift%20|%20objc-FF69B4.svg?style=plastic)](#)
+[![Languages](https://img.shields.io/badge/language-swift%20|%20objc-FF69B4.svg?style=plastic)](#) <br/>
+[![Platform](https://img.shields.io/badge/platform-iOS%20|%20tvOS-blue.svg?style=plastic)](http://cocoadocs.org/docsets/FSPagerView) 
+[![Version](https://img.shields.io/cocoapods/v/FSPagerView.svg?style=flat)](http://cocoadocs.org/docsets/FSCalendar)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=plastic)](https://github.com/Carthage/Carthage)
+[![SPM compatible](https://img.shields.io/badge/SPM-compatible-FF9966.svg?style=plastic)](https://swift.org/package-manager/)
 
-| [<font size="5"><b>SWIFT</b></font>](https://github.com/WenchaoD/FSPagerView/blob/master/README.md) | <font size="5"><b>OBJECTIVE-C</b></font> |
+|[<b>SWIFT</b>](https://github.com/WenchaoD/FSPagerView/blob/master/README.md)|<b>OBJECTIVE-C</b>|
 |---|---|
 
 **FSPagerView** is an elegant Screen Slide Library implemented primarily with ***UICollectionView***. It is extremely helpful for making Banner、Product Show、Welcome/Guide Pages、Screen/ViewController Sliders.

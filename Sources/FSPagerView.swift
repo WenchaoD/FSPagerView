@@ -115,7 +115,6 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         }
     }
     
-    
     /// A Boolean value indicates that whether the pager view has infinite items. Default is false.
     @IBInspectable
     open var isInfinite: Bool = false {
@@ -148,17 +147,23 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         }
     }
     
+    // MARK: - Public readonly-properties
+    
     /// Returns whether the user has touched the content to initiate scrolling.
     open var isTracking: Bool {
         return self.collectionView.isTracking
     }
     
+    /// The percentage of x position at which the origin of the content view is offset from the origin of the pagerView view.
     open var scrollOffset: CGFloat {
         let scrollOffset = Double(self.collectionView.contentOffset.x.divided(by: self.collectionViewLayout.itemSpan))
         return fmod(CGFloat(scrollOffset), CGFloat(Double(self.numberOfItems)))
     }
     
-    // MARK: - Public readonly-properties
+    /// The underlying gesture recognizer for pan gestures.
+    open var panGestureRecognizer: UIPanGestureRecognizer {
+        return self.collectionView.panGestureRecognizer
+    }
     
     open fileprivate(set) dynamic var currentIndex: Int = 0
     
