@@ -78,12 +78,8 @@ open class FSPageControl: UIControl {
             return
         }
         let pageControl = Unmanaged<FSPageControl>.fromOpaque(info).takeUnretainedValue()
-        if pageControl.needsCreateIndicators {
-            pageControl.createIndicatorsIfNecessary()
-        }
-        if pageControl.needsUpdateIndicators {
-            pageControl.updateIndicatorsIfNecessary()
-        }
+        pageControl.createIndicatorsIfNecessary()
+        pageControl.updateIndicatorsIfNecessary()
     }
     
     public override init(frame: CGRect) {
