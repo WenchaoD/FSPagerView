@@ -23,12 +23,12 @@
 		F908BC4E1E35AAE4002B2F51 /* 7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F908BC3F1E35AAE4002B2F51 /* 7.jpg */; };
 		F908BC4F1E35AAE4002B2F51 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F908BC401E35AAE4002B2F51 /* background.jpg */; };
 		F93F5E141E319AE8006B7082 /* PageControlExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F93F5E131E319AE8006B7082 /* PageControlExampleViewController.m */; };
-		F9C6943F1E40C63E007084B6 /* FSPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C694391E40C63E007084B6 /* FSPageControl.swift */; };
-		F9C694401E40C63E007084B6 /* FSPagerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C6943A1E40C63E007084B6 /* FSPagerCollectionView.swift */; };
-		F9C694411E40C63E007084B6 /* FSPagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C6943B1E40C63E007084B6 /* FSPagerView.swift */; };
-		F9C694421E40C63E007084B6 /* FSPagerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C6943C1E40C63E007084B6 /* FSPagerViewCell.swift */; };
-		F9C694431E40C63E007084B6 /* FSPageViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C6943D1E40C63E007084B6 /* FSPageViewLayout.swift */; };
-		F9C694441E40C63E007084B6 /* FSPageViewTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C6943E1E40C63E007084B6 /* FSPageViewTransformer.swift */; };
+		F9580B641E5D997200C5B267 /* FSPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B5E1E5D997200C5B267 /* FSPageControl.swift */; };
+		F9580B651E5D997200C5B267 /* FSPagerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B5F1E5D997200C5B267 /* FSPagerCollectionView.swift */; };
+		F9580B661E5D997200C5B267 /* FSPagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B601E5D997200C5B267 /* FSPagerView.swift */; };
+		F9580B671E5D997200C5B267 /* FSPagerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B611E5D997200C5B267 /* FSPagerViewCell.swift */; };
+		F9580B681E5D997200C5B267 /* FSPageViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B621E5D997200C5B267 /* FSPageViewLayout.swift */; };
+		F9580B691E5D997200C5B267 /* FSPageViewTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B631E5D997200C5B267 /* FSPageViewTransformer.swift */; };
 		F9C6944C1E40C6C1007084B6 /* FSPagerViewExample_ObjcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C6944B1E40C6C1007084B6 /* FSPagerViewExample_ObjcUITests.swift */; };
 		F9EC371E1E304A830022B6D6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EC371D1E304A830022B6D6 /* main.m */; };
 		F9EC37211E304A830022B6D6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EC37201E304A830022B6D6 /* AppDelegate.m */; };
@@ -67,12 +67,12 @@
 		F908BC401E35AAE4002B2F51 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
 		F93F5E121E319AE8006B7082 /* PageControlExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageControlExampleViewController.h; sourceTree = "<group>"; };
 		F93F5E131E319AE8006B7082 /* PageControlExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageControlExampleViewController.m; sourceTree = "<group>"; };
-		F9C694391E40C63E007084B6 /* FSPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPageControl.swift; sourceTree = "<group>"; };
-		F9C6943A1E40C63E007084B6 /* FSPagerCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPagerCollectionView.swift; sourceTree = "<group>"; };
-		F9C6943B1E40C63E007084B6 /* FSPagerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPagerView.swift; sourceTree = "<group>"; };
-		F9C6943C1E40C63E007084B6 /* FSPagerViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPagerViewCell.swift; sourceTree = "<group>"; };
-		F9C6943D1E40C63E007084B6 /* FSPageViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPageViewLayout.swift; sourceTree = "<group>"; };
-		F9C6943E1E40C63E007084B6 /* FSPageViewTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPageViewTransformer.swift; sourceTree = "<group>"; };
+		F9580B5E1E5D997200C5B267 /* FSPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPageControl.swift; sourceTree = "<group>"; };
+		F9580B5F1E5D997200C5B267 /* FSPagerCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPagerCollectionView.swift; sourceTree = "<group>"; };
+		F9580B601E5D997200C5B267 /* FSPagerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPagerView.swift; sourceTree = "<group>"; };
+		F9580B611E5D997200C5B267 /* FSPagerViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPagerViewCell.swift; sourceTree = "<group>"; };
+		F9580B621E5D997200C5B267 /* FSPageViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPageViewLayout.swift; sourceTree = "<group>"; };
+		F9580B631E5D997200C5B267 /* FSPageViewTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPageViewTransformer.swift; sourceTree = "<group>"; };
 		F9C694491E40C6C1007084B6 /* FSPagerViewExample-ObjcUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FSPagerViewExample-ObjcUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9C6944B1E40C6C1007084B6 /* FSPagerViewExample_ObjcUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSPagerViewExample_ObjcUITests.swift; sourceTree = "<group>"; };
 		F9C6944D1E40C6C1007084B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -131,18 +131,18 @@
 			path = ../../Resources;
 			sourceTree = "<group>";
 		};
-		F9C694381E40C63E007084B6 /* FSPagerView */ = {
+		F9580B5D1E5D997200C5B267 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				F9C694391E40C63E007084B6 /* FSPageControl.swift */,
-				F9C6943A1E40C63E007084B6 /* FSPagerCollectionView.swift */,
-				F9C6943B1E40C63E007084B6 /* FSPagerView.swift */,
-				F9C6943C1E40C63E007084B6 /* FSPagerViewCell.swift */,
-				F9C6943D1E40C63E007084B6 /* FSPageViewLayout.swift */,
-				F9C6943E1E40C63E007084B6 /* FSPageViewTransformer.swift */,
+				F9580B5E1E5D997200C5B267 /* FSPageControl.swift */,
+				F9580B5F1E5D997200C5B267 /* FSPagerCollectionView.swift */,
+				F9580B601E5D997200C5B267 /* FSPagerView.swift */,
+				F9580B611E5D997200C5B267 /* FSPagerViewCell.swift */,
+				F9580B621E5D997200C5B267 /* FSPageViewLayout.swift */,
+				F9580B631E5D997200C5B267 /* FSPageViewTransformer.swift */,
 			);
-			name = FSPagerView;
-			path = ../FSPagerView;
+			name = Sources;
+			path = ../Sources;
 			sourceTree = "<group>";
 		};
 		F9C6944A1E40C6C1007084B6 /* FSPagerViewExample-ObjcUITests */ = {
@@ -184,7 +184,7 @@
 		F9EC37101E304A830022B6D6 = {
 			isa = PBXGroup;
 			children = (
-				F9C694381E40C63E007084B6 /* FSPagerView */,
+				F9580B5D1E5D997200C5B267 /* Sources */,
 				F9EC371B1E304A830022B6D6 /* FSPagerViewExample-Objc */,
 				F9C6944A1E40C6C1007084B6 /* FSPagerViewExample-ObjcUITests */,
 				F9EC371A1E304A830022B6D6 /* Products */,
@@ -354,17 +354,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9C694431E40C63E007084B6 /* FSPageViewLayout.swift in Sources */,
-				F9C694401E40C63E007084B6 /* FSPagerCollectionView.swift in Sources */,
 				F9EC37241E304A830022B6D6 /* BasicExampleViewController.m in Sources */,
-				F9C694421E40C63E007084B6 /* FSPagerViewCell.swift in Sources */,
-				F9C6943F1E40C63E007084B6 /* FSPageControl.swift in Sources */,
+				F9580B641E5D997200C5B267 /* FSPageControl.swift in Sources */,
+				F9580B681E5D997200C5B267 /* FSPageViewLayout.swift in Sources */,
 				F9EC37211E304A830022B6D6 /* AppDelegate.m in Sources */,
+				F9580B651E5D997200C5B267 /* FSPagerCollectionView.swift in Sources */,
+				F9580B691E5D997200C5B267 /* FSPageViewTransformer.swift in Sources */,
 				F9F00A901E310FF600790735 /* TransformerExampleViewController.m in Sources */,
+				F9580B671E5D997200C5B267 /* FSPagerViewCell.swift in Sources */,
 				F93F5E141E319AE8006B7082 /* PageControlExampleViewController.m in Sources */,
-				F9C694411E40C63E007084B6 /* FSPagerView.swift in Sources */,
 				F9EC371E1E304A830022B6D6 /* main.m in Sources */,
-				F9C694441E40C63E007084B6 /* FSPageViewTransformer.swift in Sources */,
+				F9580B661E5D997200C5B267 /* FSPagerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +401,7 @@
 		F9C694511E40C6C1007084B6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = HZF422TY46;
 				INFOPLIST_FILE = "FSPagerViewExample-ObjcUITests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
@@ -417,6 +418,7 @@
 		F9C694521E40C6C1007084B6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = HZF422TY46;
 				INFOPLIST_FILE = "FSPagerViewExample-ObjcUITests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
@@ -555,6 +557,7 @@
 				F9C694521E40C6C1007084B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F9EC37141E304A830022B6D6 /* Build configuration list for PBXProject "FSPagerViewExample-Objc" */ = {
 			isa = XCConfigurationList;
