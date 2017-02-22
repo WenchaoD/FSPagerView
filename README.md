@@ -1,6 +1,8 @@
 # FSPagerView
 
 [![Platform](https://img.shields.io/badge/platform-iOS%207-blue.svg?style=flat)](http://cocoadocs.org/docsets/FSPagerView)
+[![Version](https://img.shields.io/cocoapods/v/FSPagerView.svg?style=flat)](http://cocoadocs.org/docsets/FSCalendar) <br/>
+[![Languages](https://img.shields.io/badge/language-swift%20|%20objc-FF69B4.svg?style=plastic)](#)
 
 | <font size="5"><b>SWIFT</b></font> | [<font size="5"><b>OBJECTIVE-C</b></font>](https://github.com/WenchaoD/FSPagerView/blob/master/README-OBJECTIVE-C.md) |
 |---|---|
