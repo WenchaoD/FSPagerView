@@ -405,6 +405,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     /// Reloads all of the data for the collection view.
     @objc(reloadData)
     open func reloadData() {
+        self.collectionViewLayout.needsReprepare = true;
         self.collectionView.reloadData()
     }
     
