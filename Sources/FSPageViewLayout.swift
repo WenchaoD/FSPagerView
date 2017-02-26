@@ -121,7 +121,7 @@ class FSPagerViewLayout: UICollectionViewLayout {
         // Create layout attributes
         var itemIndex = startIndex
         var x = startPosition
-        let maxPosition = min(rect.maxX,self.contentSize.width-self.actualItemSize.width)
+        let maxPosition = min(rect.maxX,self.contentSize.width-self.actualItemSize.width-self.leadingSpacing)
         while x <= maxPosition {
             let indexPath = IndexPath(item: itemIndex%self.numberOfItems, section: itemIndex/self.numberOfItems)
             let attributes = self.layoutAttributesForItem(at: indexPath) as! FSPagerViewLayoutAttributes
