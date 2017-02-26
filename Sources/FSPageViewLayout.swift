@@ -15,10 +15,16 @@ class FSPagerViewLayout: UICollectionViewLayout {
     internal var itemSpan: CGFloat = 0
     internal var needsReprepare = true
     
+    open override class var layoutAttributesClass: AnyClass {
+        get {
+            return FSPagerViewLayoutAttributes.self
+        }
+    }
+    
     fileprivate var pagerView: FSPagerView? {
         return self.collectionView?.superview?.superview as? FSPagerView
     }
-    fileprivate var layoutAttributes: [IndexPath:UICollectionViewLayoutAttributes] = [:]
+    fileprivate var layoutAttributes: [IndexPath:FSPagerViewLayoutAttributes] = [:]
     
     fileprivate var isInfinite: Bool = true
     fileprivate var collectionViewSize: CGSize = .zero
@@ -118,7 +124,7 @@ class FSPagerViewLayout: UICollectionViewLayout {
         let maxPosition = min(rect.maxX,self.contentSize.width-self.actualItemSize.width)
         while x <= maxPosition {
             let indexPath = IndexPath(item: itemIndex%self.numberOfItems, section: itemIndex/self.numberOfItems)
-            let attributes = self.layoutAttributesForItem(at: indexPath)!
+            let attributes = self.layoutAttributesForItem(at: indexPath) as! FSPagerViewLayoutAttributes
             self.applyTransform(to: attributes)
             layoutAttributes.append(attributes)
             itemIndex += 1
@@ -134,7 +140,9 @@ class FSPagerViewLayout: UICollectionViewLayout {
         if let attributes = self.layoutAttributes[indexPath] {
             return attributes
         }
-        let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+        let attributes = FSPagerViewLayoutAttributes(forCellWith: indexPath)
+        attributes.itemSize = self.actualItemSize
+        attributes.interitemSpacing = self.actualInteritemSpacing
         let x = self.frame(for: indexPath).minX
         let center = CGPoint(x: x+self.actualItemSize.width*0.5, y: collectionView.frame.height*0.5)
         attributes.center = center
@@ -217,7 +225,7 @@ class FSPagerViewLayout: UICollectionViewLayout {
         collectionView.bounds = newBounds
     }
     
-    fileprivate func applyTransform(to attributes: UICollectionViewLayoutAttributes) {
+    fileprivate func applyTransform(to attributes: FSPagerViewLayoutAttributes) {
         guard let collectionView = self.collectionView else {
             return
         }

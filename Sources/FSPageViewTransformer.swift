@@ -47,11 +47,8 @@ open class FSPagerViewTransformer: NSObject {
     }
     
     // Apply transform to attributes - zIndex: Int, frame: CGRect, alpha: CGFloat, transform: CGAffineTransform or transform3D: CATransform3D.
-    open func applyTransform(to attributes: UICollectionViewLayoutAttributes, for position: CGFloat) {
-        guard let pagerView = self.pagerView else {
-            return
-        }
-        let itemSpan = pagerView.collectionViewLayout.itemSpan
+    open func applyTransform(to attributes: FSPagerViewLayoutAttributes, for position: CGFloat) {
+        let itemSpan = attributes.interitemSpacing + attributes.itemSize.width
         switch self.type {
         case .none:
             break

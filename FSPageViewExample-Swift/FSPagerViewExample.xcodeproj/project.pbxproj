@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F954839A1E625F1E0069FD7E /* FSPagerViewLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95483991E625F1E0069FD7E /* FSPagerViewLayoutAttributes.swift */; };
+		F954839B1E625F1E0069FD7E /* FSPagerViewLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95483991E625F1E0069FD7E /* FSPagerViewLayoutAttributes.swift */; };
 		F9580B571E5D995400C5B267 /* FSPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B511E5D995400C5B267 /* FSPageControl.swift */; };
 		F9580B581E5D995400C5B267 /* FSPagerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B521E5D995400C5B267 /* FSPagerCollectionView.swift */; };
 		F9580B591E5D995400C5B267 /* FSPagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B531E5D995400C5B267 /* FSPagerView.swift */; };
@@ -49,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F95483991E625F1E0069FD7E /* FSPagerViewLayoutAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPagerViewLayoutAttributes.swift; sourceTree = "<group>"; };
 		F9580B511E5D995400C5B267 /* FSPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPageControl.swift; sourceTree = "<group>"; };
 		F9580B521E5D995400C5B267 /* FSPagerCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPagerCollectionView.swift; sourceTree = "<group>"; };
 		F9580B531E5D995400C5B267 /* FSPagerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPagerView.swift; sourceTree = "<group>"; };
@@ -111,6 +114,7 @@
 				F9580B541E5D995400C5B267 /* FSPagerViewCell.swift */,
 				F9580B551E5D995400C5B267 /* FSPageViewLayout.swift */,
 				F9580B561E5D995400C5B267 /* FSPageViewTransformer.swift */,
+				F95483991E625F1E0069FD7E /* FSPagerViewLayoutAttributes.swift */,
 			);
 			name = Sources;
 			path = ../Sources;
@@ -322,6 +326,7 @@
 				F9580B571E5D995400C5B267 /* FSPageControl.swift in Sources */,
 				F9580B581E5D995400C5B267 /* FSPagerCollectionView.swift in Sources */,
 				F9C6942F1E40C583007084B6 /* AppDelegate.swift in Sources */,
+				F954839A1E625F1E0069FD7E /* FSPagerViewLayoutAttributes.swift in Sources */,
 				F9580B591E5D995400C5B267 /* FSPagerView.swift in Sources */,
 				F9C694351E40C583007084B6 /* PageControlExampleViewController.swift in Sources */,
 				F9C694361E40C583007084B6 /* TransformerExampleViewController.swift in Sources */,
@@ -336,6 +341,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F954839B1E625F1E0069FD7E /* FSPagerViewLayoutAttributes.swift in Sources */,
 				F9C6945A1E40C720007084B6 /* FSPagerViewExampleUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
