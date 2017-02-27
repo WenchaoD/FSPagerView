@@ -14,6 +14,7 @@
 		F9580B8B1E5D9F2B00C5B267 /* FSPagerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B851E5D9F2B00C5B267 /* FSPagerViewCell.swift */; };
 		F9580B8C1E5D9F2B00C5B267 /* FSPageViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B861E5D9F2B00C5B267 /* FSPageViewLayout.swift */; };
 		F9580B8D1E5D9F2B00C5B267 /* FSPageViewTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B871E5D9F2B00C5B267 /* FSPageViewTransformer.swift */; };
+		F9D7BD2A1E63DD5F003F6A0E /* FSPagerViewLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D7BD291E63DD5F003F6A0E /* FSPagerViewLayoutAttributes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		F9580B851E5D9F2B00C5B267 /* FSPagerViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPagerViewCell.swift; sourceTree = "<group>"; };
 		F9580B861E5D9F2B00C5B267 /* FSPageViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPageViewLayout.swift; sourceTree = "<group>"; };
 		F9580B871E5D9F2B00C5B267 /* FSPageViewTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPageViewTransformer.swift; sourceTree = "<group>"; };
+		F9D7BD291E63DD5F003F6A0E /* FSPagerViewLayoutAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPagerViewLayoutAttributes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				F9580B841E5D9F2B00C5B267 /* FSPagerView.swift */,
 				F9580B851E5D9F2B00C5B267 /* FSPagerViewCell.swift */,
 				F9580B861E5D9F2B00C5B267 /* FSPageViewLayout.swift */,
+				F9D7BD291E63DD5F003F6A0E /* FSPagerViewLayoutAttributes.swift */,
 				F9580B871E5D9F2B00C5B267 /* FSPageViewTransformer.swift */,
 			);
 			name = Sources;
@@ -159,6 +162,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9D7BD2A1E63DD5F003F6A0E /* FSPagerViewLayoutAttributes.swift in Sources */,
 				F9580B8D1E5D9F2B00C5B267 /* FSPageViewTransformer.swift in Sources */,
 				F9580B881E5D9F2B00C5B267 /* FSPageControl.swift in Sources */,
 				F9580B891E5D9F2B00C5B267 /* FSPagerCollectionView.swift in Sources */,
@@ -329,6 +333,7 @@
 				F9580B801E5D9F0600C5B267 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
