@@ -11,7 +11,7 @@ import UIKit
 class TransformerExampleViewController: UIViewController,FSPagerViewDataSource,FSPagerViewDelegate, UITableViewDataSource,UITableViewDelegate {
     
     fileprivate let imageNames = ["1_1.jpg","1_2.jpg","1_3.jpg","1_4.jpg","1_5.jpg","1_6.jpg","1_7.jpg"]
-    fileprivate let transformerNames = ["cross fading", "zoom out", "depth", "linear", "overlap", "ferris wheel", "inverted ferris wheel", "coverflow"]
+    fileprivate let transformerNames = ["cross fading", "zoom out", "depth", "linear", "overlap", "ferris wheel", "inverted ferris wheel", "coverflow", "cubic"]
     fileprivate let transformerTypes: [FSPagerViewTransformerType] = [.crossFading,
                                                                       .zoomOut,
                                                                       .depth,
@@ -19,7 +19,8 @@ class TransformerExampleViewController: UIViewController,FSPagerViewDataSource,F
                                                                       .overlap,
                                                                       .ferrisWheel,
                                                                       .invertedFerrisWheel,
-                                                                      .coverFlow]
+                                                                      .coverFlow,
+                                                                      .cubic]
     fileprivate var typeIndex = 0 {
         didSet {
             let type = self.transformerTypes[typeIndex]
@@ -34,8 +35,10 @@ class TransformerExampleViewController: UIViewController,FSPagerViewDataSource,F
                 self.pagerView.itemSize = CGSize(width: 180, height: 140)
             case .coverFlow:
                 self.pagerView.itemSize = CGSize(width: 220, height: 170)
+            case .cubic:
+                let transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+                self.pagerView.itemSize = self.pagerView.frame.size.applying(transform)
             }
-            
         }
     }
     

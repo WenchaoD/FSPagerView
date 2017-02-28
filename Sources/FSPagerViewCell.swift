@@ -86,12 +86,12 @@ open class FSPagerViewCell: UICollectionViewCell {
     }
     
     fileprivate func commonInit() {
-        self.contentView.backgroundColor = UIColor.white
+        self.contentView.backgroundColor = UIColor.clear
+        self.backgroundColor = UIColor.clear
         self.contentView.layer.shadowColor = UIColor.black.cgColor
         self.contentView.layer.shadowRadius = 5
         self.contentView.layer.shadowOpacity = 0.75
         self.contentView.layer.shadowOffset = .zero
-        self.backgroundColor = UIColor.white
     }
     
     deinit {
@@ -134,6 +134,22 @@ open class FSPagerViewCell: UICollectionViewCell {
         } else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
+    }
+    
+    open override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
+        super.apply(layoutAttributes)
+        let layoutAttributes = layoutAttributes as! FSPagerViewLayoutAttributes
+        self.contentView.layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        self.contentView.layer.transform = CATransform3DIdentity
+        guard layoutAttributes.rotationY != 0 else {
+            return
+        }
+        self.layer.transform = CATransform3DIdentity
+        var rotation = CATransform3DIdentity
+        rotation.m34 = -0.002
+        rotation = CATransform3DRotate(rotation, layoutAttributes.rotationY, 0, 1, 0)
+        self.contentView.layer.anchorPoint = layoutAttributes.pivot
+        self.contentView.layer.transform = rotation
     }
     
 }

@@ -151,16 +151,8 @@
 				F9C694281E40C583007084B6 /* Main.storyboard */,
 				F9C694611E40C8DA007084B6 /* Resources */,
 				F9C694371E40C59E007084B6 /* Supporting Files */,
-				F9C6942D1E40C583007084B6 /* Resources */,
 			);
 			path = FSPagerViewExample;
-			sourceTree = "<group>";
-		};
-		F9C6942D1E40C583007084B6 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		F9C694371E40C59E007084B6 /* Supporting Files */ = {

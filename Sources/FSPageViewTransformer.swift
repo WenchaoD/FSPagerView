@@ -19,6 +19,7 @@ public enum FSPagerViewTransformerType: Int {
     case coverFlow
     case ferrisWheel
     case invertedFerrisWheel
+    case cubic
 }
 
 open class FSPagerViewTransformer: NSObject {
@@ -47,15 +48,16 @@ open class FSPagerViewTransformer: NSObject {
     }
     
     // Apply transform to attributes - zIndex: Int, frame: CGRect, alpha: CGFloat, transform: CGAffineTransform or transform3D: CATransform3D.
-    open func applyTransform(to attributes: FSPagerViewLayoutAttributes, for position: CGFloat) {
-        let itemSpan = attributes.interitemSpacing + attributes.itemSize.width
+    open func applyTransform(to attributes: FSPagerViewLayoutAttributes) {
+        let position = attributes.position
+        let itemSpacing = attributes.interitemSpacing + attributes.bounds.width
         switch self.type {
         case .none:
             break
         case .crossFading:
             var zIndex = 0
             var alpha: CGFloat = 0
-            let transform = CGAffineTransform(translationX: -itemSpan * position, y: 0)
+            let transform = CGAffineTransform(translationX: -itemSpacing * position, y: 0)
             if (abs(position) < 1) { // [-1,1]
                 // Use the default slide transition when moving to the left page
                 alpha = 1 - abs(position)
@@ -79,7 +81,7 @@ open class FSPagerViewTransformer: NSObject {
                 // Modify the default slide transition to shrink the page as well
                 let scaleFactor = max(self.minimumScale, 1 - abs(position))
                 let vertMargin = attributes.bounds.height * (1 - scaleFactor) / 2;
-                let horzMargin = itemSpan * (1 - scaleFactor) / 2;
+                let horzMargin = itemSpacing * (1 - scaleFactor) / 2;
                 transform.a = scaleFactor
                 transform.d = scaleFactor
                 transform.tx = position < 0 ? (horzMargin - vertMargin*2) : (-horzMargin + vertMargin*2)
@@ -113,7 +115,7 @@ open class FSPagerViewTransformer: NSObject {
                 // Fade the page out.
                 alpha = CGFloat(1.0) - position
                 // Counteract the default slide transition
-                transform.tx = itemSpan * -position;
+                transform.tx = itemSpacing * -position;
                 // Scale the page down (between minimumScale and 1)
                 let scaleFactor = self.minimumScale
                     + (1.0 - self.minimumScale) * (1.0 - abs(position));
@@ -141,14 +143,15 @@ open class FSPagerViewTransformer: NSObject {
         case .coverFlow:
             let position = min(max(-position,-1) ,1)
             let rotation = sin(position*CGFloat(M_PI_2)) * CGFloat(M_PI_4)*1.5
-            let translationZ = -itemSpan * 0.5*abs(position)
+            let translationZ = -itemSpacing * 0.5 * abs(position)
             var transform3D = CATransform3DIdentity
             transform3D.m34 = -0.002
-            transform3D = CATransform3DRotate(transform3D,rotation, 0, 1, 0)
-            transform3D = CATransform3DTranslate(transform3D,0, 0, translationZ)
+            transform3D = CATransform3DRotate(transform3D, rotation, 0, 1, 0)
+            transform3D = CATransform3DTranslate(transform3D, 0, 0, translationZ)
             attributes.zIndex = 100 - Int(abs(position))
             attributes.transform3D = transform3D
         case .ferrisWheel, .invertedFerrisWheel:
+            // http://ronnqvi.st/translate-rotate-translate/
             var zIndex = 0
             var transform = CGAffineTransform.identity
             switch position {
@@ -164,18 +167,30 @@ open class FSPagerViewTransformer: NSObject {
                 transform = transform.rotated(by: rotation)
                 transform = transform.translatedBy(x: 0, y: -ty)
                 zIndex = Int((4.0-abs(position)*10))
-                break
             default:
                 break
             }
             attributes.alpha = abs(position) < 0.5 ? 1 : self.minimumAlpha
             attributes.transform = transform
             attributes.zIndex = zIndex
-            break
+        case .cubic:
+            var pivot: CGPoint = CGPoint(x: 0.5, y: 0.5)
+            pivot.x = position < 0 ? 1 : 0
+            pivot.y = 0.5
+            switch position {
+            case -1...1:
+                attributes.alpha = 1
+                attributes.zIndex = Int((1-position) * CGFloat(10))
+            default:
+                attributes.zIndex = 0
+                attributes.alpha = 0
+            }
+            attributes.pivot = pivot
+            attributes.rotationY = position * CGFloat(M_PI_2)
         }
     }
     
-    // An interitem spacing proposed by transformer class. This will override the default interitemSpacing provided by page slider.
+    // An interitem spacing proposed by transformer class. This will override the default interitemSpacing provided by the pager view.
     open func proposedInteritemSpacing() -> CGFloat {
         guard let pagerView = self.pagerView else {
             return 0
@@ -189,6 +204,8 @@ open class FSPagerViewTransformer: NSObject {
             return -pagerView.itemSize.width * sin(CGFloat(M_PI_4)/4.0*3.0)
         case .ferrisWheel,.invertedFerrisWheel:
             return -pagerView.itemSize.width * 0.15
+        case .cubic:
+            return 0
         default:
             break
         }

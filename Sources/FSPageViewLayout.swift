@@ -141,8 +141,6 @@ class FSPagerViewLayout: UICollectionViewLayout {
             return attributes
         }
         let attributes = FSPagerViewLayoutAttributes(forCellWith: indexPath)
-        attributes.itemSize = self.actualItemSize
-        attributes.interitemSpacing = self.actualInteritemSpacing
         let x = self.frame(for: indexPath).minX
         let center = CGPoint(x: x+self.actualItemSize.width*0.5, y: collectionView.frame.height*0.5)
         attributes.center = center
@@ -233,8 +231,9 @@ class FSPagerViewLayout: UICollectionViewLayout {
             return
         }
         let ruler = collectionView.bounds.midX
-        let position = (attributes.center.x-ruler)/self.itemSpan
-        transformer.applyTransform(to: attributes, for: position)
+        attributes.position = (attributes.center.x-ruler)/self.itemSpan
+        attributes.interitemSpacing = self.actualInteritemSpacing
+        transformer.applyTransform(to: attributes)
     }
 
 }
