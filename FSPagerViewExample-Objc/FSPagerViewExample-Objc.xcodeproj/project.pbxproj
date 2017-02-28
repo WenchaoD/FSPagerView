@@ -37,6 +37,8 @@
 		F9EC37291E304A830022B6D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9EC37281E304A830022B6D6 /* Assets.xcassets */; };
 		F9EC372C1E304A830022B6D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9EC372A1E304A830022B6D6 /* LaunchScreen.storyboard */; };
 		F9F00A901E310FF600790735 /* TransformerExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F00A8F1E310FF600790735 /* TransformerExampleViewController.m */; };
+		F9FF349F1E65B38C001E943F /* FSPagerViewLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FF349E1E65B38C001E943F /* FSPagerViewLayoutAttributes.swift */; };
+		F9FF34A01E65B38C001E943F /* FSPagerViewLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FF349E1E65B38C001E943F /* FSPagerViewLayoutAttributes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,7 @@
 		F9EC372D1E304A830022B6D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F9F00A8E1E310FF600790735 /* TransformerExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransformerExampleViewController.h; sourceTree = "<group>"; };
 		F9F00A8F1E310FF600790735 /* TransformerExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransformerExampleViewController.m; sourceTree = "<group>"; };
+		F9FF349E1E65B38C001E943F /* FSPagerViewLayoutAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPagerViewLayoutAttributes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +142,7 @@
 				F9580B601E5D997200C5B267 /* FSPagerView.swift */,
 				F9580B611E5D997200C5B267 /* FSPagerViewCell.swift */,
 				F9580B621E5D997200C5B267 /* FSPageViewLayout.swift */,
+				F9FF349E1E65B38C001E943F /* FSPagerViewLayoutAttributes.swift */,
 				F9580B631E5D997200C5B267 /* FSPageViewTransformer.swift */,
 			);
 			name = Sources;
@@ -346,6 +350,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9FF34A01E65B38C001E943F /* FSPagerViewLayoutAttributes.swift in Sources */,
 				F9C6944C1E40C6C1007084B6 /* FSPagerViewExample_ObjcUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,6 +363,7 @@
 				F9580B641E5D997200C5B267 /* FSPageControl.swift in Sources */,
 				F9580B681E5D997200C5B267 /* FSPageViewLayout.swift in Sources */,
 				F9EC37211E304A830022B6D6 /* AppDelegate.m in Sources */,
+				F9FF349F1E65B38C001E943F /* FSPagerViewLayoutAttributes.swift in Sources */,
 				F9580B651E5D997200C5B267 /* FSPagerCollectionView.swift in Sources */,
 				F9580B691E5D997200C5B267 /* FSPageViewTransformer.swift in Sources */,
 				F9F00A901E310FF600790735 /* TransformerExampleViewController.m in Sources */,
