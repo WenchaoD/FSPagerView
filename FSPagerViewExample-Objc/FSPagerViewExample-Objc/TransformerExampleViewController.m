@@ -28,7 +28,7 @@
 {
     [super viewDidLoad];
     self.imageNames = @[@"1_1.jpg",@"1_2.jpg",@"1_3.jpg",@"1_4.jpg",@"1_5.jpg",@"1_6.jpg",@"1_7.jpg"];
-    self.transformerNames = @[@"cross fading", @"zoom out", @"depth", @"linear", @"overlap", @"ferris wheel", @"inverted ferris wheel", @"coverflow"];
+    self.transformerNames = @[@"cross fading", @"zoom out", @"depth", @"linear", @"overlap", @"ferris wheel", @"inverted ferris wheel", @"coverflow", @"cubic"];
     [self.pagerView registerClass:[FSPagerViewCell class] forCellWithReuseIdentifier:@"cell"];
     self.typeIndex = 0;
 }
@@ -134,6 +134,10 @@
             type = FSPagerViewTransformerTypeCoverFlow;
             break;
         }
+        case 8: {
+            type = FSPagerViewTransformerTypeCubic;
+            break;
+        }
         default:
             break;
     }
@@ -158,6 +162,11 @@
         }
         case FSPagerViewTransformerTypeCoverFlow: {
             self.pagerView.itemSize = CGSizeMake(220, 170);
+            break;
+        }
+        case FSPagerViewTransformerTypeCubic: {
+            CGAffineTransform transform = CGAffineTransformMakeScale(0.9, 0.9);
+            self.pagerView.itemSize = CGSizeApplyAffineTransform(self.pagerView.frame.size, transform);
             break;
         }
         default:

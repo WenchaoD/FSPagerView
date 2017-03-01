@@ -42,8 +42,8 @@ open class FSPagerViewCell: UICollectionViewCell {
         return imageView
     }
     
-    internal weak var _textLabel: UILabel?
-    internal weak var _imageView: UIImageView?
+    fileprivate weak var _textLabel: UILabel?
+    fileprivate weak var _imageView: UIImageView?
     
     fileprivate let kvoContext = UnsafeMutableRawPointer(bitPattern: 0)
     fileprivate let selectionColor = UIColor(white: 0.2, alpha: 0.2)

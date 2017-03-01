@@ -152,6 +152,7 @@
 - (FSPagerViewCell *)pagerView:(FSPagerView *)pagerView cellForItemAtIndex:(NSInteger)index
 {
     FSPagerViewCell *cell = [pagerView dequeueReusableCellWithReuseIdentifier:@"cell" atIndex:index];
+    cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
     cell.imageView.image = [UIImage imageNamed:self.imageNames[index]];
     return cell;
 }

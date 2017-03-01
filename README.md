@@ -150,6 +150,15 @@ pagerView.transformer = FSPagerViewTransformer(type: .coverFlow)
 ```
 ---
 
+|Cubic|
+|------|
+| ![9](https://cloud.githubusercontent.com/assets/5186464/23461598/8875080c-fec5-11e6-8db6-6d8864acfcc1.gif) |
+```swift
+pagerView.transformer = FSPagerViewTransformer(type: .cubic)
+```
+---
+
+
 
 > Customize your own transformer by subclassing`FSPagerViewTransformer.`
 
