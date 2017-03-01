@@ -156,7 +156,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     
     /// The percentage of x position at which the origin of the content view is offset from the origin of the pagerView view.
     open var scrollOffset: CGFloat {
-        let scrollOffset = Double(self.collectionView.contentOffset.x.divided(by: self.collectionViewLayout.itemSpan))
+        let scrollOffset = Double(self.collectionView.contentOffset.x.divided(by: self.collectionViewLayout.itemSpacing))
         return fmod(CGFloat(scrollOffset), CGFloat(Double(self.numberOfItems)))
     }
     
@@ -322,7 +322,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if self.numberOfItems > 0 {
             // In case someone is using KVO
-            let currentIndex = lround(Double(self.scrollOffset))
+            let currentIndex = lround(Double(self.scrollOffset)) % self.numberOfItems
             if (currentIndex != self.currentIndex) {
                 self.currentIndex = currentIndex
             }
@@ -344,7 +344,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     
     public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         if let function = self.delegate?.pagerViewWillEndDragging(_:targetIndex:) {
-            let targetItem = lround(Double(targetContentOffset.pointee.x/self.collectionViewLayout.itemSpan))
+            let targetItem = lround(Double(targetContentOffset.pointee.x/self.collectionViewLayout.itemSpacing))
             function(self, targetItem % self.numberOfItems)
         }
         if self.automaticSlidingInterval > 0 {
