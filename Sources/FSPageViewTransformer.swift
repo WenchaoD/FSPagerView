@@ -174,9 +174,16 @@ open class FSPagerViewTransformer: NSObject {
             attributes.transform = transform
             attributes.zIndex = zIndex
         case .cubic:
-            var pivot: CGPoint = CGPoint(x: 0.5, y: 0.5)
-            pivot.x = position < 0 ? 1 : 0
-            pivot.y = 0.5
+            let direction: CGFloat = position < 0 ? 1 : -1
+            let theta = position * CGFloat(M_PI_2)
+            let width = attributes.bounds.width
+            // ForwardX -> RotateY -> BackwardX
+            attributes.center.x += direction*width*0.5 // ForwardX
+            var transform3D = CATransform3DIdentity
+            transform3D.m34 = -0.002
+            transform3D = CATransform3DRotate(transform3D, theta, 0, 1, 0) // RotateY
+            transform3D = CATransform3DTranslate(transform3D,-direction*width*0.5, 0, 0) // BackwardX
+            attributes.transform3D = transform3D
             switch position {
             case -1...1:
                 attributes.alpha = 1
@@ -185,8 +192,6 @@ open class FSPagerViewTransformer: NSObject {
                 attributes.zIndex = 0
                 attributes.alpha = 0
             }
-            attributes.pivot = pivot
-            attributes.rotationY = position * CGFloat(M_PI_2)
         }
     }
     

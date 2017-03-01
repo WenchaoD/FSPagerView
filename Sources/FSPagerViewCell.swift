@@ -136,20 +136,4 @@ open class FSPagerViewCell: UICollectionViewCell {
         }
     }
     
-    open override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
-        super.apply(layoutAttributes)
-        let layoutAttributes = layoutAttributes as! FSPagerViewLayoutAttributes
-        self.contentView.layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        self.contentView.layer.transform = CATransform3DIdentity
-        guard layoutAttributes.rotationY != 0 else {
-            return
-        }
-        self.layer.transform = CATransform3DIdentity
-        var rotation = CATransform3DIdentity
-        rotation.m34 = -0.002
-        rotation = CATransform3DRotate(rotation, layoutAttributes.rotationY, 0, 1, 0)
-        self.contentView.layer.anchorPoint = layoutAttributes.pivot
-        self.contentView.layer.transform = rotation
-    }
-    
 }

@@ -189,7 +189,7 @@ class FSPagerViewLayout: UICollectionViewLayout {
     internal func frame(for indexPath: IndexPath) -> CGRect {
         let numberOfItems = self.numberOfItems*indexPath.section + indexPath.item
         let originX = self.leadingSpacing + CGFloat(numberOfItems)*self.itemSpan
-        let originY = (self.collectionView!.frame.height-self.actualItemSize.height)
+        let originY = (self.collectionView!.frame.height-self.actualItemSize.height)/2.0
         let origin = CGPoint(x: originX, y: originY)
         let frame = CGRect(origin: origin, size: self.actualItemSize)
         return frame
@@ -231,6 +231,7 @@ class FSPagerViewLayout: UICollectionViewLayout {
             return
         }
         let ruler = collectionView.bounds.midX
+        attributes.center.x = self.frame(for: attributes.indexPath).midX
         attributes.position = (attributes.center.x-ruler)/self.itemSpan
         attributes.interitemSpacing = self.actualInteritemSpacing
         transformer.applyTransform(to: attributes)
