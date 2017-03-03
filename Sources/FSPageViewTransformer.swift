@@ -132,14 +132,24 @@ open class FSPagerViewTransformer: NSObject {
             attributes.alpha = alpha
             attributes.transform = transform
             attributes.zIndex = zIndex
-        case .overlap,.linear:
+        case .overlap:
             let scale = max(1 - (1-self.minimumScale) * abs(position), self.minimumScale)
             let transform = CGAffineTransform(scaleX: scale, y: scale)
             attributes.transform = transform
-            let alpha = (self.minimumAlpha + (1-abs(position))*(1-self.minimumAlpha))
-            attributes.alpha = alpha
             let zIndex = (1-abs(position)) * 10
             attributes.zIndex = Int(zIndex)
+            let alpha = (self.minimumAlpha + (1-abs(position))*(1-self.minimumAlpha))
+            attributes.alpha = alpha
+        case .linear:
+            if self.minimumScale < 1 {
+                let scale = max(1 - (1-self.minimumScale) * abs(position), self.minimumScale)
+                let transform = CGAffineTransform(scaleX: scale, y: scale)
+                attributes.transform = transform
+                let zIndex = (1-abs(position)) * 10
+                attributes.zIndex = Int(zIndex)
+            }
+            let alpha = (self.minimumAlpha + (1-abs(position))*(1-self.minimumAlpha))
+            attributes.alpha = alpha
         case .coverFlow:
             let position = min(max(-position,-1) ,1)
             let rotation = sin(position*CGFloat(M_PI_2)) * CGFloat(M_PI_4)*1.5
@@ -204,7 +214,9 @@ open class FSPagerViewTransformer: NSObject {
         case .overlap:
             return pagerView.itemSize.width * -self.minimumScale * 0.6
         case .linear:
-            return pagerView.itemSize.width * -self.minimumScale * 0.2
+            if self.minimumScale < 1 {
+                return pagerView.itemSize.width * -self.minimumScale * 0.2
+            }
         case .coverFlow:
             return -pagerView.itemSize.width * sin(CGFloat(M_PI_4)/4.0*3.0)
         case .ferrisWheel,.invertedFerrisWheel:
