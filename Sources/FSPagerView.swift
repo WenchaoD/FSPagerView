@@ -485,10 +485,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     
     @objc
     fileprivate func flipNext(sender: Timer?) {
-        guard let _ = self.superview, let _ = self.window else {
-            return
-        }
-        guard !self.collectionView.isTracking else {
+        guard let _ = self.superview, let _ = self.window, self.numberOfItems > 0, !self.isTracking else {
             return
         }
         self.scrollToItem(at: (self.currentIndex+1)%self.numberOfItems, animated: true)
