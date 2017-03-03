@@ -16,7 +16,7 @@ import UIKit
 public protocol FSPagerViewDataSource: NSObjectProtocol {
     
     /// Asks your data source object for the number of items in the pager view.
-    @objc(numberOfItemsInpagerView:)
+    @objc(numberOfItemsInPagerView:)
     func numberOfItems(in pagerView: FSPagerView) -> Int
     
     /// Asks your data source object for the cell that corresponds to the specified item in the pager view.
