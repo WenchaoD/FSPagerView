@@ -236,7 +236,7 @@ Sets the path for page indicators to use for the specified state. (selected/norm
 
 ### Manually
 1. ***[Download](#)*** the source code.
-2. Extract the zip file, simply drag folder ***FSPagerView*** into your project.
+2. Extract the zip file, simply drag folder ***Sources*** into your project.
 3. Make sure ***Copy items if needed*** is checked.
 
 ### Cocoapods
@@ -251,13 +251,13 @@ github "WenchaoD/FSPagerView"
 ```
 
 ## Tutorial
-* [Get started](#get_started)
+* [Getting started](#getting_started)
 * [Implement FSPagerViewDataSource](#implement_fspagerviewdatasource)
 * [Implement FSPagerViewDelegate](#implement_fspagerviewdelegate)
 
-### 1. Get started <a id='get_started'></a>
+### 1. Getting started <a id='getting_started'></a>
 
-* Get started with code
+* Getting started with code
 
 ```objc
 // Create a pager view
@@ -271,7 +271,7 @@ FSPagerControl *pageControl = [[FSPagerControl alloc] initWithFrame:frame2];
 [self.view addSubview:pageControl];
 ```
 
-* Get started with Interface Builder <br/>
+* Getting started with Interface Builder <br/>
 1、Simply drag **UIView** instance into your View Controller, Change the `Custom Class` to `FSPagerView`. (Or `FSPageControl`) <br/>
 2、Link the `dataSource` and `delegate` property of **FSPagerView** to your View Controller. <br/>
 3、Register a cell class.
