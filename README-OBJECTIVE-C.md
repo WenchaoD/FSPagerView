@@ -267,7 +267,7 @@ pagerView.delegate = self;
 [pagerView registerClass:[FSPagerViewCell class] forCellWithReuseIdentifier:@"cell"];
 [self.view addSubview:pagerView];
 // Create a page control
-FSPagerControl *pageControl = [[FSPagerControl alloc] initWithFrame:frame2];
+FSPageControl *pageControl = [[FSPageControl alloc] initWithFrame:frame2];
 [self.view addSubview:pageControl];
 ```
 
