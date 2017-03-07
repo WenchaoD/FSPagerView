@@ -8,20 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		F908BC411E35AAE4002B2F51 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F908BC321E35AAE4002B2F51 /* 1.jpg */; };
-		F908BC421E35AAE4002B2F51 /* 1_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F908BC331E35AAE4002B2F51 /* 1_1.jpg */; };
-		F908BC431E35AAE4002B2F51 /* 1_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F908BC341E35AAE4002B2F51 /* 1_2.jpg */; };
-		F908BC441E35AAE4002B2F51 /* 1_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F908BC351E35AAE4002B2F51 /* 1_3.jpg */; };
-		F908BC451E35AAE4002B2F51 /* 1_4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F908BC361E35AAE4002B2F51 /* 1_4.jpg */; };
-		F908BC461E35AAE4002B2F51 /* 1_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F908BC371E35AAE4002B2F51 /* 1_5.jpg */; };
-		F908BC471E35AAE4002B2F51 /* 1_6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F908BC381E35AAE4002B2F51 /* 1_6.jpg */; };
-		F908BC481E35AAE4002B2F51 /* 1_7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F908BC391E35AAE4002B2F51 /* 1_7.jpg */; };
 		F908BC491E35AAE4002B2F51 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F908BC3A1E35AAE4002B2F51 /* 2.jpg */; };
 		F908BC4A1E35AAE4002B2F51 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F908BC3B1E35AAE4002B2F51 /* 3.jpg */; };
 		F908BC4B1E35AAE4002B2F51 /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F908BC3C1E35AAE4002B2F51 /* 4.jpg */; };
 		F908BC4C1E35AAE4002B2F51 /* 5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F908BC3D1E35AAE4002B2F51 /* 5.jpg */; };
 		F908BC4D1E35AAE4002B2F51 /* 6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F908BC3E1E35AAE4002B2F51 /* 6.jpg */; };
 		F908BC4E1E35AAE4002B2F51 /* 7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F908BC3F1E35AAE4002B2F51 /* 7.jpg */; };
-		F908BC4F1E35AAE4002B2F51 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F908BC401E35AAE4002B2F51 /* background.jpg */; };
 		F93F5E141E319AE8006B7082 /* PageControlExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F93F5E131E319AE8006B7082 /* PageControlExampleViewController.m */; };
 		F9580B641E5D997200C5B267 /* FSPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B5E1E5D997200C5B267 /* FSPageControl.swift */; };
 		F9580B651E5D997200C5B267 /* FSPagerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B5F1E5D997200C5B267 /* FSPagerCollectionView.swift */; };
@@ -322,21 +314,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F908BC441E35AAE4002B2F51 /* 1_3.jpg in Resources */,
-				F908BC481E35AAE4002B2F51 /* 1_7.jpg in Resources */,
-				F908BC431E35AAE4002B2F51 /* 1_2.jpg in Resources */,
-				F908BC451E35AAE4002B2F51 /* 1_4.jpg in Resources */,
 				F908BC4A1E35AAE4002B2F51 /* 3.jpg in Resources */,
-				F908BC461E35AAE4002B2F51 /* 1_5.jpg in Resources */,
 				F908BC4C1E35AAE4002B2F51 /* 5.jpg in Resources */,
 				F9EC372C1E304A830022B6D6 /* LaunchScreen.storyboard in Resources */,
 				F908BC491E35AAE4002B2F51 /* 2.jpg in Resources */,
-				F908BC4F1E35AAE4002B2F51 /* background.jpg in Resources */,
 				F908BC4B1E35AAE4002B2F51 /* 4.jpg in Resources */,
 				F908BC4E1E35AAE4002B2F51 /* 7.jpg in Resources */,
 				F908BC4D1E35AAE4002B2F51 /* 6.jpg in Resources */,
-				F908BC421E35AAE4002B2F51 /* 1_1.jpg in Resources */,
-				F908BC471E35AAE4002B2F51 /* 1_6.jpg in Resources */,
 				F908BC411E35AAE4002B2F51 /* 1.jpg in Resources */,
 				F9EC37291E304A830022B6D6 /* Assets.xcassets in Resources */,
 				F9EC37271E304A830022B6D6 /* Main.storyboard in Resources */,

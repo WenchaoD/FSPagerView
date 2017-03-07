@@ -144,7 +144,7 @@
 
 #pragma mark - FSPagerViewDataSource
 
-- (NSInteger)numberOfItemsInpagerView:(FSPagerView *)pagerView
+- (NSInteger)numberOfItemsInPagerView:(FSPagerView *)pagerView
 {
     return self.imageNames.count;
 }
