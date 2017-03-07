@@ -27,9 +27,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.imageNames = @[@"1_1.jpg",@"1_2.jpg",@"1_3.jpg",@"1_4.jpg",@"1_5.jpg",@"1_6.jpg",@"1_7.jpg"];
+    self.imageNames = @[@"1.jpg", @"2.jpg", @"3.jpg", @"4.jpg", @"5.jpg", @"6.jpg", @"7.jpg"];
     self.transformerNames = @[@"cross fading", @"zoom out", @"depth", @"linear", @"overlap", @"ferris wheel", @"inverted ferris wheel", @"coverflow", @"cubic"];
     [self.pagerView registerClass:[FSPagerViewCell class] forCellWithReuseIdentifier:@"cell"];
+    self.pagerView.isInfinite = YES;
     self.typeIndex = 0;
 }
 
@@ -73,7 +74,7 @@
 
 #pragma mark - FSPagerViewDataSource
 
-- (NSInteger)numberOfItemsInpagerView:(FSPagerView *)pagerView
+- (NSInteger)numberOfItemsInPagerView:(FSPagerView *)pagerView
 {
     return self.imageNames.count;
 }

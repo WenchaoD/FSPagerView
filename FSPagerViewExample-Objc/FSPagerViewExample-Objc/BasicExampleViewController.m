@@ -144,7 +144,7 @@
 
 #pragma mark - FSPagerViewDataSource
 
-- (NSInteger)numberOfItemsInpagerView:(FSPagerView *)pagerView
+- (NSInteger)numberOfItemsInPagerView:(FSPagerView *)pagerView
 {
     return self.imageNames.count;
 }
@@ -153,6 +153,8 @@
 {
     FSPagerViewCell *cell = [pagerView dequeueReusableCellWithReuseIdentifier:@"cell" atIndex:index];
     cell.imageView.image = [UIImage imageNamed:self.imageNames[index]];
+    cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    cell.imageView.clipsToBounds = YES;
     cell.textLabel.text = [NSString stringWithFormat:@"%@%@",@(index),@(index)];
     return cell;
 }

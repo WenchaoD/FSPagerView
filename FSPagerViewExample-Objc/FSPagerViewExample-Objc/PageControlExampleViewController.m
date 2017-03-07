@@ -39,7 +39,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.imageNames = @[@"1_1.jpg", @"1_2.jpg", @"1_3.jpg", @"1_4.jpg", @"1_5.jpg", @"1_6.jpg", @"1_7.jpg"];
+    self.imageNames = @[@"1.jpg", @"2.jpg", @"3.jpg", @"4.jpg", @"5.jpg", @"6.jpg", @"7.jpg"];
     self.pageControlStyles = @[@"Default", @"Ring", @"UIImage", @"UIBezierPath - Star", @"UIBezierPath - Heart"];
     self.pageControlAlignments = @[@"Right", @"Center", @"Left"];
     self.sectionTitles = @[@"Style", @"Item Spacing", @"Interitem Spacing", @"Horizontal Alignment"];
@@ -144,7 +144,7 @@
 
 #pragma mark - FSPagerViewDataSource
 
-- (NSInteger)numberOfItemsInpagerView:(FSPagerView *)pagerView
+- (NSInteger)numberOfItemsInPagerView:(FSPagerView *)pagerView
 {
     return self.imageNames.count;
 }
