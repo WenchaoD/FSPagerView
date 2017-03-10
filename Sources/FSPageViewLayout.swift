@@ -173,8 +173,7 @@ class FSPagerViewLayout: UICollectionViewLayout {
                 if targetIndex < originalIndex - 1 {
                     offset = CGFloat(originalIndex - 1)*self.itemSpacing
                 } else if targetIndex > originalIndex + 1 {
-                    offset = CGFloat
-                    (originalIndex + 1)*self.itemSpacing
+                    offset = CGFloat(originalIndex + 1)*self.itemSpacing
                 }
             }
             return offset
