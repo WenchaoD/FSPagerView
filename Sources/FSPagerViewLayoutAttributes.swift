@@ -11,7 +11,6 @@ import UIKit
 open class FSPagerViewLayoutAttributes: UICollectionViewLayoutAttributes {
 
     open var position: CGFloat = 0
-    open var interitemSpacing: CGFloat = 0
     
     open override func isEqual(_ object: Any?) -> Bool {
         guard let object = object as? FSPagerViewLayoutAttributes else {
@@ -19,14 +18,12 @@ open class FSPagerViewLayoutAttributes: UICollectionViewLayoutAttributes {
         }
         var isEqual = super.isEqual(object)
         isEqual = isEqual && (self.position == object.position)
-        isEqual = isEqual && (self.interitemSpacing == object.interitemSpacing)
         return isEqual
     }
     
     open override func copy(with zone: NSZone? = nil) -> Any {
         let copy = super.copy(with: zone) as! FSPagerViewLayoutAttributes
         copy.position = self.position
-        copy.interitemSpacing = self.interitemSpacing
         return copy
     }
     

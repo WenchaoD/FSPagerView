@@ -74,6 +74,12 @@ public protocol FSPagerViewDelegate: NSObjectProtocol {
     
 }
 
+@objc
+public enum FSPagerViewScrollDirection: Int {
+    case horizontal
+    case vertical
+}
+
 @IBDesignable
 open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelegate {
     
@@ -87,7 +93,14 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     open weak var dataSource: FSPagerViewDataSource?
     open weak var delegate: FSPagerViewDelegate?
     #endif
-
+    
+    /// The scroll direction of the pager view. Default is horizontal.
+    open var scrollDirection: FSPagerViewScrollDirection = .horizontal {
+        didSet {
+            self.collectionViewLayout.forceInvalidate()
+        }
+    }
+    
     /// The time interval of automatic sliding. 0 means disabling automatic sliding. Default is 0.
     @IBInspectable
     open var automaticSlidingInterval: CGFloat = 0.0 {
@@ -119,8 +132,8 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     @IBInspectable
     open var isInfinite: Bool = false {
         didSet {
+            self.collectionViewLayout.needsReprepare = true
             self.collectionView.reloadData()
-            self.collectionViewLayout.forceInvalidate()
         }
     }
     
@@ -163,7 +176,8 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     
     /// The percentage of x position at which the origin of the content view is offset from the origin of the pagerView view.
     open var scrollOffset: CGFloat {
-        let scrollOffset = Double(self.collectionView.contentOffset.x.divided(by: self.collectionViewLayout.itemSpacing))
+        let contentOffset = max(self.collectionView.contentOffset.x, self.collectionView.contentOffset.y)
+        let scrollOffset = Double(contentOffset.divided(by: self.collectionViewLayout.itemSpacing))
         return fmod(CGFloat(scrollOffset), CGFloat(Double(self.numberOfItems)))
     }
     
@@ -186,13 +200,23 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     
     fileprivate var dequeingSection = 0
     fileprivate var centermostIndexPath: IndexPath {
-        guard self.numberOfItems > 0, self.collectionView.contentSize.width > 0 else {
+        guard self.numberOfItems > 0, self.collectionView.contentSize != .zero else {
             return IndexPath(item: 0, section: 0)
         }
         let sortedIndexPaths = self.collectionView.indexPathsForVisibleItems.sorted { (l, r) -> Bool in
-            let leftCenter = self.collectionViewLayout.frame(for: l).midX
-            let rightCenter = self.collectionViewLayout.frame(for: r).midX
-            let ruler = self.collectionView.bounds.midX
+            let leftFrame = self.collectionViewLayout.frame(for: l)
+            let rightFrame = self.collectionViewLayout.frame(for: r)
+            var leftCenter: CGFloat,rightCenter: CGFloat,ruler: CGFloat
+            switch self.scrollDirection {
+            case .horizontal:
+                leftCenter = leftFrame.midX
+                rightCenter = rightFrame.midX
+                ruler = self.collectionView.bounds.midX
+            case .vertical:
+                leftCenter = leftFrame.midY
+                rightCenter = rightFrame.midY
+                ruler = self.collectionView.bounds.midY
+            }
             return abs(ruler-leftCenter) < abs(ruler-rightCenter)
         }
         let indexPath = sortedIndexPaths.first
@@ -351,7 +375,8 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     
     public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         if let function = self.delegate?.pagerViewWillEndDragging(_:targetIndex:) {
-            let targetItem = lround(Double(targetContentOffset.pointee.x/self.collectionViewLayout.itemSpacing))
+            let contentOffset = self.scrollDirection == .horizontal ? targetContentOffset.pointee.x : targetContentOffset.pointee.y
+            let targetItem = lround(Double(contentOffset/self.collectionViewLayout.itemSpacing))
             function(self, targetItem % self.numberOfItems)
         }
         if self.automaticSlidingInterval > 0 {
@@ -424,7 +449,8 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     @objc(selectItemAtIndex:animated:)
     open func selectItem(at index: Int, animated: Bool) {
         let indexPath = self.nearbyIndexPath(for: index)
-        self.collectionView.selectItem(at: indexPath, animated: animated, scrollPosition: .centeredHorizontally)
+        let scrollPosition: UICollectionViewScrollPosition = self.scrollDirection == .horizontal ? .centeredVertically : .centeredVertically
+        self.collectionView.selectItem(at: indexPath, animated: animated, scrollPosition: scrollPosition)
     }
     
     /// Deselects the item at the specified index.
