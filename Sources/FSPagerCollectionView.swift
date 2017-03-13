@@ -12,7 +12,7 @@ import UIKit
 
 class FSPagerViewCollectionView: UICollectionView {
     
-    fileprivate weak var pagerView: FSPagerView? {
+    fileprivate var pagerView: FSPagerView? {
         return self.superview?.superview as? FSPagerView
     }
     

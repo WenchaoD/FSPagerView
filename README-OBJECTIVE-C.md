@@ -14,6 +14,7 @@
 ## Features
 *  ***Infinite*** scrolling.
 *  ***Automatic*** Sliding.
+*  Support ***Horizontal*** and ***Vertical*** paging.
 *  Fully customizable item, with predefined banner-style item.
 *  Fully customizable ***page control***.
 *  Rich build-in 3D transformers.
@@ -398,4 +399,6 @@ FSPageControl *pageControl = [[FSPageControl alloc] initWithFrame:frame2];
 	* <img src="https://cloud.githubusercontent.com/assets/5186464/22828152/b83ab04e-efd6-11e6-9baf-37abf0ae29c0.png" style="margin-bottom:-8px"/>
 ***[FSCalendar](https://github.com/WenchaoD/FSCalendar)*** 
 
+---
 
+# [Documentation](http://cocoadocs.org/docsets/FSPagerView)
