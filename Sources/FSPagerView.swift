@@ -480,6 +480,18 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         self.collectionView.setContentOffset(contentOffset, animated: animated)
     }
     
+    /// Returns the index of the specified cell.
+    ///
+    /// - Parameter cell: The cell object whose index you want.
+    /// - Returns: The index of the cell or NSNotFound if the specified cell is not in the pager view.
+    @objc(indexForCell:)
+    open func index(for cell: FSPagerViewCell) -> Int {
+        guard let indexPath = self.collectionView.indexPath(for: cell) else {
+            return NSNotFound
+        }
+        return indexPath.item
+    }
+    
     // MARK: - Private functions
     
     fileprivate func commonInit() {
