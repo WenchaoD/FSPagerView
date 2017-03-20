@@ -22,11 +22,11 @@
 		F9580B681E5D997200C5B267 /* FSPageViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B621E5D997200C5B267 /* FSPageViewLayout.swift */; };
 		F9580B691E5D997200C5B267 /* FSPageViewTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B631E5D997200C5B267 /* FSPageViewTransformer.swift */; };
 		F9C6944C1E40C6C1007084B6 /* FSPagerViewExample_ObjcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C6944B1E40C6C1007084B6 /* FSPagerViewExample_ObjcUITests.swift */; };
+		F9DF961D1E7F5B240010506C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9DF961C1E7F5B240010506C /* Assets.xcassets */; };
 		F9EC371E1E304A830022B6D6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EC371D1E304A830022B6D6 /* main.m */; };
 		F9EC37211E304A830022B6D6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EC37201E304A830022B6D6 /* AppDelegate.m */; };
 		F9EC37241E304A830022B6D6 /* BasicExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EC37231E304A830022B6D6 /* BasicExampleViewController.m */; };
 		F9EC37271E304A830022B6D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9EC37251E304A830022B6D6 /* Main.storyboard */; };
-		F9EC37291E304A830022B6D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9EC37281E304A830022B6D6 /* Assets.xcassets */; };
 		F9EC372C1E304A830022B6D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9EC372A1E304A830022B6D6 /* LaunchScreen.storyboard */; };
 		F9F00A901E310FF600790735 /* TransformerExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F00A8F1E310FF600790735 /* TransformerExampleViewController.m */; };
 		F9FF349F1E65B38C001E943F /* FSPagerViewLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FF349E1E65B38C001E943F /* FSPagerViewLayoutAttributes.swift */; };
@@ -62,6 +62,7 @@
 		F9C694491E40C6C1007084B6 /* FSPagerViewExample-ObjcUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FSPagerViewExample-ObjcUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9C6944B1E40C6C1007084B6 /* FSPagerViewExample_ObjcUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSPagerViewExample_ObjcUITests.swift; sourceTree = "<group>"; };
 		F9C6944D1E40C6C1007084B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F9DF961C1E7F5B240010506C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F9EC37191E304A830022B6D6 /* FSPagerViewExample-Objc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FSPagerViewExample-Objc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9EC371D1E304A830022B6D6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F9EC371F1E304A830022B6D6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -69,7 +70,6 @@
 		F9EC37221E304A830022B6D6 /* BasicExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicExampleViewController.h; sourceTree = "<group>"; };
 		F9EC37231E304A830022B6D6 /* BasicExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicExampleViewController.m; sourceTree = "<group>"; };
 		F9EC37261E304A830022B6D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		F9EC37281E304A830022B6D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F9EC372B1E304A830022B6D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F9EC372D1E304A830022B6D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F9F00A8E1E310FF600790735 /* TransformerExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransformerExampleViewController.h; sourceTree = "<group>"; };
@@ -98,6 +98,7 @@
 		F908BC311E35AAE4002B2F51 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F9DF961C1E7F5B240010506C /* Assets.xcassets */,
 				F908BC321E35AAE4002B2F51 /* 1.jpg */,
 				F908BC3A1E35AAE4002B2F51 /* 2.jpg */,
 				F908BC3B1E35AAE4002B2F51 /* 3.jpg */,
@@ -189,7 +190,6 @@
 				F9C870F81E30FFA0005786E9 /* Transformer Example */,
 				F9C870F91E30FFAB005786E9 /* PageControl Example */,
 				F9EC37251E304A830022B6D6 /* Main.storyboard */,
-				F9EC37281E304A830022B6D6 /* Assets.xcassets */,
 				F9EC372A1E304A830022B6D6 /* LaunchScreen.storyboard */,
 				F9EC372D1E304A830022B6D6 /* Info.plist */,
 				F908BC311E35AAE4002B2F51 /* Resources */,
@@ -302,11 +302,11 @@
 				F908BC4C1E35AAE4002B2F51 /* 5.jpg in Resources */,
 				F9EC372C1E304A830022B6D6 /* LaunchScreen.storyboard in Resources */,
 				F908BC491E35AAE4002B2F51 /* 2.jpg in Resources */,
+				F9DF961D1E7F5B240010506C /* Assets.xcassets in Resources */,
 				F908BC4B1E35AAE4002B2F51 /* 4.jpg in Resources */,
 				F908BC4E1E35AAE4002B2F51 /* 7.jpg in Resources */,
 				F908BC4D1E35AAE4002B2F51 /* 6.jpg in Resources */,
 				F908BC411E35AAE4002B2F51 /* 1.jpg in Resources */,
-				F9EC37291E304A830022B6D6 /* Assets.xcassets in Resources */,
 				F9EC37271E304A830022B6D6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
