@@ -391,13 +391,12 @@ FSPageControl *pageControl = [[FSPageControl alloc] initWithFrame:frame2];
 
 --- 
 	
-	
+	ˉ
 ## Author
 * ***微博：[@WenchaoD](http://weibo.com/WenchaoD)***
 * ***Twitter: [@WenchaoD](https://twitter.com/WenchaoD)***
 * Other repos:
-	* <img src="https://cloud.githubusercontent.com/assets/5186464/22828152/b83ab04e-efd6-11e6-9baf-37abf0ae29c0.png" style="margin-bottom:-8px"/>
-***[FSCalendar](https://github.com/WenchaoD/FSCalendar)*** 
+	* ***[FSCalendar](https://github.com/WenchaoD/FSCalendar)*** 
 
 ---
 
