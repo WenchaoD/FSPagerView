@@ -274,6 +274,9 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
             return 1
         }
         self.numberOfItems = dataSource.numberOfItems(in: self)
+        guard self.numberOfItems > 0 else {
+            return 0;
+        }
         self.numberOfSections = self.isInfinite ? Int(Int16.max)/self.numberOfItems : 1
         return self.numberOfSections
     }
