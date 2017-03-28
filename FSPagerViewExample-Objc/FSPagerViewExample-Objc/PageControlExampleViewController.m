@@ -179,7 +179,7 @@
             }
             break;
         }
-        case 3: {
+        case 2: {
             self.pageControl.interitemSpacing = 6.0 + sender.value*10.0; // [6 - 16]
             break;
         }

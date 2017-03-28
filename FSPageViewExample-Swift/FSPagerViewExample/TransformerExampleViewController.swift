@@ -26,7 +26,7 @@ class TransformerExampleViewController: UIViewController,FSPagerViewDataSource,F
             let type = self.transformerTypes[typeIndex]
             self.pagerView.transformer = FSPagerViewTransformer(type:type)
             switch type {
-            case .none, .crossFading, .zoomOut, .depth:
+            case .crossFading, .zoomOut, .depth:
                 self.pagerView.itemSize = .zero // 'Zero' means fill the size of parent
             case .linear, .overlap:
                 let transform = CGAffineTransform(scaleX: 0.6, y: 0.75)

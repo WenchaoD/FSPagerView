@@ -98,14 +98,14 @@ class PageControlExampleViewController: UIViewController,UITableViewDataSource,U
         heartPath.addArc(
             withCenter: CGPoint(x: width*0.25,y: height*0.25),
             radius: width * 0.25,
-            startAngle: CGFloat(M_PI),
+            startAngle: .pi,
             endAngle: 0,
             clockwise: true
         )
         heartPath.addArc(
             withCenter: CGPoint(x: width*0.75, y: height*0.25),
             radius: width * 0.25,
-            startAngle: CGFloat(M_PI),
+            startAngle: .pi,
             endAngle: 0,
             clockwise: true
         )

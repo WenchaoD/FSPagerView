@@ -140,6 +140,7 @@
             break;
         }
         default:
+            type = FSPagerViewTransformerTypeZoomOut;
             break;
     }
     self.pagerView.transformer = [[FSPagerViewTransformer alloc] initWithType:type];
