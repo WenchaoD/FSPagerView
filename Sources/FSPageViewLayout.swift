@@ -25,7 +25,7 @@ class FSPagerViewLayout: UICollectionViewLayout {
     fileprivate var pagerView: FSPagerView? {
         return self.collectionView?.superview?.superview as? FSPagerView
     }
-    fileprivate var layoutAttributes: [IndexPath:FSPagerViewLayoutAttributes] = [:]
+    fileprivate var layoutAttributesQueue: [FSPagerViewLayoutAttributes] = []
     
     fileprivate var isInfinite: Bool = true
     fileprivate var collectionViewSize: CGSize = .zero
@@ -60,7 +60,6 @@ class FSPagerViewLayout: UICollectionViewLayout {
         self.needsReprepare = false
         
         self.collectionViewSize = collectionView.frame.size
-        self.layoutAttributes.removeAll()
 
         // Calculate basic parameters/variables
         self.numberOfSections = pagerView.numberOfSections(in: collectionView)
@@ -147,16 +146,11 @@ class FSPagerViewLayout: UICollectionViewLayout {
     }
     
     override open func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        var attributes = self.layoutAttributes[indexPath]
-        if attributes == nil {
-            attributes = FSPagerViewLayoutAttributes(forCellWith: indexPath)
-            self.layoutAttributes[indexPath] = attributes
-        }
+        let attributes = FSPagerViewLayoutAttributes(forCellWith: indexPath)
         let frame = self.frame(for: indexPath)
         let center = CGPoint(x: frame.midX, y: frame.midY)
-        attributes!.center = center
-        attributes!.size = self.actualItemSize
-        self.layoutAttributes[indexPath] = attributes
+        attributes.center = center
+        attributes.size = self.actualItemSize
         return attributes
     }
     
