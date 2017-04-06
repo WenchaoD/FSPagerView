@@ -117,6 +117,9 @@ class FSPagerViewLayout: UICollectionViewLayout {
     
     override open func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var layoutAttributes = [UICollectionViewLayoutAttributes]()
+        guard self.numberOfItems > 0 else {
+            return layoutAttributes
+        }
         guard self.itemSpacing > 0, !rect.isEmpty else {
             return layoutAttributes
         }
