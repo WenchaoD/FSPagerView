@@ -25,7 +25,6 @@ class FSPagerViewLayout: UICollectionViewLayout {
     fileprivate var pagerView: FSPagerView? {
         return self.collectionView?.superview?.superview as? FSPagerView
     }
-    fileprivate var layoutAttributesQueue: [FSPagerViewLayoutAttributes] = []
     
     fileprivate var isInfinite: Bool = true
     fileprivate var collectionViewSize: CGSize = .zero
