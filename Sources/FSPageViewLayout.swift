@@ -64,10 +64,6 @@ class FSPagerViewLayout: UICollectionViewLayout {
         // Calculate basic parameters/variables
         self.numberOfSections = pagerView.numberOfSections(in: collectionView)
         self.numberOfItems = pagerView.collectionView(collectionView, numberOfItemsInSection: 0)
-        guard self.numberOfItems > 0 && self.numberOfSections > 0 else {
-            return
-        }
-        
         self.actualItemSize = {
             var size = pagerView.itemSize
             if size == .zero {
