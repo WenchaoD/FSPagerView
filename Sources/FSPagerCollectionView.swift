@@ -55,6 +55,9 @@ class FSPagerViewCollectionView: UICollectionView {
         self.decelerationRate = UIScrollViewDecelerationRateFast
         self.showsVerticalScrollIndicator = false
         self.showsHorizontalScrollIndicator = false
+        if #available(iOS 10.0, *) {
+            self.isPrefetchingEnabled = false
+        }
         #if !os(tvOS)
             self.scrollsToTop = false
             self.isPagingEnabled = false
