@@ -250,7 +250,9 @@ pageControl.setPath(UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 8, height: 8)
 ### Cocoapods
 ```ruby
 use_frameworks!
-pod FSPagerView
+target '<Your Target Name>' do
+    pod 'FSPagerView'
+end
 ```
 
 ### Carthage

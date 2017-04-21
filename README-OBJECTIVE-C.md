@@ -243,7 +243,9 @@ Sets the path for page indicators to use for the specified state. (selected/norm
 ### Cocoapods
 ```ruby
 use_frameworks!
-pod FSPagerView
+target '<Your Target Name>' do
+    pod 'FSPagerView'
+end
 ```
 
 ### Carthage
