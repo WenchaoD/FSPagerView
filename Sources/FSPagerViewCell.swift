@@ -50,11 +50,14 @@ open class FSPagerViewCell: UICollectionViewCell {
     
     fileprivate weak var _selectedForegroundView: UIView?
     fileprivate var selectedForegroundView: UIView? {
-        if let _ = _selectedForegroundView {
+        guard _selectedForegroundView == nil else {
             return _selectedForegroundView
         }
-        let view = UIView(frame: self.contentView.bounds)
-        self.contentView.addSubview(view)
+        guard let imageView = _imageView else {
+            return nil
+        }
+        let view = UIView(frame: imageView.bounds)
+        imageView.addSubview(view)
         _selectedForegroundView = view
         return view
     }
