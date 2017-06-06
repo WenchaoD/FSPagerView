@@ -115,13 +115,13 @@ open class FSPageControl: UIControl {
         let spacing = self.interitemSpacing
         var x: CGFloat = {
             switch self.contentHorizontalAlignment {
-            case .left:
+            case .left, .leading:
                 return 0
             case .center, .fill:
                 let midX = self.contentView.bounds.midX
                 let amplitude = CGFloat(self.numberOfPages/2) * diameter + spacing*CGFloat((self.numberOfPages-1)/2)
                 return midX - amplitude
-            case .right:
+            case .right, .trailing:
                 let contentWidth = diameter*CGFloat(self.numberOfPages) + CGFloat(self.numberOfPages-1)*spacing
                 return contentView.frame.width - contentWidth
             }
