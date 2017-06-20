@@ -128,7 +128,8 @@ class FSPagerViewLayout: UICollectionViewLayout {
         
         var origin = startPosition
         let maxPosition = self.scrollDirection == .horizontal ? min(rect.maxX,self.contentSize.width-self.actualItemSize.width-self.leadingSpacing) : min(rect.maxY,self.contentSize.height-self.actualItemSize.height-self.leadingSpacing)
-        while origin <= maxPosition {
+        // https://stackoverflow.com/a/10335601/2398107
+        while origin-maxPosition <= max(CGFloat(100.0) * .ulpOfOne * fabs(origin+maxPosition), .leastNonzeroMagnitude) {
             let indexPath = IndexPath(item: itemIndex%self.numberOfItems, section: itemIndex/self.numberOfItems)
             let attributes = self.layoutAttributesForItem(at: indexPath) as! FSPagerViewLayoutAttributes
             self.applyTransform(to: attributes, with: self.pagerView?.transformer)
