@@ -530,7 +530,13 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         guard let _ = self.superview, let _ = self.window, self.numberOfItems > 0, !self.isTracking else {
             return
         }
-        self.scrollToItem(at: (self.currentIndex+1)%self.numberOfItems, animated: true)
+        let contentOffset: CGPoint = {
+            let indexPath = self.centermostIndexPath
+            let section = self.isInfinite ?  (indexPath.section+(indexPath.item+1)/self.numberOfItems) : 0
+            let item = (indexPath.item+1) % self.numberOfItems
+            return self.collectionViewLayout.contentOffset(for: IndexPath(item: item, section: section))
+        }()
+        self.collectionView.setContentOffset(contentOffset, animated: true)
     }
     
     fileprivate func cancelTimer() {
