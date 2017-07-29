@@ -17,10 +17,12 @@ open class FSPagerViewCell: UICollectionViewCell {
         }
         let view = UIView(frame: .zero)
         view.isUserInteractionEnabled = false
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        
+        view.backgroundColor = #colorLiteral(red: 0.8470588235, green: 0.8470588235, blue: 0.8470588235, alpha: 1).withAlphaComponent(0.68)
         
         let textLabel = UILabel(frame: .zero)
-        textLabel.textColor = .white
+        textLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        
         textLabel.font = UIFont.preferredFont(forTextStyle: .body)
         self.contentView.addSubview(view)
         textLabel.numberOfLines = 0
