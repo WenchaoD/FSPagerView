@@ -23,6 +23,7 @@ open class FSPagerViewCell: UICollectionViewCell {
         textLabel.textColor = .white
         textLabel.font = UIFont.preferredFont(forTextStyle: .body)
         self.contentView.addSubview(view)
+        textLabel.numberOfLines = 0
         view.addSubview(textLabel)
         
         textLabel.addObserver(self, forKeyPath: "font", options: [.old,.new], context: kvoContext)
@@ -111,15 +112,11 @@ open class FSPagerViewCell: UICollectionViewCell {
         }
     }
     
-    override open func layoutSubviews() {
-        super.layoutSubviews()
-        if let imageView = _imageView {
-            imageView.frame = self.contentView.bounds
-        }
+    private func updateTextLabelLayout() {
         if let textLabel = _textLabel {
             textLabel.superview!.frame = {
                 var rect = self.contentView.bounds
-                let height = textLabel.font.pointSize*1.5
+                let height = (textLabel.font.pointSize*1.5) * CGFloat(textLabel.numberOfVisibleLines)
                 rect.size.height = height
                 rect.origin.y = self.contentView.frame.height-height
                 return rect
@@ -132,19 +129,37 @@ open class FSPagerViewCell: UICollectionViewCell {
                 return rect
             }()
         }
+    }
+    
+    override open func layoutSubviews() {
+        super.layoutSubviews()
+        if let imageView = _imageView {
+            imageView.frame = self.contentView.bounds
+        }
+        updateTextLabelLayout()
         if let selectedForegroundView = _selectedForegroundView {
             selectedForegroundView.frame = self.contentView.bounds
         }
     }
-
+    
     open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if context == kvoContext {
             if keyPath == "font" {
                 self.setNeedsLayout()
+                updateTextLabelLayout()
             }
         } else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
     }
-    
 }
+
+extension UILabel {
+    var numberOfVisibleLines: Int {
+        let textSize = CGSize(width: CGFloat(self.frame.size.width), height: CGFloat(MAXFLOAT))
+        let rHeight: Int = lroundf(Float(self.sizeThatFits(textSize).height))
+        let charSize: Int = lroundf(Float(self.font.pointSize))
+        return rHeight / charSize
+    }
+}
+
