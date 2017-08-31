@@ -137,7 +137,6 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         }
     }
     
-    
     /// The background view of the pager view.
     @IBInspectable
     open var backgroundView: UIView? {
@@ -149,6 +148,14 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
                 self.insertSubview(backgroundView, at: 0)
                 self.setNeedsLayout()
             }
+        }
+    }
+
+    /// Should the pager view be limited to scrolling a single page at a time?
+    @IBInspectable
+    open var disableMultiPageScrolling: Bool = false {
+        didSet {
+            self.collectionViewLayout.disableMultiPageScrolling = self.disableMultiPageScrolling
         }
     }
     

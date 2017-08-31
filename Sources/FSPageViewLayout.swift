@@ -15,6 +15,7 @@ class FSPagerViewLayout: UICollectionViewLayout {
     internal var itemSpacing: CGFloat = 0
     internal var needsReprepare = true
     internal var scrollDirection: FSPagerViewScrollDirection = .horizontal
+    internal var disableMultiPageScrolling = false
     
     open override class var layoutAttributesClass: AnyClass {
         get {
@@ -166,6 +167,17 @@ class FSPagerViewLayout: UICollectionViewLayout {
             if abs(translation) <= minFlippingDistance {
                 if abs(velocity.x) >= 0.3 && abs(proposedContentOffset.x-originalContentOffsetX) <= self.itemSpacing*0.5 {
                     offset += self.itemSpacing * (velocity.x)/abs(velocity.x)
+                }
+            }
+            // If multi-page scrolling is disabled, compare the proposed final page index to the original page index and cap the
+            // number of pages scrolled to a single page in either direction.
+            if disableMultiPageScrolling {
+                let targetIndex = Int(offset/self.itemSpacing)
+                let originalIndex = Int(round(originalContentOffsetX/self.itemSpacing))
+                if targetIndex < originalIndex - 1 {
+                    offset = CGFloat(originalIndex - 1)*self.itemSpacing
+                } else if targetIndex > originalIndex + 1 {
+                    offset = CGFloat(originalIndex + 1)*self.itemSpacing
                 }
             }
             return offset
