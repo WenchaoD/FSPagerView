@@ -130,6 +130,7 @@ class PageControlExampleViewController: UIViewController,UITableViewDataSource,U
             self.pageControl.numberOfPages = self.imageNames.count
             self.pageControl.contentHorizontalAlignment = .right
             self.pageControl.contentInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+            self.pageControl.hidesForSinglePage = true
         }
     }
     

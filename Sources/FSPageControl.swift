@@ -58,6 +58,14 @@ open class FSPageControl: UIControl {
         }
     }
     
+    /// Hide the indicator if there is only one page. default is NO
+    @IBInspectable
+    open var hidesForSinglePage: Bool = false {
+        didSet {
+            self.setNeedsUpdateIndicators()
+        }
+    }
+    
     internal var strokeColors: [UIControlState: UIColor] = [:]
     internal var fillColors: [UIControlState: UIColor] = [:]
     internal var paths: [UIControlState: UIBezierPath] = [:]
@@ -71,17 +79,6 @@ open class FSPageControl: UIControl {
     fileprivate var needsCreateIndicators = false
     fileprivate var indicatorLayers = [CAShapeLayer]()
     
-    fileprivate var runLoopObserver: CFRunLoopObserver?
-    fileprivate var runLoopCallback: CFRunLoopObserverCallBack = {
-        (observer: CFRunLoopObserver?, activity: CFRunLoopActivity, info: UnsafeMutableRawPointer?) -> Void in
-        guard let info = info else {
-            return
-        }
-        let pageControl = Unmanaged<FSPageControl>.fromOpaque(info).takeUnretainedValue()
-        pageControl.createIndicatorsIfNecessary()
-        pageControl.updateIndicatorsIfNecessary()
-    }
-    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -90,10 +87,6 @@ open class FSPageControl: UIControl {
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
-    }
-    
-    deinit {
-        CFRunLoopRemoveObserver(CFRunLoopGetCurrent(), self.runLoopObserver, .commonModes);
     }
     
     open override func layoutSubviews() {
@@ -218,18 +211,14 @@ open class FSPageControl: UIControl {
         self.addSubview(view)
         self.contentView = view
         
-        // RunLoop
-        let runLoop = CFRunLoopGetCurrent()
-        let activities: CFRunLoopActivity = [.entry,.afterWaiting]
-        var context = CFRunLoopObserverContext(version: 0, info: Unmanaged.passUnretained(self).toOpaque(), retain: nil, release: nil, copyDescription: nil)
-        self.runLoopObserver = CFRunLoopObserverCreate(nil, activities.rawValue, true, Int.max, self.runLoopCallback, &context)
-        CFRunLoopAddObserver(runLoop, self.runLoopObserver, .commonModes)
-        
     }
     
     fileprivate func setNeedsUpdateIndicators() {
         self.needsUpdateIndicators = true
         self.setNeedsLayout()
+        DispatchQueue.main.async {
+            self.updateIndicatorsIfNecessary()
+        }
     }
     
     fileprivate func updateIndicatorsIfNecessary() {
@@ -240,8 +229,12 @@ open class FSPageControl: UIControl {
             return
         }
         self.needsUpdateIndicators = false
-        self.indicatorLayers.forEach { (layer) in
-            self.updateIndicatorAttributes(for: layer)
+        self.contentView.isHidden = self.hidesForSinglePage && self.numberOfPages <= 1
+        if !self.contentView.isHidden {
+            self.indicatorLayers.forEach { (layer) in
+                layer.isHidden = false
+                self.updateIndicatorAttributes(for: layer)
+            }
         }
     }
     
@@ -274,6 +267,9 @@ open class FSPageControl: UIControl {
     
     fileprivate func setNeedsCreateIndicators() {
         self.needsCreateIndicators = true
+        DispatchQueue.main.async {
+            self.createIndicatorsIfNecessary()
+        }
     }
     
     fileprivate func createIndicatorsIfNecessary() {
@@ -281,6 +277,11 @@ open class FSPageControl: UIControl {
             return
         }
         self.needsCreateIndicators = false
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+        if self.currentPage >= self.numberOfPages {
+            self.currentPage = self.numberOfPages - 1
+        }
         self.indicatorLayers.forEach { (layer) in
             layer.removeFromSuperlayer()
         }
@@ -293,6 +294,7 @@ open class FSPageControl: UIControl {
         }
         self.setNeedsUpdateIndicators()
         self.updateIndicatorsIfNecessary()
+        CATransaction.commit()
     }
     
 }

@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSArray<NSString *> *sectionTitles;
 @property (strong, nonatomic) NSArray<NSString *> *configurationTitles;
 @property (strong, nonatomic) NSArray<NSString *> *imageNames;
+@property (assign, nonatomic) NSInteger numberOfItems;
 
 @property (weak  , nonatomic) IBOutlet UITableView *tableView;
 @property (weak  , nonatomic) IBOutlet FSPagerView *pagerView;
@@ -32,9 +33,10 @@
 {
     [super viewDidLoad];
     
-    self.sectionTitles = @[@"Configurations", @"Item Size", @"Interitem Spacing"];
+    self.sectionTitles = @[@"Configurations", @"Item Size", @"Interitem Spacing", @"Number Of Items"];
     self.configurationTitles = @[@"Automatic sliding", @"Infinite"];
     self.imageNames = @[@"1.jpg", @"2.jpg", @"3.jpg", @"4.jpg", @"5.jpg", @"6.jpg", @"7.jpg"];
+    self.numberOfItems = 7;
     
     [self.pagerView registerClass:[FSPagerViewCell class] forCellWithReuseIdentifier:@"cell"];
     self.pagerView.itemSize = self.pagerView.frame.size;
@@ -53,12 +55,13 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
-    case 0:
+        case 0:
             return self.configurationTitles.count;
-    case 1:
-    case 2:
+        case 1:
+        case 2:
+        case 3:
             return 1;
-    default:
+        default:
             break;
     }
     return 0;
@@ -90,6 +93,7 @@
                 CGFloat value = (scale-0.5)*2;
                 value;
             });
+            slider.continuous = YES;
             return cell;
         }
         case 2: {
@@ -98,6 +102,18 @@
             UISlider *slider = cell.contentView.subviews.firstObject;
             slider.tag = indexPath.section;
             slider.value = self.pagerView.interitemSpacing / 20.0;
+            slider.continuous = YES;
+            return cell;
+        }
+        case 3: {
+            // Number Of Items
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"slider_cell"];
+            UISlider *slider = cell.contentView.subviews.firstObject;
+            slider.tag = indexPath.section;
+            slider.value = self.numberOfItems / 7.0;
+            slider.minimumValue = 1.0 / 7;
+            slider.maximumValue = 1.0;
+            slider.continuous = NO;
             return cell;
         }
         default:
@@ -146,7 +162,7 @@
 
 - (NSInteger)numberOfItemsInPagerView:(FSPagerView *)pagerView
 {
-    return self.imageNames.count;
+    return self.numberOfItems;
 }
 
 - (FSPagerViewCell *)pagerView:(FSPagerView *)pagerView cellForItemAtIndex:(NSInteger)index
@@ -187,6 +203,12 @@
         }
         case 2: {
             self.pagerView.interitemSpacing = sender.value * 20; // [0 - 20]
+            break;
+        }
+        case 3: {
+            self.numberOfItems = roundf(sender.value * 7);
+            self.pageControl.numberOfPages = self.numberOfItems;
+            [self.pagerView reloadData];
             break;
         }
         default:

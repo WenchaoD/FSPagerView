@@ -137,6 +137,21 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         }
     }
     
+    /// A Boolean value that determines whether bouncing always occurs when horizontal scrolling reaches the end of the content view.
+    @IBInspectable
+    open var alwaysBounceHorizontal: Bool = false {
+        didSet {
+            self.collectionView.alwaysBounceHorizontal = self.alwaysBounceHorizontal;
+        }
+    }
+    
+    /// A Boolean value that determines whether bouncing always occurs when vertical scrolling reaches the end of the content view.
+    @IBInspectable
+    open var alwaysBounceVertical: Bool = false {
+        didSet {
+            self.collectionView.alwaysBounceVertical = self.alwaysBounceVertical;
+        }
+    }
     
     /// The background view of the pager view.
     @IBInspectable
@@ -167,6 +182,14 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         return self.collectionView.isTracking
     }
     
+    /// Remove the infinite loop if there is only one item. default is NO
+    @IBInspectable
+    open var removesInfiniteLoopForSingleItem: Bool = false {
+        didSet {
+            self.reloadData()
+        }
+    }
+    
     /// The percentage of x position at which the origin of the content view is offset from the origin of the pagerView view.
     open var scrollOffset: CGFloat {
         let contentOffset = max(self.collectionView.contentOffset.x, self.collectionView.contentOffset.y)
@@ -179,7 +202,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         return self.collectionView.panGestureRecognizer
     }
     
-    open fileprivate(set) dynamic var currentIndex: Int = 0
+    open internal(set) dynamic var currentIndex: Int = 0
     
     // MARK: - Private properties
     
@@ -277,7 +300,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         guard self.numberOfItems > 0 else {
             return 0;
         }
-        self.numberOfSections = self.isInfinite ? Int(Int16.max)/self.numberOfItems : 1
+        self.numberOfSections = self.isInfinite && (self.numberOfItems > 1 || !self.removesInfiniteLoopForSingleItem) ? Int(Int16.max)/self.numberOfItems : 1
         return self.numberOfSections
     }
     

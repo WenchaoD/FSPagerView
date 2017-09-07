@@ -10,9 +10,10 @@ import UIKit
 
 class BasicExampleViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,FSPagerViewDataSource,FSPagerViewDelegate {
     
-    fileprivate let sectionTitles = ["Configurations", "Item Size", "Interitem Spacing"]
+    fileprivate let sectionTitles = ["Configurations", "Item Size", "Interitem Spacing", "Number Of Items"]
     fileprivate let configurationTitles = ["Automatic sliding","Infinite"]
     fileprivate let imageNames = ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg"]
+    fileprivate var numberOfItems = 7
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pagerView: FSPagerView! {
@@ -30,18 +31,6 @@ class BasicExampleViewController: UIViewController,UITableViewDataSource,UITable
         }
     }
     
-    @IBAction func sliderValueChanged(_ sender: UISlider) {
-        switch sender.tag {
-        case 1:
-            let newScale = 0.5+CGFloat(sender.value)*0.5 // [0.5 - 1.0]
-            self.pagerView.itemSize = self.pagerView.frame.size.applying(CGAffineTransform(scaleX: newScale, y: newScale))
-        case 2:
-            self.pagerView.interitemSpacing = CGFloat(sender.value) * 20 // [0 - 20]
-        default:
-            break
-        }
-    }
-    
     // MARK:- UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -53,7 +42,7 @@ class BasicExampleViewController: UIViewController,UITableViewDataSource,UITable
         switch section {
         case 0:
             return self.configurationTitles.count
-        case 1,2:
+        case 1,2,3:
             return 1
         default:
             break
@@ -85,6 +74,7 @@ class BasicExampleViewController: UIViewController,UITableViewDataSource,UITable
                 let value: CGFloat = (0.5-scale)*2
                 return Float(value)
             }()
+            slider.isContinuous = true
             return cell
         case 2:
             // Interitem Spacing
@@ -92,6 +82,17 @@ class BasicExampleViewController: UIViewController,UITableViewDataSource,UITable
             let slider = cell.contentView.subviews.first as! UISlider
             slider.tag = indexPath.section
             slider.value = Float(self.pagerView.interitemSpacing.divided(by: 20.0))
+            slider.isContinuous = true
+            return cell
+        case 3:
+            // Number Of Items
+            let cell = tableView.dequeueReusableCell(withIdentifier: "slider_cell")!
+            let slider = cell.contentView.subviews.first as! UISlider
+            slider.tag = indexPath.section
+            slider.minimumValue = 1.0 / 7
+            slider.maximumValue = 1.0
+            slider.value = Float(self.numberOfItems) / 7.0
+            slider.isContinuous = false
             return cell
         default:
             break
@@ -131,7 +132,7 @@ class BasicExampleViewController: UIViewController,UITableViewDataSource,UITable
     // MARK:- FSPagerView DataSource
     
     public func numberOfItems(in pagerView: FSPagerView) -> Int {
-        return self.imageNames.count
+        return self.numberOfItems
     }
     
     public func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
@@ -158,6 +159,21 @@ class BasicExampleViewController: UIViewController,UITableViewDataSource,UITable
         self.pageControl.currentPage = pagerView.currentIndex // Or Use KVO with property "currentIndex"
     }
     
+    @IBAction func sliderValueChanged(_ sender: UISlider) {
+        switch sender.tag {
+        case 1:
+            let newScale = 0.5+CGFloat(sender.value)*0.5 // [0.5 - 1.0]
+            self.pagerView.itemSize = self.pagerView.frame.size.applying(CGAffineTransform(scaleX: newScale, y: newScale))
+        case 2:
+            self.pagerView.interitemSpacing = CGFloat(sender.value) * 20 // [0 - 20]
+        case 3:
+            self.numberOfItems = Int(roundf(sender.value*7.0))
+            self.pageControl.numberOfPages = self.numberOfItems
+            self.pagerView.reloadData()
+        default:
+            break
+        }
+    }
 }
 
 
