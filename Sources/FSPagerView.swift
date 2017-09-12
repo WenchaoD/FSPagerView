@@ -243,7 +243,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     }
     
     fileprivate var possibleTargetingIndexPath: IndexPath?
-
+    
     
     // MARK: - Overriden functions
     
@@ -500,7 +500,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
                 }
                 return indexPath
             }
-            return self.isInfinite ? self.nearbyIndexPath(for: index) : IndexPath(item: index, section: 0)
+            return self.numberOfSections > 1 ? self.nearbyIndexPath(for: index) : IndexPath(item: index, section: 0)
         }()
         let contentOffset = self.collectionViewLayout.contentOffset(for: indexPath)
         self.collectionView.setContentOffset(contentOffset, animated: animated)
@@ -555,7 +555,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         }
         let contentOffset: CGPoint = {
             let indexPath = self.centermostIndexPath
-            let section = self.isInfinite ?  (indexPath.section+(indexPath.item+1)/self.numberOfItems) : 0
+            let section = self.numberOfSections > 1 ? (indexPath.section+(indexPath.item+1)/self.numberOfItems) : 0
             let item = (indexPath.item+1) % self.numberOfItems
             return self.collectionViewLayout.contentOffset(for: IndexPath(item: item, section: section))
         }()
@@ -584,5 +584,3 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     }
     
 }
-
-
