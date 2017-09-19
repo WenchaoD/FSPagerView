@@ -100,10 +100,10 @@ open class FSPagerViewCell: UICollectionViewCell {
     fileprivate func commonInit() {
         self.contentView.backgroundColor = UIColor.clear
         self.backgroundColor = UIColor.clear
-        self.contentView.layer.shadowColor = UIColor.black.cgColor
-        self.contentView.layer.shadowRadius = 5
-        self.contentView.layer.shadowOpacity = 0.75
-        self.contentView.layer.shadowOffset = .zero
+        //self.contentView.layer.shadowColor = UIColor.black.cgColor
+        //self.contentView.layer.shadowRadius = 5
+        //self.contentView.layer.shadowOpacity = 0.75
+        //self.contentView.layer.shadowOffset = .zero
     }
     
     deinit {
@@ -131,7 +131,7 @@ open class FSPagerViewCell: UICollectionViewCell {
             }()
             textLabel.frame = {
                 var rect = textLabel.superview!.bounds
-                rect = rect.insetBy(dx: 8, dy: 0)
+                rect = rect.insetBy(dx: 15, dy: 0)
                 rect.size.height -= 1
                 rect.origin.y += 1
                 return rect
