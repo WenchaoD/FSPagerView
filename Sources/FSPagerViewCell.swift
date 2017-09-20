@@ -12,6 +12,7 @@ open class FSPagerViewCell: UICollectionViewCell {
     
     /// Returns the label used for the main textual content of the pager view cell.
     open var labelHeight: CGFloat = 0.0
+    open var pageControlWidth: CGFloat = 0.0
     open var textLabel: UILabel? {
         if let _ = _textLabel {
             return _textLabel
@@ -132,6 +133,7 @@ open class FSPagerViewCell: UICollectionViewCell {
             textLabel.frame = {
                 var rect = textLabel.superview!.bounds
                 rect = rect.insetBy(dx: 15, dy: 0)
+                rect.size.width -= pageControlWidth
                 rect.size.height -= 1
                 rect.origin.y += 1
                 return rect
