@@ -166,13 +166,13 @@ class PageControlExampleViewController: UIViewController,UITableViewDataSource,U
             let cell = tableView.dequeueReusableCell(withIdentifier: "slider_cell")!
             let slider = cell.contentView.subviews.first as! UISlider
             slider.tag = indexPath.section
-            slider.value = Float((self.pageControl.itemSpacing-6.0).divided(by: 10.0))
+            slider.value = Float((self.pageControl.itemSpacing-6.0)/10.0)
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "slider_cell")!
             let slider = cell.contentView.subviews.first as! UISlider
             slider.tag = indexPath.section
-            slider.value = Float((self.pageControl.interitemSpacing-6.0).divided(by: 10.0))
+            slider.value = Float((self.pageControl.interitemSpacing-6.0)/10.0)
             return cell
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!

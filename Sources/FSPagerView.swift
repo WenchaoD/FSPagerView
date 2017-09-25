@@ -84,15 +84,9 @@ public enum FSPagerViewScrollDirection: Int {
 open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelegate {
     
     // MARK: - Public properties
-    
-    #if TARGET_INTERFACE_BUILDER
-    // Yes you need to lie to the Interface Builder, otherwise "@IBOutlet" cannot be connected.
-    @IBOutlet open weak var dataSource: AnyObject?
-    @IBOutlet open weak var delegate: AnyObject?
-    #else
-    open weak var dataSource: FSPagerViewDataSource?
-    open weak var delegate: FSPagerViewDelegate?
-    #endif
+
+    @IBOutlet open weak var dataSource: FSPagerViewDataSource?
+    @IBOutlet open weak var delegate: FSPagerViewDelegate?
     
     /// The scroll direction of the pager view. Default is horizontal.
     open var scrollDirection: FSPagerViewScrollDirection = .horizontal {
@@ -193,7 +187,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     /// The percentage of x position at which the origin of the content view is offset from the origin of the pagerView view.
     open var scrollOffset: CGFloat {
         let contentOffset = max(self.collectionView.contentOffset.x, self.collectionView.contentOffset.y)
-        let scrollOffset = Double(contentOffset.divided(by: self.collectionViewLayout.itemSpacing))
+        let scrollOffset = Double(contentOffset/self.collectionViewLayout.itemSpacing)
         return fmod(CGFloat(scrollOffset), CGFloat(Double(self.numberOfItems)))
     }
     
@@ -202,7 +196,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         return self.collectionView.panGestureRecognizer
     }
     
-    open internal(set) dynamic var currentIndex: Int = 0
+    @objc open internal(set) dynamic var currentIndex: Int = 0
     
     // MARK: - Private properties
     

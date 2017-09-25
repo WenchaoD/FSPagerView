@@ -81,7 +81,7 @@ class BasicExampleViewController: UIViewController,UITableViewDataSource,UITable
             let cell = tableView.dequeueReusableCell(withIdentifier: "slider_cell")!
             let slider = cell.contentView.subviews.first as! UISlider
             slider.tag = indexPath.section
-            slider.value = Float(self.pagerView.interitemSpacing.divided(by: 20.0))
+            slider.value = Float(self.pagerView.interitemSpacing/20.0)
             slider.isContinuous = true
             return cell
         case 3:

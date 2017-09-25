@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="65m-zG-Zjb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="65m-zG-Zjb">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,7 +16,7 @@
             <objects>
                 <navigationController id="65m-zG-Zjb" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sdq-d2-T0f">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -46,7 +46,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Banner Example" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xbh-ag-gwU">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                                    <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -66,7 +66,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Transformer Example" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tbD-GK-bJ9">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                                    <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -86,7 +86,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="PageControl Example" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kw1-Wq-GDF">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                                    <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -135,7 +135,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isInfinite" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <outlet property="dataSource" destination="8S4-ui-raa" id="LYI-MJ-msM"/>
+                                    <outlet property="dataSource" destination="8S4-ui-raa" id="55w-g7-XAv"/>
                                     <outlet property="delegate" destination="8S4-ui-raa" id="ZXc-ha-CLU"/>
                                 </connections>
                             </view>
@@ -156,7 +156,7 @@
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="tk3-eI-HIS" style="IBUITableViewCellStyleDefault" id="VNC-TS-zto">
-                                        <rect key="frame" x="0.0" y="56" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VNC-TS-zto" id="zR3-db-xZl">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -172,31 +172,31 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="slider_cell" id="RaL-gg-XJm">
-                                        <rect key="frame" x="0.0" y="100" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="slider_cell" id="Mhy-Af-ukz">
+                                        <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RaL-gg-XJm" id="i4q-nX-6cD">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mhy-Af-ukz" id="a5X-4s-PcO">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <slider opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="bXH-0y-EZe">
+                                                <slider opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="O0o-pU-RV0">
                                                     <rect key="frame" x="20" y="6" width="334" height="31"/>
                                                     <connections>
-                                                        <action selector="sliderValueChanged:" destination="8S4-ui-raa" eventType="valueChanged" id="lXk-Xg-9ua"/>
+                                                        <action selector="sliderValueChanged:" destination="8S4-ui-raa" eventType="valueChanged" id="Aoi-Bd-jLc"/>
                                                     </connections>
                                                 </slider>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="bXH-0y-EZe" firstAttribute="centerX" secondItem="i4q-nX-6cD" secondAttribute="centerX" id="2aO-8D-W4m"/>
-                                                <constraint firstItem="bXH-0y-EZe" firstAttribute="leading" secondItem="i4q-nX-6cD" secondAttribute="leadingMargin" constant="14" id="9h3-N9-Ckw"/>
-                                                <constraint firstItem="bXH-0y-EZe" firstAttribute="centerY" secondItem="i4q-nX-6cD" secondAttribute="centerY" id="Sgl-uA-Ho2"/>
+                                                <constraint firstItem="O0o-pU-RV0" firstAttribute="leading" secondItem="a5X-4s-PcO" secondAttribute="leadingMargin" constant="14" id="DVA-cV-yUQ"/>
+                                                <constraint firstItem="O0o-pU-RV0" firstAttribute="centerY" secondItem="a5X-4s-PcO" secondAttribute="centerY" id="JWD-EM-rrQ"/>
+                                                <constraint firstItem="O0o-pU-RV0" firstAttribute="centerX" secondItem="a5X-4s-PcO" secondAttribute="centerX" id="lxA-Dh-fpZ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="8S4-ui-raa" id="d1m-77-6gI"/>
-                                    <outlet property="delegate" destination="8S4-ui-raa" id="T6X-el-WWo"/>
+                                    <outlet property="dataSource" destination="8S4-ui-raa" id="g7q-Ol-O1u"/>
+                                    <outlet property="delegate" destination="8S4-ui-raa" id="nQ4-SL-rUR"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -238,7 +238,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tSq-4e-Jil" customClass="FSPagerView" customModule="FSPagerViewExample" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="375" height="193"/>
+                                <rect key="frame" x="0.0" y="84" width="375" height="193"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="tSq-4e-Jil" secondAttribute="height" multiplier="375:193" id="8cc-kO-s6Y"/>
                                 </constraints>
@@ -251,14 +251,14 @@
                                 </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="TEB-Em-38e">
-                                <rect key="frame" x="0.0" y="257" width="375" height="410"/>
+                                <rect key="frame" x="0.0" y="277" width="375" height="400"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="400" id="NRZ-QP-i1t"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="zyL-iX-55x" style="IBUITableViewCellStyleDefault" id="5d8-B4-K8u">
-                                        <rect key="frame" x="0.0" y="56" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5d8-B4-K8u" id="uyz-07-btn">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -276,8 +276,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="UOf-Wx-Dm5" id="OyG-Zv-zse"/>
-                                    <outlet property="delegate" destination="UOf-Wx-Dm5" id="M6x-pe-ONn"/>
+                                    <outlet property="dataSource" destination="UOf-Wx-Dm5" id="qPE-fr-jiM"/>
+                                    <outlet property="delegate" destination="UOf-Wx-Dm5" id="8QI-As-UQ9"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -321,8 +321,8 @@
                                     <constraint firstAttribute="width" secondItem="Dn3-eb-Xp7" secondAttribute="height" multiplier="375:193" id="i9F-Jy-ACA"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="dataSource" destination="lma-uy-r7Q" id="dcA-uJ-zPd"/>
-                                    <outlet property="delegate" destination="lma-uy-r7Q" id="Rhm-2g-4ZW"/>
+                                    <outlet property="dataSource" destination="lma-uy-r7Q" id="c52-NV-b2h"/>
+                                    <outlet property="delegate" destination="lma-uy-r7Q" id="smq-bL-KUh"/>
                                 </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="1nD-dr-afd">
@@ -333,7 +333,7 @@
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="BsM-5g-055" style="IBUITableViewCellStyleDefault" id="xKM-zP-mhA">
-                                        <rect key="frame" x="0.0" y="56" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xKM-zP-mhA" id="e6f-eC-LPJ">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -350,10 +350,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="slider_cell" id="5vo-WJ-LAV">
-                                        <rect key="frame" x="0.0" y="100" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5vo-WJ-LAV" id="4El-3j-sQo">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <slider opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="po6-ni-APz">
@@ -372,8 +372,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="lma-uy-r7Q" id="lKf-ae-tE0"/>
-                                    <outlet property="delegate" destination="lma-uy-r7Q" id="c3M-CG-U6P"/>
+                                    <outlet property="dataSource" destination="lma-uy-r7Q" id="LkY-bg-T5I"/>
+                                    <outlet property="delegate" destination="lma-uy-r7Q" id="2q3-xG-a4L"/>
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6XD-Hd-JIV" customClass="FSPageControl" customModule="FSPagerViewExample" customModuleProvider="target">
