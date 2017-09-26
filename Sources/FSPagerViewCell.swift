@@ -11,6 +11,8 @@ import UIKit
 open class FSPagerViewCell: UICollectionViewCell {
     
     /// Returns the label used for the main textual content of the pager view cell.
+    open var labelHeight: CGFloat = 0.0
+    open var pageControlWidth: CGFloat = 0.0
     open var textLabel: UILabel? {
         if let _ = _textLabel {
             return _textLabel
@@ -99,10 +101,10 @@ open class FSPagerViewCell: UICollectionViewCell {
     fileprivate func commonInit() {
         self.contentView.backgroundColor = UIColor.clear
         self.backgroundColor = UIColor.clear
-        self.contentView.layer.shadowColor = UIColor.black.cgColor
-        self.contentView.layer.shadowRadius = 5
-        self.contentView.layer.shadowOpacity = 0.75
-        self.contentView.layer.shadowOffset = .zero
+        //self.contentView.layer.shadowColor = UIColor.black.cgColor
+        //self.contentView.layer.shadowRadius = 5
+        //self.contentView.layer.shadowOpacity = 0.75
+        //self.contentView.layer.shadowOffset = .zero
     }
     
     deinit {
@@ -119,14 +121,19 @@ open class FSPagerViewCell: UICollectionViewCell {
         if let textLabel = _textLabel {
             textLabel.superview!.frame = {
                 var rect = self.contentView.bounds
-                let height = textLabel.font.pointSize*1.5
-                rect.size.height = height
-                rect.origin.y = self.contentView.frame.height-height
+                let height = textLabel.font.pointSize * 1.5
+                if labelHeight < height {
+                    rect.size.height = height
+                } else {
+                    rect.size.height = labelHeight
+                }
+                rect.origin.y = self.contentView.frame.height - rect.size.height
                 return rect
             }()
             textLabel.frame = {
                 var rect = textLabel.superview!.bounds
-                rect = rect.insetBy(dx: 8, dy: 0)
+                rect = rect.insetBy(dx: 15, dy: 0)
+                rect.size.width -= pageControlWidth
                 rect.size.height -= 1
                 rect.origin.y += 1
                 return rect
