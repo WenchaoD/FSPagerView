@@ -29,6 +29,7 @@ open class FSPagerViewTransformer: NSObject {
     open var minimumScale: CGFloat = 0.65
     open var minimumAlpha: CGFloat = 0.6
     
+    @objc
     public init(type: FSPagerViewTransformerType) {
         self.type = type
         switch type {

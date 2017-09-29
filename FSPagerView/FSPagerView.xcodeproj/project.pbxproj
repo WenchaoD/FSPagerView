@@ -302,7 +302,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.wenchaod.FSPagerView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -322,7 +322,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.wenchaod.FSPagerView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

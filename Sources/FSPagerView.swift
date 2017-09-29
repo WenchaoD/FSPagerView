@@ -162,6 +162,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     }
     
     /// The transformer of the pager view.
+    @objc
     open var transformer: FSPagerViewTransformer? {
         didSet {
             self.transformer?.pagerView = self
