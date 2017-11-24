@@ -58,6 +58,9 @@ class FSPagerViewCollectionView: UICollectionView {
         if #available(iOS 10.0, *) {
             self.isPrefetchingEnabled = false
         }
+        if #available(iOS 11.0, *) {
+            self.contentInsetAdjustmentBehavior = .never
+        }
         #if !os(tvOS)
             self.scrollsToTop = false
             self.isPagingEnabled = false
