@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class FSPagerViewCell: UICollectionViewCell {
+open class FSPagerViewCell: FSPagerViewBaseCell {
     
     /// Returns the label used for the main textual content of the pager view cell.
     @objc

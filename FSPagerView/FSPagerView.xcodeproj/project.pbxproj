@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7DC658BF1FD1648300ED0BAA /* FSPagerViewBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC658BE1FD1648300ED0BAA /* FSPagerViewBaseCell.swift */; };
 		F9580B7B1E5D9F0600C5B267 /* FSPagerView.h in Headers */ = {isa = PBXBuildFile; fileRef = F9580B791E5D9F0600C5B267 /* FSPagerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F9580B881E5D9F2B00C5B267 /* FSPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B821E5D9F2B00C5B267 /* FSPageControl.swift */; };
 		F9580B891E5D9F2B00C5B267 /* FSPagerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B831E5D9F2B00C5B267 /* FSPagerCollectionView.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7DC658BE1FD1648300ED0BAA /* FSPagerViewBaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSPagerViewBaseCell.swift; sourceTree = "<group>"; };
 		F9580B761E5D9F0600C5B267 /* FSPagerView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FSPagerView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9580B791E5D9F0600C5B267 /* FSPagerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSPagerView.h; sourceTree = "<group>"; };
 		F9580B7A1E5D9F0600C5B267 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				F9580B821E5D9F2B00C5B267 /* FSPageControl.swift */,
 				F9580B831E5D9F2B00C5B267 /* FSPagerCollectionView.swift */,
 				F9580B841E5D9F2B00C5B267 /* FSPagerView.swift */,
+				7DC658BE1FD1648300ED0BAA /* FSPagerViewBaseCell.swift */,
 				F9580B851E5D9F2B00C5B267 /* FSPagerViewCell.swift */,
 				F9580B861E5D9F2B00C5B267 /* FSPageViewLayout.swift */,
 				F9D7BD291E63DD5F003F6A0E /* FSPagerViewLayoutAttributes.swift */,
@@ -164,6 +167,7 @@
 			files = (
 				F9D7BD2A1E63DD5F003F6A0E /* FSPagerViewLayoutAttributes.swift in Sources */,
 				F9580B8D1E5D9F2B00C5B267 /* FSPageViewTransformer.swift in Sources */,
+				7DC658BF1FD1648300ED0BAA /* FSPagerViewBaseCell.swift in Sources */,
 				F9580B881E5D9F2B00C5B267 /* FSPageControl.swift in Sources */,
 				F9580B891E5D9F2B00C5B267 /* FSPagerCollectionView.swift in Sources */,
 				F9580B8C1E5D9F2B00C5B267 /* FSPageViewLayout.swift in Sources */,

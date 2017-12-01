@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7DC658C11FD1649200ED0BAA /* FSPagerViewBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC658C01FD1649200ED0BAA /* FSPagerViewBaseCell.swift */; };
 		F954839A1E625F1E0069FD7E /* FSPagerViewLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95483991E625F1E0069FD7E /* FSPagerViewLayoutAttributes.swift */; };
 		F954839B1E625F1E0069FD7E /* FSPagerViewLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95483991E625F1E0069FD7E /* FSPagerViewLayoutAttributes.swift */; };
 		F9580B571E5D995400C5B267 /* FSPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B511E5D995400C5B267 /* FSPageControl.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7DC658C01FD1649200ED0BAA /* FSPagerViewBaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPagerViewBaseCell.swift; sourceTree = "<group>"; };
 		F95483991E625F1E0069FD7E /* FSPagerViewLayoutAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPagerViewLayoutAttributes.swift; sourceTree = "<group>"; };
 		F9580B511E5D995400C5B267 /* FSPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPageControl.swift; sourceTree = "<group>"; };
 		F9580B521E5D995400C5B267 /* FSPagerCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPagerCollectionView.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				F9580B511E5D995400C5B267 /* FSPageControl.swift */,
 				F9580B521E5D995400C5B267 /* FSPagerCollectionView.swift */,
 				F9580B531E5D995400C5B267 /* FSPagerView.swift */,
+				7DC658C01FD1649200ED0BAA /* FSPagerViewBaseCell.swift */,
 				F9580B541E5D995400C5B267 /* FSPagerViewCell.swift */,
 				F9580B551E5D995400C5B267 /* FSPageViewLayout.swift */,
 				F9580B561E5D995400C5B267 /* FSPageViewTransformer.swift */,
@@ -295,6 +298,7 @@
 				F9580B5C1E5D995400C5B267 /* FSPageViewTransformer.swift in Sources */,
 				F9C694331E40C583007084B6 /* BasicExampleViewController.swift in Sources */,
 				F9580B5A1E5D995400C5B267 /* FSPagerViewCell.swift in Sources */,
+				7DC658C11FD1649200ED0BAA /* FSPagerViewBaseCell.swift in Sources */,
 				F9580B5B1E5D995400C5B267 /* FSPageViewLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
