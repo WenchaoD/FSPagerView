@@ -196,6 +196,10 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     open var panGestureRecognizer: UIPanGestureRecognizer {
         return self.collectionView.panGestureRecognizer
     }
+    ///Returns an array of visible cells currently displayed by the pager view.
+    open var visibleCells: [FSPagerViewCell] {
+        return self.collectionView.visibleCells as! [FSPagerViewCell]
+    }
     
     @objc open internal(set) dynamic var currentIndex: Int = 0
     
