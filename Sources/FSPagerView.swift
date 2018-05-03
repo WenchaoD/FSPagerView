@@ -196,10 +196,14 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     open var panGestureRecognizer: UIPanGestureRecognizer {
         return self.collectionView.panGestureRecognizer
     }
-    ///Returns an array of visible cells currently displayed by the pager view.
+    
+    /// Returns an array of visible cells currently displayed by the pager view.
     open var visibleCells: [FSPagerViewCell] {
         return self.collectionView.visibleCells as! [FSPagerViewCell]
     }
+    
+    /// To disable or enable multi scrolling interaction
+    open var isMultiScrollInteractionEnable = true
     
     @objc open internal(set) dynamic var currentIndex: Int = 0
     
@@ -242,6 +246,9 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     }
     
     fileprivate var possibleTargetingIndexPath: IndexPath?
+    fileprivate var offsetAtBegin:CGPoint? {
+        didSet { if isMultiScrollInteractionEnable { offsetAtBegin = nil } }
+    }
     
     
     // MARK: - Overriden functions
@@ -369,6 +376,14 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     }
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if let offset = offsetAtBegin {
+            let pageSide:CGFloat = collectionViewLayout.itemSpacing
+            if scrollView.contentOffset.x > offset.x + pageSide {
+                scrollView.contentOffset.x = offset.x + pageSide
+            } else if scrollView.contentOffset.x < offset.x - pageSide {
+                scrollView.contentOffset.x = offset.x - pageSide
+            }
+        }
         if self.numberOfItems > 0 {
             // In case someone is using KVO
             let currentIndex = lround(Double(self.scrollOffset)) % self.numberOfItems
@@ -389,6 +404,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         if self.automaticSlidingInterval > 0 {
             self.cancelTimer()
         }
+        offsetAtBegin = scrollView.contentOffset
     }
     
     public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
@@ -400,12 +416,16 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         if self.automaticSlidingInterval > 0 {
             self.startTimer()
         }
+        if velocity == .zero {
+            offsetAtBegin = nil
+        }
     }
     
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if let function = self.delegate?.pagerViewDidEndDecelerating {
             function(self)
         }
+        offsetAtBegin = nil
     }
     
     public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
