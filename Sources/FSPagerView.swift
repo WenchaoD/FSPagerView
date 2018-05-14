@@ -410,6 +410,14 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         }
     }
     
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate {
+            if let function = self.delegate?.pagerViewDidEndDecelerating {
+                function(self)
+            }
+        }
+    }
+    
     // MARK: - Public functions
     
     /// Register a class for use in creating new pager view cells.
