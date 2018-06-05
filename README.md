@@ -88,7 +88,7 @@ pagerView.transformer = FSPagerViewTransformer(type: .crossfading)
 | ![2](https://cloud.githubusercontent.com/assets/5186464/22686426/19830862-ed5f-11e6-90be-8fb1319cd125.gif) |
 
 ```swift
-pagerView.transformer = FSPagerViewTransformer(type: .zoomout)
+pagerView.transformer = FSPagerViewTransformer(type: .zoomOut)
 ```
 ---
 
