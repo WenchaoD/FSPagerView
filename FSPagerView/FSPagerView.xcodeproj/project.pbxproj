@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DFF4070C20C6C48C00A0578D /* FSPagerView.h in Headers */ = {isa = PBXBuildFile; fileRef = F9580B791E5D9F0600C5B267 /* FSPagerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DFF4070D20C6C4B000A0578D /* FSPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B821E5D9F2B00C5B267 /* FSPageControl.swift */; };
+		DFF4070E20C6C4B000A0578D /* FSPagerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B831E5D9F2B00C5B267 /* FSPagerCollectionView.swift */; };
+		DFF4070F20C6C4B000A0578D /* FSPagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B841E5D9F2B00C5B267 /* FSPagerView.swift */; };
+		DFF4071020C6C4B000A0578D /* FSPagerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B851E5D9F2B00C5B267 /* FSPagerViewCell.swift */; };
+		DFF4071120C6C4B000A0578D /* FSPageViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B861E5D9F2B00C5B267 /* FSPageViewLayout.swift */; };
+		DFF4071220C6C4B000A0578D /* FSPagerViewLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D7BD291E63DD5F003F6A0E /* FSPagerViewLayoutAttributes.swift */; };
+		DFF4071320C6C4B000A0578D /* FSPageViewTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B871E5D9F2B00C5B267 /* FSPageViewTransformer.swift */; };
 		F9580B7B1E5D9F0600C5B267 /* FSPagerView.h in Headers */ = {isa = PBXBuildFile; fileRef = F9580B791E5D9F0600C5B267 /* FSPagerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F9580B881E5D9F2B00C5B267 /* FSPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B821E5D9F2B00C5B267 /* FSPageControl.swift */; };
 		F9580B891E5D9F2B00C5B267 /* FSPagerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B831E5D9F2B00C5B267 /* FSPagerCollectionView.swift */; };
@@ -18,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DFF4070420C6C44200A0578D /* FSPagerView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FSPagerView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9580B761E5D9F0600C5B267 /* FSPagerView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FSPagerView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9580B791E5D9F0600C5B267 /* FSPagerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSPagerView.h; sourceTree = "<group>"; };
 		F9580B7A1E5D9F0600C5B267 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -31,6 +40,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		DFF4070020C6C44200A0578D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F9580B721E5D9F0600C5B267 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -54,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				F9580B761E5D9F0600C5B267 /* FSPagerView.framework */,
+				DFF4070420C6C44200A0578D /* FSPagerView.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -85,6 +102,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		DFF4070120C6C44200A0578D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DFF4070C20C6C48C00A0578D /* FSPagerView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F9580B731E5D9F0600C5B267 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -96,6 +121,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		DFF4070320C6C44200A0578D /* FSPagerView-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DFF4070B20C6C44300A0578D /* Build configuration list for PBXNativeTarget "FSPagerView-tvOS" */;
+			buildPhases = (
+				DFF406FF20C6C44200A0578D /* Sources */,
+				DFF4070020C6C44200A0578D /* Frameworks */,
+				DFF4070120C6C44200A0578D /* Headers */,
+				DFF4070220C6C44200A0578D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "FSPagerView-tvOS";
+			productName = "FSPagerView-tvOS";
+			productReference = DFF4070420C6C44200A0578D /* FSPagerView.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		F9580B751E5D9F0600C5B267 /* FSPagerView */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F9580B7E1E5D9F0600C5B267 /* Build configuration list for PBXNativeTarget "FSPagerView" */;
@@ -123,6 +166,10 @@
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Wenchao Ding";
 				TargetAttributes = {
+					DFF4070320C6C44200A0578D = {
+						CreatedOnToolsVersion = 9.4;
+						ProvisioningStyle = Automatic;
+					};
 					F9580B751E5D9F0600C5B267 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = HZF422TY46;
@@ -143,11 +190,19 @@
 			projectRoot = "";
 			targets = (
 				F9580B751E5D9F0600C5B267 /* FSPagerView */,
+				DFF4070320C6C44200A0578D /* FSPagerView-tvOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		DFF4070220C6C44200A0578D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F9580B741E5D9F0600C5B267 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -158,6 +213,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		DFF406FF20C6C44200A0578D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DFF4070D20C6C4B000A0578D /* FSPageControl.swift in Sources */,
+				DFF4071320C6C4B000A0578D /* FSPageViewTransformer.swift in Sources */,
+				DFF4070E20C6C4B000A0578D /* FSPagerCollectionView.swift in Sources */,
+				DFF4071120C6C4B000A0578D /* FSPageViewLayout.swift in Sources */,
+				DFF4070F20C6C4B000A0578D /* FSPagerView.swift in Sources */,
+				DFF4071220C6C4B000A0578D /* FSPagerViewLayoutAttributes.swift in Sources */,
+				DFF4071020C6C4B000A0578D /* FSPagerViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F9580B711E5D9F0600C5B267 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -175,6 +244,64 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		DFF4070920C6C44300A0578D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = FSPagerView/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.none.FSPagerView-tvOS";
+				PRODUCT_NAME = FSPagerView;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		DFF4070A20C6C44300A0578D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = FSPagerView/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.none.FSPagerView-tvOS";
+				PRODUCT_NAME = FSPagerView;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
 		F9580B7C1E5D9F0600C5B267 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -331,6 +458,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		DFF4070B20C6C44300A0578D /* Build configuration list for PBXNativeTarget "FSPagerView-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DFF4070920C6C44300A0578D /* Debug */,
+				DFF4070A20C6C44300A0578D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F9580B701E5D9F0600C5B267 /* Build configuration list for PBXProject "FSPagerView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
