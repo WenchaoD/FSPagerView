@@ -74,9 +74,12 @@ public protocol FSPagerViewDelegate: NSObjectProtocol {
     
 }
 
+/// Constants indicating the direction of scrolling for the pager view.
 @objc
 public enum FSPagerViewScrollDirection: Int {
+    /// The pager view scrolls content horizontally
     case horizontal
+    /// The pager view scrolls content vertically
     case vertical
 }
 
