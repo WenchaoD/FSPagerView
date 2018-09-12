@@ -263,7 +263,7 @@ class FSPagerViewLayout: UICollectionViewLayout {
         let contentOffset = self.contentOffset(for: newIndexPath)
         let newBounds = CGRect(origin: contentOffset, size: collectionView.frame.size)
         collectionView.bounds = newBounds
-        pagerView.currentIndex = currentIndex;
+        pagerView.currentIndex = currentIndex
     }
     
     fileprivate func applyTransform(to attributes: FSPagerViewLayoutAttributes, with transformer: FSPagerViewTransformer?) {
