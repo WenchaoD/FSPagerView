@@ -39,7 +39,7 @@
     self.numberOfItems = 7;
     
     [self.pagerView registerClass:[FSPagerViewCell class] forCellWithReuseIdentifier:@"cell"];
-    self.pagerView.itemSize = self.pagerView.frame.size;
+    self.pagerView.itemSize = CGSizeZero;
     self.pageControl.numberOfPages = self.imageNames.count;
     self.pageControl.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     self.pageControl.contentInsets = UIEdgeInsetsMake(0, 20, 0, 20);
@@ -90,7 +90,7 @@
             slider.tag = indexPath.section;
             slider.value = ({
                 CGFloat scale = self.pagerView.itemSize.width/self.pagerView.frame.size.width;
-                CGFloat value = (scale-0.5)*2;
+                CGFloat value = (0.5-scale)*2;
                 value;
             });
             slider.continuous = YES;
