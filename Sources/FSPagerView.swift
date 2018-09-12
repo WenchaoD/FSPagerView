@@ -92,6 +92,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     @IBOutlet open weak var delegate: FSPagerViewDelegate?
     
     /// The scroll direction of the pager view. Default is horizontal.
+    @objc
     open var scrollDirection: FSPagerViewScrollDirection = .horizontal {
         didSet {
             self.collectionViewLayout.forceInvalidate()
