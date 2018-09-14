@@ -156,8 +156,12 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
             return self.collectionView.alwaysBounceVertical
         }
     }
+    
+    /// A Boolean value that controls whether the infinite loop is removed if there is only one item. Default is false.
+    @IBInspectable
+    open var removesInfiniteLoopForSingleItem: Bool = false {
         didSet {
-            self.collectionView.alwaysBounceVertical = self.alwaysBounceVertical;
+            self.reloadData()
         }
     }
     
@@ -189,14 +193,6 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     /// Returns whether the user has touched the content to initiate scrolling.
     open var isTracking: Bool {
         return self.collectionView.isTracking
-    }
-    
-    /// Remove the infinite loop if there is only one item. default is NO
-    @IBInspectable
-    open var removesInfiniteLoopForSingleItem: Bool = false {
-        didSet {
-            self.reloadData()
-        }
     }
     
     /// The percentage of x position at which the origin of the content view is offset from the origin of the pagerView view.
