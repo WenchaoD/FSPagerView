@@ -281,11 +281,14 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         }
     }
     
+    #if TARGET_INTERFACE_BUILDER
+    
     open override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         self.contentView.layer.borderWidth = 1
         self.contentView.layer.cornerRadius = 5
         self.contentView.layer.masksToBounds = true
+        self.contentView.frame = self.bounds
         let label = UILabel(frame: self.contentView.bounds)
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 25)
@@ -293,11 +296,13 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         self.contentView.addSubview(label)
     }
     
+    #endif
+
     deinit {
         self.collectionView.dataSource = nil
         self.collectionView.delegate = nil
     }
-    
+
     // MARK: - UICollectionViewDataSource
     
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
