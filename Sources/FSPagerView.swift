@@ -137,15 +137,25 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     
     /// A Boolean value that determines whether bouncing always occurs when horizontal scrolling reaches the end of the content view.
     @IBInspectable
-    open var alwaysBounceHorizontal: Bool = false {
-        didSet {
-            self.collectionView.alwaysBounceHorizontal = self.alwaysBounceHorizontal;
+    open var alwaysBounceHorizontal: Bool {
+        set {
+            self.collectionView.alwaysBounceHorizontal = newValue
+        }
+        get {
+            return self.collectionView.alwaysBounceHorizontal
         }
     }
     
     /// A Boolean value that determines whether bouncing always occurs when vertical scrolling reaches the end of the content view.
     @IBInspectable
-    open var alwaysBounceVertical: Bool = false {
+    open var alwaysBounceVertical: Bool {
+        set {
+            self.collectionView.alwaysBounceVertical = newValue
+        }
+        get {
+            return self.collectionView.alwaysBounceVertical
+        }
+    }
         didSet {
             self.collectionView.alwaysBounceVertical = self.alwaysBounceVertical;
         }
