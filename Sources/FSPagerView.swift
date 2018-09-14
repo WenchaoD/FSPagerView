@@ -191,11 +191,13 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     // MARK: - Public readonly-properties
     
     /// Returns whether the user has touched the content to initiate scrolling.
+    @objc
     open var isTracking: Bool {
         return self.collectionView.isTracking
     }
     
     /// The percentage of x position at which the origin of the content view is offset from the origin of the pagerView view.
+    @objc
     open var scrollOffset: CGFloat {
         let contentOffset = max(self.collectionView.contentOffset.x, self.collectionView.contentOffset.y)
         let scrollOffset = Double(contentOffset/self.collectionViewLayout.itemSpacing)
@@ -203,6 +205,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     }
     
     /// The underlying gesture recognizer for pan gestures.
+    @objc
     open var panGestureRecognizer: UIPanGestureRecognizer {
         return self.collectionView.panGestureRecognizer
     }
