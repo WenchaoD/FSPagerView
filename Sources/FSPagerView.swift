@@ -88,7 +88,10 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     
     // MARK: - Public properties
 
+    /// The object that acts as the data source of the pager view.
     @IBOutlet open weak var dataSource: FSPagerViewDataSource?
+    
+    /// The object that acts as the delegate of the pager view.
     @IBOutlet open weak var delegate: FSPagerViewDelegate?
     
     /// The scroll direction of the pager view. Default is horizontal.
