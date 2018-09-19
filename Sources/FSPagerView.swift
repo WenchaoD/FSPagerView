@@ -124,7 +124,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         }
     }
     
-    /// The item size of the pager view. .zero means always fill the bounds of the pager view. Default is .zero.
+    /// The item size of the pager view. When the value of this property is .zero, the items fill the entire visible area of the pager view. Default is .zero.
     @IBInspectable
     open var itemSize: CGSize = .zero {
         didSet {

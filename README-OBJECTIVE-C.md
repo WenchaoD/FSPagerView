@@ -46,8 +46,17 @@ A boolean value indicates whether the pager view has infinite number of items. D
 pagerView.isInfinite = YES;
 ```
 
+### pagingDistance
+An unsigned integer value that determines the paging distance of the pager view, which indicates the number of passing items during a single paging. When the value of this property is FSPagerViewAutomaticPagingDistance(0), the actual 'distance' is automatically calculated according to the scrolling speed of the pager view. Default is 1.
+
+**e.g.**
+
+```objc
+pagerView.pagingDistance = 2
+```
+
 ### itemSize
-The item size of the pager view. .zero means always fill the bounds of the pager view. Default is .zero.
+The item size of the pager view. When the value of this property is CGSizeZero, the items fill the entire visible area of the pager view. Default is CGSizeZero.
 
 
 **e.g.**
@@ -149,7 +158,7 @@ pagerView.transformer = [[FSPagerViewTransformer alloc] initWithType:FSPagerView
 |Cubic|
 |------|
 | ![9](https://cloud.githubusercontent.com/assets/5186464/23461598/8875080c-fec5-11e6-8db6-6d8864acfcc1.gif) |
-```swift
+```objc
 pagerView.transformer = [[FSPagerViewTransformer alloc] initWithType:FSPagerViewTransformerTypeCubic];
 ```
 ---
@@ -185,7 +194,8 @@ pageControl.currentPage = 1;
 The horizontal alignment of content within the control’s bounds. Default is center.
 
 **e.g.**
-```swift
+
+```objc
 pageControl.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
 ```
 
@@ -280,8 +290,10 @@ FSPageControl *pageControl = [[FSPageControl alloc] initWithFrame:frame2];
 3、Register a cell class.
 
 ```objc
-- (void)viewDidLoad {
-    [self.pagerView registerClass:[FSPagerViewCell class] forCellWithReuseIdentifier:@"cell"];
+- (void)viewDidLoad 
+{
+	[super viewDidLoad];
+	[self.pagerView registerClass:[FSPagerViewCell class] forCellWithReuseIdentifier:@"cell"];
 }
 ```
 
@@ -393,7 +405,6 @@ FSPageControl *pageControl = [[FSPageControl alloc] initWithFrame:frame2];
 
 --- 
 	
-	ˉ
 ## Author
 * ***微博：[@WenchaoD](http://weibo.com/WenchaoD)***
 * ***Twitter: [@WenchaoD](https://twitter.com/WenchaoD)***

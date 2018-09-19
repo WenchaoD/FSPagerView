@@ -51,9 +51,17 @@ A boolean value indicates whether the pager view has infinite number of items. D
 pagerView.isInfinite = true
 ```
 
-### itemSize
-The item size of the pager view. .zero means always fill the bounds of the pager view. Default is .zero.
+### pagingDistance
+An unsigned integer value that determines the paging distance of the pager view, which indicates the number of passing items during a single paging. When the value of this property is FSPagerViewAutomaticPagingDistance(0), the actual 'distance' is automatically calculated according to the scrolling speed of the pager view. Default is 1.
 
+**e.g.**
+
+```swift
+pagerView.pagingDistance = 2
+```
+
+### itemSize
+The item size of the pager view. When the value of this property is .zero, the items fill the entire visible area of the pager view. Default is .zero.
 
 **e.g.**
 
