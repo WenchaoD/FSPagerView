@@ -44,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		50989DFD2151DB25004DBB4A /* FSPagerViewObjcCompat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPagerViewObjcCompat.h; sourceTree = "<group>"; };
 		F908BC321E35AAE4002B2F51 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		F908BC3A1E35AAE4002B2F51 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 		F908BC3B1E35AAE4002B2F51 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
@@ -121,6 +122,7 @@
 				F9580B621E5D997200C5B267 /* FSPageViewLayout.swift */,
 				F9FF349E1E65B38C001E943F /* FSPagerViewLayoutAttributes.swift */,
 				F9580B631E5D997200C5B267 /* FSPageViewTransformer.swift */,
+				50989DFD2151DB25004DBB4A /* FSPagerViewObjcCompat.h */,
 			);
 			name = Sources;
 			path = ../Sources;

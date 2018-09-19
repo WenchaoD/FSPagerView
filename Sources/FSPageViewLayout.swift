@@ -151,39 +151,49 @@ class FSPagerViewLayout: UICollectionViewLayout {
     }
     
     override open func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
-        guard let collectionView = self.collectionView else {
+        guard let collectionView = self.collectionView, let pagerView = self.pagerView else {
             return proposedContentOffset
         }
         var proposedContentOffset = proposedContentOffset
+        let touchedContentOffset: CGPoint = collectionView.panGestureRecognizer.location(in: collectionView)
+        
+        func calculateTargetOffset(by proposedOffset: CGFloat, touchedOffset: CGFloat, boundedOffset: CGFloat) -> CGFloat {
+            var targetOffset: CGFloat
+            if pagerView.pagingDistance == FSPagerViewAutomaticPagingDistance {
+                if abs(velocity.x) >= 0.3 {
+                    let vector: CGFloat = velocity.x >= 0 ? 1.0 : -1.0
+                    targetOffset = round(proposedOffset/self.itemSpacing+0.35*vector) * self.itemSpacing // Ceil by 0.15, rather than 0.5
+                } else {
+                    targetOffset = round(proposedOffset/self.itemSpacing) * self.itemSpacing
+                }
+            } else {
+                let extraDistance = max(pagerView.pagingDistance-1, 0)
+                switch velocity.x {
+                case 0.3 ... CGFloat.greatestFiniteMagnitude:
+                    targetOffset = ceil(touchedOffset/self.itemSpacing+CGFloat(extraDistance)) * self.itemSpacing
+                case -CGFloat.greatestFiniteMagnitude ... -0.3:
+                    targetOffset = floor(touchedOffset/self.itemSpacing-1-CGFloat(extraDistance)) * self.itemSpacing
+                default:
+                    targetOffset = round(proposedOffset/self.itemSpacing) * self.itemSpacing
+                }
+            }
+            targetOffset = max(0, targetOffset)
+            targetOffset = min(boundedOffset, targetOffset)
+            return targetOffset
+        }
         let proposedContentOffsetX: CGFloat = {
             if self.scrollDirection == .vertical {
                 return proposedContentOffset.x
             }
-            let translation = -collectionView.panGestureRecognizer.translation(in: collectionView).x
-            var offset: CGFloat = round(proposedContentOffset.x/self.itemSpacing)*self.itemSpacing
-            let minFlippingDistance = min(0.5 * self.itemSpacing,150)
-            let originalContentOffsetX = collectionView.contentOffset.x - translation
-            if abs(translation) <= minFlippingDistance {
-                if abs(velocity.x) >= 0.3 && abs(proposedContentOffset.x-originalContentOffsetX) <= self.itemSpacing*0.5 {
-                    offset += self.itemSpacing * (velocity.x)/abs(velocity.x)
-                }
-            }
-            return offset
+            let boundedOffset = collectionView.contentSize.width-self.itemSpacing
+            return calculateTargetOffset(by: proposedContentOffset.x, touchedOffset: touchedContentOffset.x, boundedOffset: boundedOffset)
         }()
         let proposedContentOffsetY: CGFloat = {
             if self.scrollDirection == .horizontal {
                 return proposedContentOffset.y
             }
-            let translation = -collectionView.panGestureRecognizer.translation(in: collectionView).y
-            var offset: CGFloat = round(proposedContentOffset.y/self.itemSpacing)*self.itemSpacing
-            let minFlippingDistance = min(0.5 * self.itemSpacing,150)
-            let originalContentOffsetY = collectionView.contentOffset.y - translation
-            if abs(translation) <= minFlippingDistance {
-                if abs(velocity.y) >= 0.3 && abs(proposedContentOffset.y-originalContentOffsetY) <= self.itemSpacing*0.5 {
-                    offset += self.itemSpacing * (velocity.y)/abs(velocity.y)
-                }
-            }
-            return offset
+            let boundedOffset = collectionView.contentSize.height-self.itemSpacing
+            return calculateTargetOffset(by: proposedContentOffset.y, touchedOffset: touchedContentOffset.y, boundedOffset: boundedOffset)
         }()
         proposedContentOffset = CGPoint(x: proposedContentOffsetX, y: proposedContentOffsetY)
         return proposedContentOffset

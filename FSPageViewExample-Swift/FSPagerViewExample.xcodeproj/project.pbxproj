@@ -43,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		50989DFE2151DB29004DBB4A /* FSPagerViewObjcCompat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPagerViewObjcCompat.h; sourceTree = "<group>"; };
 		F95483991E625F1E0069FD7E /* FSPagerViewLayoutAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPagerViewLayoutAttributes.swift; sourceTree = "<group>"; };
 		F9580B511E5D995400C5B267 /* FSPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPageControl.swift; sourceTree = "<group>"; };
 		F9580B521E5D995400C5B267 /* FSPagerCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPagerCollectionView.swift; sourceTree = "<group>"; };
@@ -99,6 +100,7 @@
 				F9580B551E5D995400C5B267 /* FSPageViewLayout.swift */,
 				F9580B561E5D995400C5B267 /* FSPageViewTransformer.swift */,
 				F95483991E625F1E0069FD7E /* FSPagerViewLayoutAttributes.swift */,
+				50989DFE2151DB29004DBB4A /* FSPagerViewObjcCompat.h */,
 			);
 			name = Sources;
 			path = ../Sources;

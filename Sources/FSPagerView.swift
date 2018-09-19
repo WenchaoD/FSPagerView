@@ -83,6 +83,9 @@ public enum FSPagerViewScrollDirection: Int {
     case vertical
 }
 
+/// The paging distance is automatically calculated according to the scrolling speed of the pager view.
+public let FSPagerViewAutomaticPagingDistance: UInt = 0
+
 @IBDesignable
 open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelegate {
     
@@ -137,6 +140,10 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
             self.collectionView.reloadData()
         }
     }
+    
+    /// An unsigned integer value that determines the paging distance of the pager view, which indicates the number of passing items during a single paging. When the value of this property is FSPagerViewAutomaticPagingDistance(0), the actual 'distance' is automatically calculated according to the scrolling speed of the pager view. Default is 1.
+    @IBInspectable
+    open var pagingDistance: UInt = 1
     
     /// A Boolean value that determines whether bouncing always occurs when horizontal scrolling reaches the end of the content view.
     @IBInspectable
