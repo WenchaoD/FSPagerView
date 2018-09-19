@@ -8,12 +8,13 @@
 
 #import "BasicExampleViewController.h"
 #import "FSPagerViewExample_Objc-Swift.h"
-
+#import "FSPagerViewObjcCompat.h"
 
 @interface BasicExampleViewController () <UITableViewDataSource,UITableViewDelegate,FSPagerViewDataSource,FSPagerViewDelegate>
 
 @property (strong, nonatomic) NSArray<NSString *> *sectionTitles;
 @property (strong, nonatomic) NSArray<NSString *> *configurationTitles;
+@property (strong, nonatomic) NSArray<NSString *> *pagingDistanceOptions;
 @property (strong, nonatomic) NSArray<NSString *> *imageNames;
 @property (assign, nonatomic) NSInteger numberOfItems;
 
@@ -33,8 +34,9 @@
 {
     [super viewDidLoad];
     
-    self.sectionTitles = @[@"Configurations", @"Item Size", @"Interitem Spacing", @"Number Of Items"];
+    self.sectionTitles = @[@"Configurations", @"Paging Distance", @"Item Size", @"Interitem Spacing", @"Number Of Items"];
     self.configurationTitles = @[@"Automatic sliding", @"Infinite"];
+    self.pagingDistanceOptions = @[@"Automatic", @"1", @"2"];
     self.imageNames = @[@"1.jpg", @"2.jpg", @"3.jpg", @"4.jpg", @"5.jpg", @"6.jpg", @"7.jpg"];
     self.numberOfItems = 7;
     
@@ -43,6 +45,7 @@
     self.pageControl.numberOfPages = self.imageNames.count;
     self.pageControl.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     self.pageControl.contentInsets = UIEdgeInsetsMake(0, 20, 0, 20);
+    
 }
 
 #pragma mark - UITableViewDataSource
@@ -58,8 +61,10 @@
         case 0:
             return self.configurationTitles.count;
         case 1:
+            return self.pagingDistanceOptions.count;
         case 2:
         case 3:
+        case 4:
             return 1;
         default:
             break;
@@ -84,10 +89,30 @@
             return cell;
         }
         case 1: {
+            // Paging Distance
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+            cell.textLabel.text = self.pagingDistanceOptions[indexPath.row];
+            switch (indexPath.row) {
+                case 0:
+                    // Hardcode like '-1' is bad for readability, but there haven't been a better solution to export a swift constant to objective-c yet.
+                    cell.accessoryType = self.pagerView.pagingDistance == FSPagerViewAutomaticPagingDistance ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+                    break;
+                case 1:
+                    cell.accessoryType = self.pagerView.pagingDistance == 1 ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+                    break;
+                case 2:
+                    cell.accessoryType = self.pagerView.pagingDistance == 2 ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+                    break;
+                default:
+                    break;
+            }
+            return cell;
+        }
+        case 2: {
             // Item Spacing
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"slider_cell"];
             UISlider *slider = cell.contentView.subviews.firstObject;
-            slider.tag = indexPath.section;
+            slider.tag = 1;
             slider.value = ({
                 CGFloat scale = self.pagerView.itemSize.width/self.pagerView.frame.size.width;
                 CGFloat value = (0.5-scale)*2;
@@ -96,20 +121,20 @@
             slider.continuous = YES;
             return cell;
         }
-        case 2: {
+        case 3: {
             // Interitem Spacing
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"slider_cell"];
             UISlider *slider = cell.contentView.subviews.firstObject;
-            slider.tag = indexPath.section;
+            slider.tag = 2;
             slider.value = self.pagerView.interitemSpacing / 20.0;
             slider.continuous = YES;
             return cell;
         }
-        case 3: {
+        case 4: {
             // Number Of Items
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"slider_cell"];
             UISlider *slider = cell.contentView.subviews.firstObject;
-            slider.tag = indexPath.section;
+            slider.tag = 3;
             slider.value = self.numberOfItems / 7.0;
             slider.minimumValue = 1.0 / 7;
             slider.maximumValue = 1.0;
@@ -126,14 +151,14 @@
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return indexPath.section == 0;
+    return indexPath.section == 0 || indexPath.section == 1;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     switch (indexPath.section) {
-        case 0:
+        case 0: {
             if (indexPath.row == 0) {
                 // Automatic Sliding
                 self.pagerView.automaticSlidingInterval = 3.0 - self.pagerView.automaticSlidingInterval;
@@ -143,6 +168,24 @@
             }
             [tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
             break;
+        }
+        case 1: {
+            switch (indexPath.row) {
+                case 0:
+                    self.pagerView.pagingDistance = FSPagerViewAutomaticPagingDistance;
+                    break;
+                case 1:
+                    self.pagerView.pagingDistance = 1;
+                    break;
+                case 2:
+                    self.pagerView.pagingDistance = 2;
+                    break;
+                default:
+                    break;
+            }
+            [tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+        }
         default:
             break;
     }
@@ -181,14 +224,16 @@
 {
     [pagerView deselectItemAtIndex:index animated:YES];
     [pagerView scrollToItemAtIndex:index animated:YES];
-    self.pageControl.currentPage = index;
 }
 
-- (void)pagerViewDidScroll:(FSPagerView *)pagerView
+- (void)pagerViewWillEndDragging:(FSPagerView *)pagerView targetIndex:(NSInteger)targetIndex
 {
-    if (self.pageControl.currentPage != pagerView.currentIndex) {
-        self.pageControl.currentPage = pagerView.currentIndex;
-    }
+    self.pageControl.currentPage = targetIndex;
+}
+
+- (void)pagerViewDidEndScrollAnimation:(FSPagerView *)pagerView
+{
+    self.pageControl.currentPage = pagerView.currentIndex;
 }
 
 #pragma mark - Target actions

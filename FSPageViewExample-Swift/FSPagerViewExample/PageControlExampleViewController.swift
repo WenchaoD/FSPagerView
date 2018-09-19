@@ -228,11 +228,8 @@ class PageControlExampleViewController: UIViewController,UITableViewDataSource,U
     
     // MARK:- FSPagerViewDelegate
     
-    func pagerViewDidScroll(_ pagerView: FSPagerView) {
-        guard self.pageControl.currentPage != pagerView.currentIndex else {
-            return
-        }
-        self.pageControl.currentPage = pagerView.currentIndex // Or Use KVO with property "currentIndex"
+    func pagerViewWillEndDragging(_ pagerView: FSPagerView, targetIndex: Int) {
+        self.pageControl.currentPage = targetIndex
     }
     
     // MARK:- Target Actions

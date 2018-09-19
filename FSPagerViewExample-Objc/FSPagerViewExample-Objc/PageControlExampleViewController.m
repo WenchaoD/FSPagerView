@@ -159,11 +159,9 @@
 
 #pragma mark - FSPagerViewDelegate
 
-- (void)pagerViewDidScroll:(FSPagerView *)pagerView
+- (void)pagerViewWillEndDragging:(FSPagerView *)pagerView targetIndex:(NSInteger)targetIndex
 {
-    if (self.pageControl.currentPage != pagerView.currentIndex) {
-        self.pageControl.currentPage = pagerView.currentIndex;
-    }
+    self.pageControl.currentPage = targetIndex;
 }
 
 #pragma mark - Target actions
