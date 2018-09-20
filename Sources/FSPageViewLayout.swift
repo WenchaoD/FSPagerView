@@ -17,9 +17,7 @@ class FSPagerViewLayout: UICollectionViewLayout {
     internal var scrollDirection: FSPagerView.ScrollDirection = .horizontal
     
     open override class var layoutAttributesClass: AnyClass {
-        get {
-            return FSPagerViewLayoutAttributes.self
-        }
+        return FSPagerViewLayoutAttributes.self
     }
     
     fileprivate var pagerView: FSPagerView? {
@@ -143,6 +141,7 @@ class FSPagerViewLayout: UICollectionViewLayout {
     
     override open func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         let attributes = FSPagerViewLayoutAttributes(forCellWith: indexPath)
+        attributes.indexPath = indexPath
         let frame = self.frame(for: indexPath)
         let center = CGPoint(x: frame.midX, y: frame.midY)
         attributes.center = center
