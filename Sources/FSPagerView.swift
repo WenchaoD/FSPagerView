@@ -314,24 +314,27 @@ open class FSPagerView: UIView, UICollectionViewDataSource, UICollectionViewDele
 
     // MARK: - UICollectionView exposing
 
-    public func indexPathForItem(at point: CGPoint) -> IndexPath? {
-        return collectionView.indexPathForItem(at: point)
+    public func indexForItem(at point: CGPoint) -> Int? {
+        guard numberOfItems > 0 else { return nil }
+        return collectionView.indexPathForItem(at: point).map { $0.item % numberOfItems }
     }
 
-    public func indexPath(for cell: FSPagerViewCell) -> IndexPath? {
-        return collectionView.indexPath(for: cell)
+    public func index(for cell: FSPagerViewCell) -> Int? {
+        guard numberOfItems > 0 else { return nil }
+        return collectionView.indexPath(for: cell).map { $0.item % numberOfItems }
     }
 
-    public func cellForItem(at indexPath: IndexPath) -> FSPagerViewCell? {
-        return collectionView.cellForItem(at: indexPath) as? FSPagerViewCell
+    public func cellForItem(at index: Int) -> FSPagerViewCell? {
+        return collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FSPagerViewCell
     }
 
     public var visibleCells: [UICollectionViewCell] {
         return collectionView.visibleCells.compactMap { $0 as? FSPagerViewCell }
     }
 
-    public var indexPathsForVisibleItems: [IndexPath] {
-        return collectionView.indexPathsForVisibleItems
+    public var indexesForVisibleItems: [Int] {
+        guard numberOfItems > 0 else { return [] }
+        return collectionView.indexPathsForVisibleItems.map { $0.item % numberOfItems }
     }
     
     // MARK: - UICollectionViewDataSource
@@ -363,7 +366,7 @@ open class FSPagerView: UIView, UICollectionViewDataSource, UICollectionViewDele
 
     @available(iOS 10.0, *)
     public func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        guard let function = self.prefetchDataSource?.pagerView(_:prefetchItemsAt:) else {
+        guard let function = self.prefetchDataSource?.pagerView(_:prefetchItemsAt:), numberOfItems > 0 else {
             return
         }
         let indexes = indexPaths.map { indexPath in indexPath.item % self.numberOfItems }
@@ -372,7 +375,7 @@ open class FSPagerView: UIView, UICollectionViewDataSource, UICollectionViewDele
 
     @available(iOS 10.0, *)
     public func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
-        guard let function = self.prefetchDataSource?.pagerView(_:cancelPrefetchingForItemsAt:) else {
+        guard let function = self.prefetchDataSource?.pagerView(_:cancelPrefetchingForItemsAt:), numberOfItems > 0 else {
             return
         }
         let indexes = indexPaths.map { indexPath in indexPath.item % self.numberOfItems }
