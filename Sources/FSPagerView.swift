@@ -284,6 +284,28 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         self.collectionView.dataSource = nil
         self.collectionView.delegate = nil
     }
+
+    // MARK: - UICollectionView exposing
+
+    public func indexPathForItem(at point: CGPoint) -> IndexPath? {
+        return collectionView.indexPathForItem(at: point)
+    }
+
+    public func indexPath(for cell: FSPagerViewCell) -> IndexPath? {
+        return collectionView.indexPath(for: cell)
+    }
+
+    public func cellForItem(at indexPath: IndexPath) -> FSPagerViewCell? {
+        return collectionView.cellForItem(at: indexPath) as? FSPagerViewCell
+    }
+
+    public var visibleCells: [UICollectionViewCell] {
+        return collectionView.visibleCells.compactMap { $0 as? FSPagerViewCell }
+    }
+
+    public var indexPathsForVisibleItems: [IndexPath] {
+        return collectionView.indexPathsForVisibleItems
+    }
     
     // MARK: - UICollectionViewDataSource
     
