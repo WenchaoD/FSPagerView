@@ -130,6 +130,7 @@
 					F9580B751E5D9F0600C5B267 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = HZF422TY46;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -299,6 +300,7 @@
 		F9580B7F1E5D9F0600C5B267 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = HZF422TY46;
@@ -312,13 +314,15 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.wenchaod.FSPagerView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
 		F9580B801E5D9F0600C5B267 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = HZF422TY46;
@@ -332,7 +336,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.wenchaod.FSPagerView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
