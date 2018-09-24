@@ -145,6 +145,13 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     @IBInspectable
     open var pagingDistance: UInt = 1
     
+    /// A Boolean value that controls whether the pager view bounces past the edge of content and back again.
+    @IBInspectable
+    open var bounces: Bool {
+        set { self.collectionView.bounces = newValue }
+        get { return self.collectionView.bounces }
+    }
+    
     /// A Boolean value that determines whether bouncing always occurs when horizontal scrolling reaches the end of the content view.
     @IBInspectable
     open var alwaysBounceHorizontal: Bool {
