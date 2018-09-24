@@ -112,7 +112,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         }
     }
     
-    /// The item size of the pager view. When the value of this property is .automaticSize, the items fill the entire visible area of the pager view. Default is .automaticSize.
+    /// The item size of the pager view. When the value of this property is FSPagerView.automaticSize, the items fill the entire visible area of the pager view. Default is FSPagerView.automaticSize.
     @IBInspectable
     open var itemSize: CGSize = automaticSize {
         didSet {
@@ -129,7 +129,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         }
     }
     
-    /// An unsigned integer value that determines the paging distance of the pager view, which indicates the number of passing items during the deceleration. When the value of this property is FSPagerView.automaticDistance(0), the actual 'distance' is automatically calculated according to the scrolling speed of the pager view. Default is 1.
+    /// An unsigned integer value that determines the paging distance of the pager view, which indicates the number of passing items during the deceleration. When the value of this property is FSPagerView.automaticDistance, the actual 'distance' is automatically calculated according to the scrolling speed of the pager view. Default is 1.
     @IBInspectable
     open var decelerationDistance: UInt = 1
     
