@@ -14,7 +14,7 @@
 
 @property (strong, nonatomic) NSArray<NSString *> *sectionTitles;
 @property (strong, nonatomic) NSArray<NSString *> *configurationTitles;
-@property (strong, nonatomic) NSArray<NSString *> *pagingDistanceOptions;
+@property (strong, nonatomic) NSArray<NSString *> *decelerationDistanceOptions;
 @property (strong, nonatomic) NSArray<NSString *> *imageNames;
 @property (assign, nonatomic) NSInteger numberOfItems;
 
@@ -34,14 +34,14 @@
 {
     [super viewDidLoad];
     
-    self.sectionTitles = @[@"Configurations", @"Paging Distance", @"Item Size", @"Interitem Spacing", @"Number Of Items"];
+    self.sectionTitles = @[@"Configurations", @"Deceleration Distance", @"Item Size", @"Interitem Spacing", @"Number Of Items"];
     self.configurationTitles = @[@"Automatic sliding", @"Infinite"];
-    self.pagingDistanceOptions = @[@"Automatic", @"1", @"2"];
+    self.decelerationDistanceOptions = @[@"Automatic", @"1", @"2"];
     self.imageNames = @[@"1.jpg", @"2.jpg", @"3.jpg", @"4.jpg", @"5.jpg", @"6.jpg", @"7.jpg"];
     self.numberOfItems = 7;
     
     [self.pagerView registerClass:[FSPagerViewCell class] forCellWithReuseIdentifier:@"cell"];
-    self.pagerView.itemSize = CGSizeZero;
+    self.pagerView.itemSize = FSPagerViewAutomaticSize;
     self.pageControl.numberOfPages = self.imageNames.count;
     self.pageControl.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     self.pageControl.contentInsets = UIEdgeInsetsMake(0, 20, 0, 20);
@@ -61,7 +61,7 @@
         case 0:
             return self.configurationTitles.count;
         case 1:
-            return self.pagingDistanceOptions.count;
+            return self.decelerationDistanceOptions.count;
         case 2:
         case 3:
         case 4:
@@ -91,17 +91,17 @@
         case 1: {
             // Paging Distance
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-            cell.textLabel.text = self.pagingDistanceOptions[indexPath.row];
+            cell.textLabel.text = self.decelerationDistanceOptions[indexPath.row];
             switch (indexPath.row) {
                 case 0:
                     // Hardcode like '-1' is bad for readability, but there haven't been a better solution to export a swift constant to objective-c yet.
-                    cell.accessoryType = self.pagerView.pagingDistance == FSPagerViewAutomaticPagingDistance ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+                    cell.accessoryType = self.pagerView.decelerationDistance == FSPagerViewAutomaticDistance ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
                     break;
                 case 1:
-                    cell.accessoryType = self.pagerView.pagingDistance == 1 ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+                    cell.accessoryType = self.pagerView.decelerationDistance == 1 ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
                     break;
                 case 2:
-                    cell.accessoryType = self.pagerView.pagingDistance == 2 ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+                    cell.accessoryType = self.pagerView.decelerationDistance == 2 ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
                     break;
                 default:
                     break;
@@ -172,13 +172,13 @@
         case 1: {
             switch (indexPath.row) {
                 case 0:
-                    self.pagerView.pagingDistance = FSPagerViewAutomaticPagingDistance;
+                    self.pagerView.decelerationDistance = FSPagerViewAutomaticDistance;
                     break;
                 case 1:
-                    self.pagerView.pagingDistance = 1;
+                    self.pagerView.decelerationDistance = 1;
                     break;
                 case 2:
-                    self.pagerView.pagingDistance = 2;
+                    self.pagerView.decelerationDistance = 2;
                     break;
                 default:
                     break;

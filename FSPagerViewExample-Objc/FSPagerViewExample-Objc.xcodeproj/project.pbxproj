@@ -14,6 +14,7 @@
 		F908BC4C1E35AAE4002B2F51 /* 5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F908BC3D1E35AAE4002B2F51 /* 5.jpg */; };
 		F908BC4D1E35AAE4002B2F51 /* 6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F908BC3E1E35AAE4002B2F51 /* 6.jpg */; };
 		F908BC4E1E35AAE4002B2F51 /* 7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F908BC3F1E35AAE4002B2F51 /* 7.jpg */; };
+		F931E00A2158A1E4001B2A01 /* FSPagerViewObjcCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = F931E0092158A1E4001B2A01 /* FSPagerViewObjcCompat.m */; };
 		F93F5E141E319AE8006B7082 /* PageControlExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F93F5E131E319AE8006B7082 /* PageControlExampleViewController.m */; };
 		F9580B641E5D997200C5B267 /* FSPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B5E1E5D997200C5B267 /* FSPageControl.swift */; };
 		F9580B651E5D997200C5B267 /* FSPagerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B5F1E5D997200C5B267 /* FSPagerCollectionView.swift */; };
@@ -52,6 +53,7 @@
 		F908BC3D1E35AAE4002B2F51 /* 5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 5.jpg; sourceTree = "<group>"; };
 		F908BC3E1E35AAE4002B2F51 /* 6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 6.jpg; sourceTree = "<group>"; };
 		F908BC3F1E35AAE4002B2F51 /* 7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 7.jpg; sourceTree = "<group>"; };
+		F931E0092158A1E4001B2A01 /* FSPagerViewObjcCompat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPagerViewObjcCompat.m; sourceTree = "<group>"; };
 		F93F5E121E319AE8006B7082 /* PageControlExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageControlExampleViewController.h; sourceTree = "<group>"; };
 		F93F5E131E319AE8006B7082 /* PageControlExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageControlExampleViewController.m; sourceTree = "<group>"; };
 		F9580B5E1E5D997200C5B267 /* FSPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPageControl.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				F9FF349E1E65B38C001E943F /* FSPagerViewLayoutAttributes.swift */,
 				F9580B631E5D997200C5B267 /* FSPageViewTransformer.swift */,
 				50989DFD2151DB25004DBB4A /* FSPagerViewObjcCompat.h */,
+				F931E0092158A1E4001B2A01 /* FSPagerViewObjcCompat.m */,
 			);
 			name = Sources;
 			path = ../Sources;
@@ -343,6 +346,7 @@
 				F93F5E141E319AE8006B7082 /* PageControlExampleViewController.m in Sources */,
 				F9EC371E1E304A830022B6D6 /* main.m in Sources */,
 				F9580B661E5D997200C5B267 /* FSPagerView.swift in Sources */,
+				F931E00A2158A1E4001B2A01 /* FSPagerViewObjcCompat.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

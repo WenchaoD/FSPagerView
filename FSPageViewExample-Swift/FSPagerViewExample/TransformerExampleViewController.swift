@@ -27,22 +27,22 @@ class TransformerExampleViewController: UIViewController,FSPagerViewDataSource,F
             self.pagerView.transformer = FSPagerViewTransformer(type:type)
             switch type {
             case .crossFading, .zoomOut, .depth:
-                self.pagerView.itemSize = .zero // 'Zero' means fill the size of parent
-                self.pagerView.pagingDistance = 1
+                self.pagerView.itemSize = FSPagerView.automaticSize
+                self.pagerView.decelerationDistance = 1
             case .linear, .overlap:
                 let transform = CGAffineTransform(scaleX: 0.6, y: 0.75)
                 self.pagerView.itemSize = self.pagerView.frame.size.applying(transform)
-                self.pagerView.pagingDistance = FSPagerViewAutomaticPagingDistance
+                self.pagerView.decelerationDistance = FSPagerView.automaticDistance
             case .ferrisWheel, .invertedFerrisWheel:
                 self.pagerView.itemSize = CGSize(width: 180, height: 140)
-                self.pagerView.pagingDistance = FSPagerViewAutomaticPagingDistance
+                self.pagerView.decelerationDistance = FSPagerView.automaticDistance
             case .coverFlow:
                 self.pagerView.itemSize = CGSize(width: 220, height: 170)
-                self.pagerView.pagingDistance = FSPagerViewAutomaticPagingDistance
+                self.pagerView.decelerationDistance = FSPagerView.automaticDistance
             case .cubic:
                 let transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
                 self.pagerView.itemSize = self.pagerView.frame.size.applying(transform)
-                self.pagerView.pagingDistance = 1
+                self.pagerView.decelerationDistance = 1
             }
         }
     }
@@ -113,5 +113,3 @@ class TransformerExampleViewController: UIViewController,FSPagerViewDataSource,F
     }
     
 }
-
-

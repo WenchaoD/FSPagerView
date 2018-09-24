@@ -74,18 +74,6 @@ public protocol FSPagerViewDelegate: NSObjectProtocol {
     
 }
 
-/// Constants indicating the direction of scrolling for the pager view.
-@objc
-public enum FSPagerViewScrollDirection: Int {
-    /// The pager view scrolls content horizontally
-    case horizontal
-    /// The pager view scrolls content vertically
-    case vertical
-}
-
-/// The paging distance is automatically calculated according to the scrolling speed of the pager view.
-public let FSPagerViewAutomaticPagingDistance: UInt = 0
-
 @IBDesignable
 open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelegate {
     
@@ -99,7 +87,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     
     /// The scroll direction of the pager view. Default is horizontal.
     @objc
-    open var scrollDirection: FSPagerViewScrollDirection = .horizontal {
+    open var scrollDirection: FSPagerView.ScrollDirection = .horizontal {
         didSet {
             self.collectionViewLayout.forceInvalidate()
         }
@@ -124,9 +112,9 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         }
     }
     
-    /// The item size of the pager view. When the value of this property is .zero, the items fill the entire visible area of the pager view. Default is .zero.
+    /// The item size of the pager view. When the value of this property is .automaticSize, the items fill the entire visible area of the pager view. Default is .automaticSize.
     @IBInspectable
-    open var itemSize: CGSize = .zero {
+    open var itemSize: CGSize = automaticSize {
         didSet {
             self.collectionViewLayout.forceInvalidate()
         }
@@ -141,9 +129,9 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         }
     }
     
-    /// An unsigned integer value that determines the paging distance of the pager view, which indicates the number of passing items during a single paging. When the value of this property is FSPagerViewAutomaticPagingDistance(0), the actual 'distance' is automatically calculated according to the scrolling speed of the pager view. Default is 1.
+    /// An unsigned integer value that determines the paging distance of the pager view, which indicates the number of passing items during the deceleration. When the value of this property is FSPagerView.automaticDistance(0), the actual 'distance' is automatically calculated according to the scrolling speed of the pager view. Default is 1.
     @IBInspectable
-    open var pagingDistance: UInt = 1
+    open var decelerationDistance: UInt = 1
     
     /// A Boolean value that controls whether the pager view bounces past the edge of content and back again.
     @IBInspectable
@@ -604,5 +592,24 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
             return IndexPath(item: index, section: currentSection+1)
         }
     }
+    
+}
+
+extension FSPagerView {
+    
+    /// Constants indicating the direction of scrolling for the pager view.
+    @objc
+    public enum ScrollDirection: Int {
+        /// The pager view scrolls content horizontally
+        case horizontal
+        /// The pager view scrolls content vertically
+        case vertical
+    }
+    
+    /// Requests that FSPagerView use the default value for a given distance.
+    public static let automaticDistance: UInt = 0
+    
+    /// Requests that FSPagerView use the default value for a given size.
+    public static let automaticSize: CGSize = .zero
     
 }

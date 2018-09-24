@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		50C44A1D2150E7800093B3E9 /* FSPagerViewObjcCompat.h in Headers */ = {isa = PBXBuildFile; fileRef = 50C44A1C2150E7800093B3E9 /* FSPagerViewObjcCompat.h */; };
+		F931E0062158A062001B2A01 /* FSPagerViewObjcCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = F931E0052158A062001B2A01 /* FSPagerViewObjcCompat.m */; };
 		F9580B7B1E5D9F0600C5B267 /* FSPagerView.h in Headers */ = {isa = PBXBuildFile; fileRef = F9580B791E5D9F0600C5B267 /* FSPagerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F9580B881E5D9F2B00C5B267 /* FSPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B821E5D9F2B00C5B267 /* FSPageControl.swift */; };
 		F9580B891E5D9F2B00C5B267 /* FSPagerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B831E5D9F2B00C5B267 /* FSPagerCollectionView.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		50C44A1C2150E7800093B3E9 /* FSPagerViewObjcCompat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPagerViewObjcCompat.h; sourceTree = "<group>"; };
+		F931E0052158A062001B2A01 /* FSPagerViewObjcCompat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSPagerViewObjcCompat.m; sourceTree = "<group>"; };
 		F9580B761E5D9F0600C5B267 /* FSPagerView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FSPagerView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9580B791E5D9F0600C5B267 /* FSPagerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSPagerView.h; sourceTree = "<group>"; };
 		F9580B7A1E5D9F0600C5B267 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				F9D7BD291E63DD5F003F6A0E /* FSPagerViewLayoutAttributes.swift */,
 				F9580B871E5D9F2B00C5B267 /* FSPageViewTransformer.swift */,
 				50C44A1C2150E7800093B3E9 /* FSPagerViewObjcCompat.h */,
+				F931E0052158A062001B2A01 /* FSPagerViewObjcCompat.m */,
 			);
 			name = Sources;
 			path = ../Sources;
@@ -174,6 +177,7 @@
 				F9580B8C1E5D9F2B00C5B267 /* FSPageViewLayout.swift in Sources */,
 				F9580B8A1E5D9F2B00C5B267 /* FSPagerView.swift in Sources */,
 				F9580B8B1E5D9F2B00C5B267 /* FSPagerViewCell.swift in Sources */,
+				F931E0062158A062001B2A01 /* FSPagerViewObjcCompat.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

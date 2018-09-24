@@ -12,7 +12,7 @@ class BasicExampleViewController: UIViewController,UITableViewDataSource,UITable
     
     fileprivate let sectionTitles = ["Configurations", "Paging Distance", "Item Size", "Interitem Spacing", "Number Of Items"]
     fileprivate let configurationTitles = ["Automatic sliding","Infinite"]
-    fileprivate let pagingDistanceOptions = ["Automatic", "1", "2"]
+    fileprivate let decelerationDistanceOptions = ["Automatic", "1", "2"]
     fileprivate let imageNames = ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg"]
     fileprivate var numberOfItems = 7
     
@@ -20,7 +20,7 @@ class BasicExampleViewController: UIViewController,UITableViewDataSource,UITable
     @IBOutlet weak var pagerView: FSPagerView! {
         didSet {
             self.pagerView.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "cell")
-            self.pagerView.itemSize = .zero
+            self.pagerView.itemSize = FSPagerView.automaticSize
         }
     }
     
@@ -38,13 +38,12 @@ class BasicExampleViewController: UIViewController,UITableViewDataSource,UITable
         return self.sectionTitles.count
     }
     
-    @available(iOS 2.0, *)
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
             return self.configurationTitles.count
         case 1:
-            return self.pagingDistanceOptions.count
+            return self.decelerationDistanceOptions.count
         case 2,3,4:
             return 1
         default:
@@ -69,14 +68,14 @@ class BasicExampleViewController: UIViewController,UITableViewDataSource,UITable
         case 1:
             // Paging Distance
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-            cell.textLabel?.text = self.pagingDistanceOptions[indexPath.row]
+            cell.textLabel?.text = self.decelerationDistanceOptions[indexPath.row]
             switch indexPath.row {
             case 0:
-                cell.accessoryType = self.pagerView.pagingDistance == FSPagerViewAutomaticPagingDistance ? .checkmark : .none
+                cell.accessoryType = self.pagerView.decelerationDistance == FSPagerView.automaticDistance ? .checkmark : .none
             case 1:
-                cell.accessoryType = self.pagerView.pagingDistance == 1 ? .checkmark : .none
+                cell.accessoryType = self.pagerView.decelerationDistance == 1 ? .checkmark : .none
             case 2:
-                cell.accessoryType = self.pagerView.pagingDistance == 2 ? .checkmark : .none
+                cell.accessoryType = self.pagerView.decelerationDistance == 2 ? .checkmark : .none
             default:
                 break;
             }
@@ -136,11 +135,11 @@ class BasicExampleViewController: UIViewController,UITableViewDataSource,UITable
         case 1:
             switch indexPath.row {
             case 0:
-                self.pagerView.pagingDistance = FSPagerViewAutomaticPagingDistance
+                self.pagerView.decelerationDistance = FSPagerView.automaticDistance
             case 1:
-                self.pagerView.pagingDistance = 1
+                self.pagerView.decelerationDistance = 1
             case 2:
-                self.pagerView.pagingDistance = 2
+                self.pagerView.decelerationDistance = 2
             default:
                 break
             }

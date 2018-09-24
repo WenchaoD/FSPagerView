@@ -8,6 +8,7 @@
 
 #import "PageControlExampleViewController.h"
 #import "FSPagerViewExample_Objc-Swift.h"
+#import "FSPagerViewObjcCompat.h"
 
 @interface PageControlExampleViewController () <UITableViewDataSource,UITableViewDelegate,FSPagerViewDataSource,FSPagerViewDelegate>
 
@@ -48,7 +49,7 @@
     self.pageControl.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     self.pageControl.contentInsets = UIEdgeInsetsMake(0, 20, 0, 20);
     
-    self.pagerView.itemSize = CGSizeZero; // Fill parent
+    self.pagerView.itemSize = FSPagerViewAutomaticSize; // Fill parent
     [self.pagerView registerClass:[FSPagerViewCell class] forCellWithReuseIdentifier:@"cell"];
 }
 

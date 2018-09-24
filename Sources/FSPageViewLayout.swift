@@ -159,7 +159,7 @@ class FSPagerViewLayout: UICollectionViewLayout {
         
         func calculateTargetOffset(by proposedOffset: CGFloat, touchedOffset: CGFloat, boundedOffset: CGFloat) -> CGFloat {
             var targetOffset: CGFloat
-            if pagerView.pagingDistance == FSPagerViewAutomaticPagingDistance {
+            if pagerView.decelerationDistance == FSPagerView.automaticDistance {
                 if abs(velocity.x) >= 0.3 {
                     let vector: CGFloat = velocity.x >= 0 ? 1.0 : -1.0
                     targetOffset = round(proposedOffset/self.itemSpacing+0.35*vector) * self.itemSpacing // Ceil by 0.15, rather than 0.5
@@ -167,7 +167,7 @@ class FSPagerViewLayout: UICollectionViewLayout {
                     targetOffset = round(proposedOffset/self.itemSpacing) * self.itemSpacing
                 }
             } else {
-                let extraDistance = max(pagerView.pagingDistance-1, 0)
+                let extraDistance = max(pagerView.decelerationDistance-1, 0)
                 switch velocity.x {
                 case 0.3 ... CGFloat.greatestFiniteMagnitude:
                     targetOffset = ceil(touchedOffset/self.itemSpacing+CGFloat(extraDistance)) * self.itemSpacing
