@@ -10,7 +10,7 @@ import UIKit
 
 class BasicExampleViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,FSPagerViewDataSource,FSPagerViewDelegate {
     
-    fileprivate let sectionTitles = ["Configurations", "Paging Distance", "Item Size", "Interitem Spacing", "Number Of Items"]
+    fileprivate let sectionTitles = ["Configurations", "Decelaration Distance", "Item Size", "Interitem Spacing", "Number Of Items"]
     fileprivate let configurationTitles = ["Automatic sliding","Infinite"]
     fileprivate let decelerationDistanceOptions = ["Automatic", "1", "2"]
     fileprivate let imageNames = ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg"]
@@ -66,7 +66,7 @@ class BasicExampleViewController: UIViewController,UITableViewDataSource,UITable
             }
             return cell
         case 1:
-            // Paging Distance
+            // Decelaration Distance
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
             cell.textLabel?.text = self.decelerationDistanceOptions[indexPath.row]
             switch indexPath.row {

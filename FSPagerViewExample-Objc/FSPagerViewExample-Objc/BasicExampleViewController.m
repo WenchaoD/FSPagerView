@@ -89,7 +89,7 @@
             return cell;
         }
         case 1: {
-            // Paging Distance
+            // Decelaration Distance
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
             cell.textLabel.text = self.decelerationDistanceOptions[indexPath.row];
             switch (indexPath.row) {
