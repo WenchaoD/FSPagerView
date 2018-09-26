@@ -77,20 +77,14 @@ public protocol FSPagerViewDelegate: NSObjectProtocol {
 @objc
 public protocol FSPagerViewDataSourcePrefetching : NSObjectProtocol {
 
-    // indexPaths are ordered ascending by geometric distance from the collection view
+    // indexes are ordered ascending by geometric distance from the pager view
     @available(iOS 10.0, *)
     func pagerView(_ pagerView: FSPagerView, prefetchItemsAt indexes: [Int])
 
 
-    // indexPaths that previously were considered as candidates for pre-fetching, but were not actually used; may be a subset of the previous call to -collectionView:prefetchItemsAtIndexPaths:
+    // indexes that previously were considered as candidates for pre-fetching, but were not actually used; may be a subset of the previous call to -pagerView:prefetchItemsAt:
     @objc @available(iOS 10.0, *)
     optional func pagerView(_ pagerView: FSPagerView, cancelPrefetchingForItemsAt indexes: [Int])
-}
-
-@objc
-public enum FSPagerViewScrollDirection: Int {
-    case horizontal
-    case vertical
 }
 
 @IBDesignable
@@ -98,12 +92,16 @@ open class FSPagerView: UIView, UICollectionViewDataSource, UICollectionViewDele
     
     // MARK: - Public properties
 
+    /// The object that acts as the data source of the pager view.
     @IBOutlet open weak var dataSource: FSPagerViewDataSource?
+    
+    /// The object that acts as the delegate of the pager view.
     @IBOutlet open weak var delegate: FSPagerViewDelegate?
     @IBOutlet open weak var prefetchDataSource: FSPagerViewDataSourcePrefetching?
     
     /// The scroll direction of the pager view. Default is horizontal.
-    open var scrollDirection: FSPagerViewScrollDirection = .horizontal {
+    @objc
+    open var scrollDirection: FSPagerView.ScrollDirection = .horizontal {
         didSet {
             self.collectionViewLayout.forceInvalidate()
         }
@@ -138,9 +136,9 @@ open class FSPagerView: UIView, UICollectionViewDataSource, UICollectionViewDele
         }
     }
     
-    /// The item size of the pager view. .zero means always fill the bounds of the pager view. Default is .zero.
+    /// The item size of the pager view. When the value of this property is FSPagerView.automaticSize, the items fill the entire visible area of the pager view. Default is FSPagerView.automaticSize.
     @IBInspectable
-    open var itemSize: CGSize = .zero {
+    open var itemSize: CGSize = automaticSize {
         didSet {
             self.collectionViewLayout.forceInvalidate()
         }
@@ -155,19 +153,36 @@ open class FSPagerView: UIView, UICollectionViewDataSource, UICollectionViewDele
         }
     }
     
+    /// An unsigned integer value that determines the deceleration distance of the pager view, which indicates the number of passing items during the deceleration. When the value of this property is FSPagerView.automaticDistance, the actual 'distance' is automatically calculated according to the scrolling speed of the pager view. Default is 1.
+    @IBInspectable
+    open var decelerationDistance: UInt = 1
+    
+    /// A Boolean value that controls whether the pager view bounces past the edge of content and back again.
+    @IBInspectable
+    open var bounces: Bool {
+        set { self.collectionView.bounces = newValue }
+        get { return self.collectionView.bounces }
+    }
+    
     /// A Boolean value that determines whether bouncing always occurs when horizontal scrolling reaches the end of the content view.
     @IBInspectable
-    open var alwaysBounceHorizontal: Bool = false {
-        didSet {
-            self.collectionView.alwaysBounceHorizontal = self.alwaysBounceHorizontal;
-        }
+    open var alwaysBounceHorizontal: Bool {
+        set { self.collectionView.alwaysBounceHorizontal = newValue }
+        get { return self.collectionView.alwaysBounceHorizontal }
     }
     
     /// A Boolean value that determines whether bouncing always occurs when vertical scrolling reaches the end of the content view.
     @IBInspectable
-    open var alwaysBounceVertical: Bool = false {
+    open var alwaysBounceVertical: Bool {
+        set { self.collectionView.alwaysBounceVertical = newValue }
+        get { return self.collectionView.alwaysBounceVertical }
+    }
+    
+    /// A Boolean value that controls whether the infinite loop is removed if there is only one item. Default is false.
+    @IBInspectable
+    open var removesInfiniteLoopForSingleItem: Bool = false {
         didSet {
-            self.collectionView.alwaysBounceVertical = self.alwaysBounceVertical;
+            self.reloadData()
         }
     }
     
@@ -197,19 +212,13 @@ open class FSPagerView: UIView, UICollectionViewDataSource, UICollectionViewDele
     // MARK: - Public readonly-properties
     
     /// Returns whether the user has touched the content to initiate scrolling.
+    @objc
     open var isTracking: Bool {
         return self.collectionView.isTracking
     }
     
-    /// Remove the infinite loop if there is only one item. default is NO
-    @IBInspectable
-    open var removesInfiniteLoopForSingleItem: Bool = false {
-        didSet {
-            self.reloadData()
-        }
-    }
-    
     /// The percentage of x position at which the origin of the content view is offset from the origin of the pagerView view.
+    @objc
     open var scrollOffset: CGFloat {
         let contentOffset = max(self.collectionView.contentOffset.x, self.collectionView.contentOffset.y)
         let scrollOffset = Double(contentOffset/self.collectionViewLayout.itemSpacing)
@@ -217,6 +226,7 @@ open class FSPagerView: UIView, UICollectionViewDataSource, UICollectionViewDele
     }
     
     /// The underlying gesture recognizer for pan gestures.
+    @objc
     open var panGestureRecognizer: UIPanGestureRecognizer {
         return self.collectionView.panGestureRecognizer
     }
@@ -292,11 +302,14 @@ open class FSPagerView: UIView, UICollectionViewDataSource, UICollectionViewDele
         }
     }
     
+    #if TARGET_INTERFACE_BUILDER
+    
     open override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         self.contentView.layer.borderWidth = 1
         self.contentView.layer.cornerRadius = 5
         self.contentView.layer.masksToBounds = true
+        self.contentView.frame = self.bounds
         let label = UILabel(frame: self.contentView.bounds)
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 25)
@@ -304,6 +317,8 @@ open class FSPagerView: UIView, UICollectionViewDataSource, UICollectionViewDele
         self.contentView.addSubview(label)
     }
     
+    #endif
+
     deinit {
         self.collectionView.dataSource = nil
         self.collectionView.delegate = nil
@@ -336,7 +351,7 @@ open class FSPagerView: UIView, UICollectionViewDataSource, UICollectionViewDele
         guard numberOfItems > 0 else { return [] }
         return collectionView.indexPathsForVisibleItems.map { $0.item % numberOfItems }
     }
-    
+
     // MARK: - UICollectionViewDataSource
     
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -535,7 +550,7 @@ open class FSPagerView: UIView, UICollectionViewDataSource, UICollectionViewDele
     @objc(selectItemAtIndex:animated:)
     open func selectItem(at index: Int, animated: Bool) {
         let indexPath = self.nearbyIndexPath(for: index)
-        let scrollPosition: UICollectionViewScrollPosition = self.scrollDirection == .horizontal ? .centeredHorizontally : .centeredVertically
+        let scrollPosition: UICollectionView.ScrollPosition = self.scrollDirection == .horizontal ? .centeredHorizontally : .centeredVertically
         self.collectionView.selectItem(at: indexPath, animated: animated, scrollPosition: scrollPosition)
     }
     
@@ -615,7 +630,7 @@ open class FSPagerView: UIView, UICollectionViewDataSource, UICollectionViewDele
             return
         }
         self.timer = Timer.scheduledTimer(timeInterval: TimeInterval(self.automaticSlidingInterval), target: self, selector: #selector(self.flipNext(sender:)), userInfo: nil, repeats: true)
-        RunLoop.current.add(self.timer!, forMode: .commonModes)
+        RunLoop.current.add(self.timer!, forMode: .common)
     }
     
     @objc
@@ -652,5 +667,24 @@ open class FSPagerView: UIView, UICollectionViewDataSource, UICollectionViewDele
             return IndexPath(item: index, section: currentSection+1)
         }
     }
+    
+}
+
+extension FSPagerView {
+    
+    /// Constants indicating the direction of scrolling for the pager view.
+    @objc
+    public enum ScrollDirection: Int {
+        /// The pager view scrolls content horizontally
+        case horizontal
+        /// The pager view scrolls content vertically
+        case vertical
+    }
+    
+    /// Requests that FSPagerView use the default value for a given distance.
+    public static let automaticDistance: UInt = 0
+    
+    /// Requests that FSPagerView use the default value for a given size.
+    public static let automaticSize: CGSize = .zero
     
 }
