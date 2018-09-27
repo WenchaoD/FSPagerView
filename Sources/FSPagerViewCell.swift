@@ -101,10 +101,10 @@ open class FSPagerViewCell: UICollectionViewCell {
     fileprivate func commonInit() {
         self.contentView.backgroundColor = UIColor.clear
         self.backgroundColor = UIColor.clear
-        self.contentView.layer.shadowColor = UIColor.black.cgColor
-        self.contentView.layer.shadowRadius = 5
-        self.contentView.layer.shadowOpacity = 0.75
-        self.contentView.layer.shadowOffset = .zero
+//        self.contentView.layer.shadowColor = UIColor.black.cgColor
+//        self.contentView.layer.shadowRadius = 5
+//        self.contentView.layer.shadowOpacity = 0.75
+//        self.contentView.layer.shadowOffset = .zero
     }
     
     deinit {
