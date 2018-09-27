@@ -8,6 +8,7 @@
 
 #import "TransformerExampleViewController.h"
 #import "FSPagerViewExample_Objc-Swift.h"
+#import "FSPagerViewObjcCompat.h"
 
 @interface TransformerExampleViewController () <UITableViewDataSource,UITableViewDelegate,FSPagerViewDataSource,FSPagerViewDelegate>
 
@@ -148,27 +149,32 @@
         case FSPagerViewTransformerTypeCrossFading:
         case FSPagerViewTransformerTypeZoomOut:
         case FSPagerViewTransformerTypeDepth: {
-            self.pagerView.itemSize = CGSizeZero; // 'Zero' means fill the size of parent
+            self.pagerView.itemSize = FSPagerViewAutomaticSize;
+            self.pagerView.decelerationDistance = 1;
             break;
         }
         case FSPagerViewTransformerTypeLinear:
         case FSPagerViewTransformerTypeOverlap: {
             CGAffineTransform transform = CGAffineTransformMakeScale(0.6, 0.75);
             self.pagerView.itemSize = CGSizeApplyAffineTransform(self.pagerView.frame.size, transform);
+            self.pagerView.decelerationDistance = FSPagerViewAutomaticDistance;
             break;
         }
         case FSPagerViewTransformerTypeFerrisWheel:
         case FSPagerViewTransformerTypeInvertedFerrisWheel: {
             self.pagerView.itemSize = CGSizeMake(180, 140);
+            self.pagerView.decelerationDistance = FSPagerViewAutomaticDistance;
             break;
         }
         case FSPagerViewTransformerTypeCoverFlow: {
             self.pagerView.itemSize = CGSizeMake(220, 170);
+            self.pagerView.decelerationDistance = FSPagerViewAutomaticDistance;
             break;
         }
         case FSPagerViewTransformerTypeCubic: {
             CGAffineTransform transform = CGAffineTransformMakeScale(0.9, 0.9);
             self.pagerView.itemSize = CGSizeApplyAffineTransform(self.pagerView.frame.size, transform);
+            self.pagerView.decelerationDistance = 1;
             break;
         }
         default:

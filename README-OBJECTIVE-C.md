@@ -1,6 +1,6 @@
 ![fspagerview](https://cloud.githubusercontent.com/assets/5186464/24086370/45e7e8dc-0d49-11e7-86aa-139354fe00c5.jpg)
 
-[![Languages](https://img.shields.io/badge/language-swift%20|%20objc-FF69B4.svg?style=plastic)](#) <br/>
+[![Languages](https://img.shields.io/badge/language-swift%204.2%20|%20objc-FF69B4.svg?style=plastic)](#) <br/>
 [![Platform](https://img.shields.io/badge/platform-iOS%20|%20tvOS-blue.svg?style=plastic)](http://cocoadocs.org/docsets/FSPagerView) 
 [![Version](https://img.shields.io/cocoapods/v/FSPagerView.svg?style=flat)](http://cocoadocs.org/docsets/FSPagerView)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=plastic)](https://github.com/Carthage/Carthage)
@@ -46,8 +46,17 @@ A boolean value indicates whether the pager view has infinite number of items. D
 pagerView.isInfinite = YES;
 ```
 
+### decelerationDistance
+An unsigned integer value that determines the paging distance of the pager view, which indicates the number of passing items during the deceleration. When the value of this property is FSPagerViewAutomaticDistance, the actual 'distance' is automatically calculated according to the scrolling speed of the pager view. Default is 1.
+
+**e.g.**
+
+```objc
+pagerView.decelerationDistance = 2
+```
+
 ### itemSize
-The item size of the pager view. .zero means always fill the bounds of the pager view. Default is .zero.
+The item size of the pager view. When the value of this property is FSPagerViewAutomaticSize, the items fill the entire visible area of the pager view. Default is FSPagerViewAutomaticSize.
 
 
 **e.g.**
@@ -149,7 +158,7 @@ pagerView.transformer = [[FSPagerViewTransformer alloc] initWithType:FSPagerView
 |Cubic|
 |------|
 | ![9](https://cloud.githubusercontent.com/assets/5186464/23461598/8875080c-fec5-11e6-8db6-6d8864acfcc1.gif) |
-```swift
+```objc
 pagerView.transformer = [[FSPagerViewTransformer alloc] initWithType:FSPagerViewTransformerTypeCubic];
 ```
 ---
@@ -185,7 +194,8 @@ pageControl.currentPage = 1;
 The horizontal alignment of content within the control’s bounds. Default is center.
 
 **e.g.**
-```swift
+
+```objc
 pageControl.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
 ```
 
@@ -280,8 +290,10 @@ FSPageControl *pageControl = [[FSPageControl alloc] initWithFrame:frame2];
 3、Register a cell class.
 
 ```objc
-- (void)viewDidLoad {
-    [self.pagerView registerClass:[FSPagerViewCell class] forCellWithReuseIdentifier:@"cell"];
+- (void)viewDidLoad 
+{
+	[super viewDidLoad];
+	[self.pagerView registerClass:[FSPagerViewCell class] forCellWithReuseIdentifier:@"cell"];
 }
 ```
 
@@ -388,12 +400,11 @@ FSPageControl *pageControl = [[FSPageControl alloc] initWithFrame:frame2];
 * Buy me a ***Coffee***. ☕️ 
    
    <a href="https://www.paypal.me/WenchaoD" target="_blank"><img src="https://www.paypalobjects.com/webstatic/i/logo/rebrand/ppcom.svg" width="100" height="40" style="margin-bottom:-15px;"></a> &nbsp;&nbsp;|&nbsp;&nbsp;
-	<a href="https://cloud.githubusercontent.com/assets/5186464/15096775/bacc0506-1539-11e6-91b7-b1a7a773622b.png" target="_blank"><img src="http://a1.mzstatic.com/us/r30/Purple49/v4/50/16/b3/5016b341-39c1-b47b-2994-d7e23823baed/icon175x175.png" width="40" height="40" style="margin-bottom:-15px;-webkit-border-radius:10px;border:1px solid rgba(30, 154, 236, 1);"></a> &nbsp;&nbsp;|&nbsp;&nbsp;
+	<a href="https://user-images.githubusercontent.com/5186464/45949944-46960480-c030-11e8-9e90-30b015698cf6.png" target="_blank"><img src="http://a1.mzstatic.com/us/r30/Purple49/v4/50/16/b3/5016b341-39c1-b47b-2994-d7e23823baed/icon175x175.png" width="40" height="40" style="margin-bottom:-15px;-webkit-border-radius:10px;border:1px solid rgba(30, 154, 236, 1);"></a> &nbsp;&nbsp;|&nbsp;&nbsp;
 	<a href="https://cloud.githubusercontent.com/assets/5186464/15096872/b06f3a3a-153c-11e6-89f9-2e9c7b88ef42.png" target="_blank"><img src="http://a4.mzstatic.com/us/r30/Purple49/v4/23/31/14/233114f8-2e8d-7b63-8dc5-85d29893061e/icon175x175.jpeg" height="40" width="40" style="margin-bottom:-15px; -webkit-border-radius: 10px;border:1px solid rgba(43, 177, 0, 1)"></a>
 
 --- 
 	
-	ˉ
 ## Author
 * ***微博：[@WenchaoD](http://weibo.com/WenchaoD)***
 * ***Twitter: [@WenchaoD](https://twitter.com/WenchaoD)***
