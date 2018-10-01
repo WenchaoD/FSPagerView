@@ -133,6 +133,13 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     @IBInspectable
     open var decelerationDistance: UInt = 1
     
+    /// A Boolean value that determines whether scrolling is enabled.
+    @IBInspectable
+    open var isScrollEnabled: Bool {
+        set { self.collectionView.isScrollEnabled = newValue }
+        get { return self.collectionView.isScrollEnabled }
+    }
+    
     /// A Boolean value that controls whether the pager view bounces past the edge of content and back again.
     @IBInspectable
     open var bounces: Bool {
