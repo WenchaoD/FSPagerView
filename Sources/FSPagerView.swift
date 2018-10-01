@@ -528,6 +528,16 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         return indexPath.item
     }
     
+    /// Returns the visible cell at the specified index.
+    ///
+    /// - Parameter index: The index that specifies the position of the cell.
+    /// - Returns: The cell object at the corresponding position or nil if the cell is not visible or index is out of range.
+    @objc(cellForItemAtIndex:)
+    open func cellForItem(at index: Int) -> FSPagerViewCell? {
+        let indexPath = self.nearbyIndexPath(for: index)
+        return self.collectionView.cellForItem(at: indexPath) as? FSPagerViewCell
+    }
+    
     // MARK: - Private functions
     
     fileprivate func commonInit() {
