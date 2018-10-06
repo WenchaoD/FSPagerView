@@ -469,6 +469,20 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         }
         return cell as! FSPagerViewCell
     }
+
+    /// Returns the FSPagerViewCell object by the location of the cell
+    ///
+    /// - Parameters:
+    ///   - index: The index specifying the location of the cell.
+    /// - Returns: A valid FSPagerViewCell object.
+    @objc(atIndex:)
+    open func cellForItem(at index: Int) -> FSPagerViewCell {
+        let cell = self.collectionView.cellForItem(at: IndexPath(item: index, section: self.dequeingSection))
+        guard (cell?.isKind(of: FSPagerViewCell.self))! else {
+            fatalError("Cell not exist or must be subclass of FSPagerViewCell")
+        }
+        return cell as! FSPagerViewCell
+    }
     
     /// Reloads all of the data for the collection view.
     @objc(reloadData)
