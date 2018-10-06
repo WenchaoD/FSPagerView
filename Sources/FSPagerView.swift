@@ -192,6 +192,14 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         }
     }
     
+    /// default YES. turn off any dragging temporarily
+    @IBInspectable
+    open var isScrollEnabled: Bool = true {
+        didSet {
+            self.collectionView.isScrollEnabled = self.isScrollEnabled
+        }
+    }
+    
     // MARK: - Public readonly-properties
     
     /// Returns whether the user has touched the content to initiate scrolling.
