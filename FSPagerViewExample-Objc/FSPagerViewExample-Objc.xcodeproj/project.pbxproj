@@ -14,6 +14,7 @@
 		F908BC4C1E35AAE4002B2F51 /* 5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F908BC3D1E35AAE4002B2F51 /* 5.jpg */; };
 		F908BC4D1E35AAE4002B2F51 /* 6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F908BC3E1E35AAE4002B2F51 /* 6.jpg */; };
 		F908BC4E1E35AAE4002B2F51 /* 7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F908BC3F1E35AAE4002B2F51 /* 7.jpg */; };
+		F931E00A2158A1E4001B2A01 /* FSPagerViewObjcCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = F931E0092158A1E4001B2A01 /* FSPagerViewObjcCompat.m */; };
 		F93F5E141E319AE8006B7082 /* PageControlExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F93F5E131E319AE8006B7082 /* PageControlExampleViewController.m */; };
 		F9580B641E5D997200C5B267 /* FSPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B5E1E5D997200C5B267 /* FSPageControl.swift */; };
 		F9580B651E5D997200C5B267 /* FSPagerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9580B5F1E5D997200C5B267 /* FSPagerCollectionView.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		50989DFD2151DB25004DBB4A /* FSPagerViewObjcCompat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPagerViewObjcCompat.h; sourceTree = "<group>"; };
 		F908BC321E35AAE4002B2F51 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		F908BC3A1E35AAE4002B2F51 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 		F908BC3B1E35AAE4002B2F51 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
@@ -51,6 +53,7 @@
 		F908BC3D1E35AAE4002B2F51 /* 5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 5.jpg; sourceTree = "<group>"; };
 		F908BC3E1E35AAE4002B2F51 /* 6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 6.jpg; sourceTree = "<group>"; };
 		F908BC3F1E35AAE4002B2F51 /* 7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 7.jpg; sourceTree = "<group>"; };
+		F931E0092158A1E4001B2A01 /* FSPagerViewObjcCompat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPagerViewObjcCompat.m; sourceTree = "<group>"; };
 		F93F5E121E319AE8006B7082 /* PageControlExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageControlExampleViewController.h; sourceTree = "<group>"; };
 		F93F5E131E319AE8006B7082 /* PageControlExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageControlExampleViewController.m; sourceTree = "<group>"; };
 		F9580B5E1E5D997200C5B267 /* FSPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPageControl.swift; sourceTree = "<group>"; };
@@ -121,6 +124,8 @@
 				F9580B621E5D997200C5B267 /* FSPageViewLayout.swift */,
 				F9FF349E1E65B38C001E943F /* FSPagerViewLayoutAttributes.swift */,
 				F9580B631E5D997200C5B267 /* FSPageViewTransformer.swift */,
+				50989DFD2151DB25004DBB4A /* FSPagerViewObjcCompat.h */,
+				F931E0092158A1E4001B2A01 /* FSPagerViewObjcCompat.m */,
 			);
 			name = Sources;
 			path = ../Sources;
@@ -251,7 +256,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Wenchao Ding";
 				TargetAttributes = {
 					F9C694481E40C6C1007084B6 = {
@@ -341,6 +346,7 @@
 				F93F5E141E319AE8006B7082 /* PageControlExampleViewController.m in Sources */,
 				F9EC371E1E304A830022B6D6 /* main.m in Sources */,
 				F9580B661E5D997200C5B267 /* FSPagerView.swift in Sources */,
+				F931E00A2158A1E4001B2A01 /* FSPagerViewObjcCompat.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,7 +392,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = "FSPagerViewExample-Objc";
 			};
@@ -403,7 +409,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wenchaod.FSPagerViewExample-ObjcUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = "FSPagerViewExample-Objc";
 			};
@@ -422,6 +428,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -429,6 +436,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -477,6 +485,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -484,6 +493,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -524,7 +534,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wenchaod.FSPagerView-Objc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -538,7 +548,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wenchaod.FSPagerView-Objc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
