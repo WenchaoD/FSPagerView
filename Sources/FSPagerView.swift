@@ -219,7 +219,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     // MARK: - Private properties
     
     internal weak var collectionViewLayout: FSPagerViewLayout!
-    internal weak var collectionView: FSPagerViewCollectionView!
+    internal weak var collectionView: FSPagerCollectionView!
     internal weak var contentView: UIView!
     
     internal var timer: Timer?
@@ -557,7 +557,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         
         // UICollectionView
         let collectionViewLayout = FSPagerViewLayout()
-        let collectionView = FSPagerViewCollectionView(frame: CGRect.zero, collectionViewLayout: collectionViewLayout)
+        let collectionView = FSPagerCollectionView(frame: CGRect.zero, collectionViewLayout: collectionViewLayout)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = UIColor.clear
