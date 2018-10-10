@@ -12,10 +12,6 @@ import UIKit
 
 class FSPagerCollectionView: UICollectionView {
     
-    fileprivate var pagerView: FSPagerView? {
-        return self.superview?.superview as? FSPagerView
-    }
-    
     #if !os(tvOS)
     override var scrollsToTop: Bool {
         set {
