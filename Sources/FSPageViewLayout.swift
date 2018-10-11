@@ -265,12 +265,11 @@ class FSPagerViewLayout: UICollectionViewLayout {
         guard let collectionView = self.collectionView, let pagerView = self.pagerView else {
             return
         }
-        let currentIndex = max(0, min(pagerView.currentIndex, pagerView.numberOfItems - 1))
+        let currentIndex = pagerView.currentIndex
         let newIndexPath = IndexPath(item: currentIndex, section: pagerView.isInfinite ? self.numberOfSections/2 : 0)
         let contentOffset = self.contentOffset(for: newIndexPath)
         let newBounds = CGRect(origin: contentOffset, size: collectionView.frame.size)
         collectionView.bounds = newBounds
-        pagerView.currentIndex = currentIndex
     }
     
     fileprivate func applyTransform(to attributes: FSPagerViewLayoutAttributes, with transformer: FSPagerViewTransformer?) {
