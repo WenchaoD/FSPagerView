@@ -205,7 +205,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     open var scrollOffset: CGFloat {
         let contentOffset = max(self.collectionView.contentOffset.x, self.collectionView.contentOffset.y)
         let scrollOffset = Double(contentOffset/self.collectionViewLayout.itemSpacing)
-        return fmod(CGFloat(scrollOffset), CGFloat(Double(self.numberOfItems)))
+        return fmod(CGFloat(scrollOffset), CGFloat(self.numberOfItems))
     }
     
     /// The underlying gesture recognizer for pan gestures.
