@@ -146,6 +146,8 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
             self.collectionView.alwaysBounceVertical = self.alwaysBounceVertical;
         }
     }
+
+    public weak var collectionView: FSPagerViewCollectionView!
     
     /// The background view of the pager view.
     @IBInspectable
@@ -202,7 +204,6 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     // MARK: - Private properties
     
     internal weak var collectionViewLayout: FSPagerViewLayout!
-    internal weak var collectionView: FSPagerViewCollectionView!
     internal weak var contentView: UIView!
     
     internal var timer: Timer?
