@@ -52,7 +52,7 @@ open class FSPageControl: UIControl {
     }
     
     /// The horizontal alignment of content within the control’s bounds. Default is center.
-    open override var contentHorizontalAlignment: UIControl.ContentHorizontalAlignment {
+    open override var contentHorizontalAlignment: UIControlContentHorizontalAlignment {
         didSet {
             self.setNeedsLayout()
         }
@@ -66,12 +66,12 @@ open class FSPageControl: UIControl {
         }
     }
     
-    internal var strokeColors: [UIControl.State: UIColor] = [:]
-    internal var fillColors: [UIControl.State: UIColor] = [:]
-    internal var paths: [UIControl.State: UIBezierPath] = [:]
-    internal var images: [UIControl.State: UIImage] = [:]
-    internal var alphas: [UIControl.State: CGFloat] = [:]
-    internal var transforms: [UIControl.State: CGAffineTransform] = [:]
+    internal var strokeColors: [UIControlState: UIColor] = [:]
+    internal var fillColors: [UIControlState: UIColor] = [:]
+    internal var paths: [UIControlState: UIBezierPath] = [:]
+    internal var images: [UIControlState: UIImage] = [:]
+    internal var alphas: [UIControlState: CGFloat] = [:]
+    internal var transforms: [UIControlState: CGAffineTransform] = [:]
     
     fileprivate weak var contentView: UIView!
     
@@ -120,7 +120,7 @@ open class FSPageControl: UIControl {
             }
         }()
         for (index,value) in self.indicatorLayers.enumerated() {
-            let state: UIControl.State = (index == self.currentPage) ? .selected : .normal
+            let state: UIControlState = (index == self.currentPage) ? .selected : .normal
             let image = self.images[state]
             let size = image?.size ?? CGSize(width: diameter, height: diameter)
             let origin = CGPoint(x: x - (size.width-diameter)*0.5, y: self.contentView.bounds.midY-size.height*0.5)
@@ -136,7 +136,7 @@ open class FSPageControl: UIControl {
     ///   - strokeColor: The stroke color to use for the specified state.
     ///   - state: The state that uses the specified stroke color.
     @objc(setStrokeColor:forState:)
-    open func setStrokeColor(_ strokeColor: UIColor?, for state: UIControl.State) {
+    open func setStrokeColor(_ strokeColor: UIColor?, for state: UIControlState) {
         guard self.strokeColors[state] != strokeColor else {
             return
         }
@@ -150,7 +150,7 @@ open class FSPageControl: UIControl {
     ///   - fillColor: The fill color to use for the specified state.
     ///   - state: The state that uses the specified fill color.
     @objc(setFillColor:forState:)
-    open func setFillColor(_ fillColor: UIColor?, for state: UIControl.State) {
+    open func setFillColor(_ fillColor: UIColor?, for state: UIControlState) {
         guard self.fillColors[state] != fillColor else {
             return
         }
@@ -164,7 +164,7 @@ open class FSPageControl: UIControl {
     ///   - image: The image to use for the specified state.
     ///   - state: The state that uses the specified image.
     @objc(setImage:forState:)
-    open func setImage(_ image: UIImage?, for state: UIControl.State) {
+    open func setImage(_ image: UIImage?, for state: UIControlState) {
         guard self.images[state] != image else {
             return
         }
@@ -179,7 +179,7 @@ open class FSPageControl: UIControl {
     /// - Parameters:
     ///   - alpha: The alpha value to use for the specified state.
     ///   - state: The state that uses the specified alpha.
-    open func setAlpha(_ alpha: CGFloat, for state: UIControl.State) {
+    open func setAlpha(_ alpha: CGFloat, for state: UIControlState) {
         guard self.alphas[state] != alpha else {
             return
         }
@@ -193,7 +193,7 @@ open class FSPageControl: UIControl {
     ///   - path: The path to use for the specified state.
     ///   - state: The state that uses the specified path.
     @objc(setPath:forState:)
-    open func setPath(_ path: UIBezierPath?, for state: UIControl.State) {
+    open func setPath(_ path: UIBezierPath?, for state: UIControlState) {
         guard self.paths[state] != path else {
             return
         }
@@ -241,7 +241,7 @@ open class FSPageControl: UIControl {
     
     fileprivate func updateIndicatorAttributes(for layer: CAShapeLayer) {
         let index = self.indicatorLayers.index(of: layer)
-        let state: UIControl.State = index == self.currentPage ? .selected : .normal
+        let state: UIControlState = index == self.currentPage ? .selected : .normal
         if let image = self.images[state] {
             layer.strokeColor = nil
             layer.fillColor = nil
@@ -300,7 +300,7 @@ open class FSPageControl: UIControl {
     
 }
 
-extension UIControl.State: Hashable {
+extension UIControlState: Hashable {
     public var hashValue: Int {
         return Int((6777*self.rawValue+3777)%UInt(UInt16.max))
     }
