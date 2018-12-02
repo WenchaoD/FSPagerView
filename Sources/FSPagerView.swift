@@ -315,8 +315,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
         guard let dataSource = self.dataSource else {
-            self.numberOfItems = 0
-            return 1
+            return 0
         }
         self.numberOfItems = dataSource.numberOfItems(in: self)
         guard self.numberOfItems > 0 else {
