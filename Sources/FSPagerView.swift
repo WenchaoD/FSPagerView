@@ -345,15 +345,6 @@ open class FSPagerView: UIView, UICollectionViewDataSource, UICollectionViewDele
         return collectionView.indexPathForItem(at: point).map { $0.item % numberOfItems }
     }
 
-    public func index(for cell: FSPagerViewCell) -> Int? {
-        guard numberOfItems > 0 else { return nil }
-        return collectionView.indexPath(for: cell).map { $0.item % numberOfItems }
-    }
-
-    public func cellForItem(at index: Int) -> FSPagerViewCell? {
-        return collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FSPagerViewCell
-    }
-
     public var visibleCells: [UICollectionViewCell] {
         return collectionView.visibleCells.compactMap { $0 as? FSPagerViewCell }
     }
