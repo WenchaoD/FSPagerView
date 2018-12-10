@@ -157,6 +157,13 @@ open class FSPagerView: UIView, UICollectionViewDataSource, UICollectionViewDele
     @IBInspectable
     open var decelerationDistance: UInt = 1
     
+    /// A Boolean value that determines whether scrolling is enabled.
+    @IBInspectable
+    open var isScrollEnabled: Bool {
+        set { self.collectionView.isScrollEnabled = newValue }
+        get { return self.collectionView.isScrollEnabled }
+    }
+    
     /// A Boolean value that controls whether the pager view bounces past the edge of content and back again.
     @IBInspectable
     open var bounces: Bool {
@@ -222,7 +229,7 @@ open class FSPagerView: UIView, UICollectionViewDataSource, UICollectionViewDele
     open var scrollOffset: CGFloat {
         let contentOffset = max(self.collectionView.contentOffset.x, self.collectionView.contentOffset.y)
         let scrollOffset = Double(contentOffset/self.collectionViewLayout.itemSpacing)
-        return fmod(CGFloat(scrollOffset), CGFloat(Double(self.numberOfItems)))
+        return fmod(CGFloat(scrollOffset), CGFloat(self.numberOfItems))
     }
     
     /// The underlying gesture recognizer for pan gestures.
@@ -231,14 +238,13 @@ open class FSPagerView: UIView, UICollectionViewDataSource, UICollectionViewDele
         return self.collectionView.panGestureRecognizer
     }
     
-    @objc open internal(set) dynamic var currentIndex: Int = 0
+    @objc open fileprivate(set) dynamic var currentIndex: Int = 0
     
     // MARK: - Private properties
     
     internal weak var collectionViewLayout: FSPagerViewLayout!
-    internal weak var collectionView: FSPagerViewCollectionView!
+    internal weak var collectionView: FSPagerCollectionView!
     internal weak var contentView: UIView!
-    
     internal var timer: Timer?
     internal var numberOfItems: Int = 0
     internal var numberOfSections: Int = 0
@@ -270,9 +276,14 @@ open class FSPagerView: UIView, UICollectionViewDataSource, UICollectionViewDele
         }
         return IndexPath(item: 0, section: 0)
     }
-    
+    fileprivate var isPossiblyRotating: Bool {
+        guard let animationKeys = self.contentView.layer.animationKeys() else {
+            return false
+        }
+        let rotationAnimationKeys = ["position", "bounds.origin", "bounds.size"]
+        return animationKeys.contains(where: { rotationAnimationKeys.contains($0) })
+    }
     fileprivate var possibleTargetingIndexPath: IndexPath?
-    
     
     // MARK: - Overriden functions
     
@@ -332,15 +343,6 @@ open class FSPagerView: UIView, UICollectionViewDataSource, UICollectionViewDele
     public func indexForItem(at point: CGPoint) -> Int? {
         guard numberOfItems > 0 else { return nil }
         return collectionView.indexPathForItem(at: point).map { $0.item % numberOfItems }
-    }
-
-    public func index(for cell: FSPagerViewCell) -> Int? {
-        guard numberOfItems > 0 else { return nil }
-        return collectionView.indexPath(for: cell).map { $0.item % numberOfItems }
-    }
-
-    public func cellForItem(at index: Int) -> FSPagerViewCell? {
-        return collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FSPagerViewCell
     }
 
     public var visibleCells: [UICollectionViewCell] {
@@ -452,7 +454,7 @@ open class FSPagerView: UIView, UICollectionViewDataSource, UICollectionViewDele
     }
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if self.numberOfItems > 0 {
+        if !self.isPossiblyRotating && self.numberOfItems > 0 {
             // In case someone is using KVO
             let currentIndex = lround(Double(self.scrollOffset)) % self.numberOfItems
             if (currentIndex != self.currentIndex) {
@@ -600,6 +602,16 @@ open class FSPagerView: UIView, UICollectionViewDataSource, UICollectionViewDele
         return indexPath.item
     }
     
+    /// Returns the visible cell at the specified index.
+    ///
+    /// - Parameter index: The index that specifies the position of the cell.
+    /// - Returns: The cell object at the corresponding position or nil if the cell is not visible or index is out of range.
+    @objc(cellForItemAtIndex:)
+    open func cellForItem(at index: Int) -> FSPagerViewCell? {
+        let indexPath = self.nearbyIndexPath(for: index)
+        return self.collectionView.cellForItem(at: indexPath) as? FSPagerViewCell
+    }
+    
     // MARK: - Private functions
     
     fileprivate func commonInit() {
@@ -612,7 +624,7 @@ open class FSPagerView: UIView, UICollectionViewDataSource, UICollectionViewDele
         
         // UICollectionView
         let collectionViewLayout = FSPagerViewLayout()
-        let collectionView = FSPagerViewCollectionView(frame: CGRect.zero, collectionViewLayout: collectionViewLayout)
+        let collectionView = FSPagerCollectionView(frame: CGRect.zero, collectionViewLayout: collectionViewLayout)
         collectionView.dataSource = self
         collectionView.delegate = self
         if #available(iOS 10.0, *) {
