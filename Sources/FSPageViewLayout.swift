@@ -24,7 +24,6 @@ class FSPagerViewLayout: UICollectionViewLayout {
         return self.collectionView?.superview?.superview as? FSPagerView
     }
     
-    fileprivate var isInfinite: Bool = true
     fileprivate var collectionViewSize: CGSize = .zero
     fileprivate var numberOfSections = 1
     fileprivate var numberOfItems = 0
@@ -154,9 +153,8 @@ class FSPagerViewLayout: UICollectionViewLayout {
             return proposedContentOffset
         }
         var proposedContentOffset = proposedContentOffset
-        let touchedContentOffset: CGPoint = collectionView.panGestureRecognizer.location(in: collectionView)
         
-        func calculateTargetOffset(by proposedOffset: CGFloat, touchedOffset: CGFloat, boundedOffset: CGFloat) -> CGFloat {
+        func calculateTargetOffset(by proposedOffset: CGFloat, boundedOffset: CGFloat) -> CGFloat {
             var targetOffset: CGFloat
             if pagerView.decelerationDistance == FSPagerView.automaticDistance {
                 if abs(velocity.x) >= 0.3 {
@@ -169,9 +167,9 @@ class FSPagerViewLayout: UICollectionViewLayout {
                 let extraDistance = max(pagerView.decelerationDistance-1, 0)
                 switch velocity.x {
                 case 0.3 ... CGFloat.greatestFiniteMagnitude:
-                    targetOffset = ceil(touchedOffset/self.itemSpacing+CGFloat(extraDistance)) * self.itemSpacing
+                    targetOffset = ceil(collectionView.contentOffset.x/self.itemSpacing+CGFloat(extraDistance)) * self.itemSpacing
                 case -CGFloat.greatestFiniteMagnitude ... -0.3:
-                    targetOffset = floor(touchedOffset/self.itemSpacing-1-CGFloat(extraDistance)) * self.itemSpacing
+                    targetOffset = floor(collectionView.contentOffset.x/self.itemSpacing-CGFloat(extraDistance)) * self.itemSpacing
                 default:
                     targetOffset = round(proposedOffset/self.itemSpacing) * self.itemSpacing
                 }
@@ -185,14 +183,14 @@ class FSPagerViewLayout: UICollectionViewLayout {
                 return proposedContentOffset.x
             }
             let boundedOffset = collectionView.contentSize.width-self.itemSpacing
-            return calculateTargetOffset(by: proposedContentOffset.x, touchedOffset: touchedContentOffset.x, boundedOffset: boundedOffset)
+            return calculateTargetOffset(by: proposedContentOffset.x, boundedOffset: boundedOffset)
         }()
         let proposedContentOffsetY: CGFloat = {
             if self.scrollDirection == .horizontal {
                 return proposedContentOffset.y
             }
             let boundedOffset = collectionView.contentSize.height-self.itemSpacing
-            return calculateTargetOffset(by: proposedContentOffset.y, touchedOffset: touchedContentOffset.y, boundedOffset: boundedOffset)
+            return calculateTargetOffset(by: proposedContentOffset.y, boundedOffset: boundedOffset)
         }()
         proposedContentOffset = CGPoint(x: proposedContentOffsetX, y: proposedContentOffsetY)
         return proposedContentOffset
@@ -267,12 +265,11 @@ class FSPagerViewLayout: UICollectionViewLayout {
         guard let collectionView = self.collectionView, let pagerView = self.pagerView else {
             return
         }
-        let currentIndex = max(0, min(pagerView.currentIndex, pagerView.numberOfItems - 1))
-        let newIndexPath = IndexPath(item: currentIndex, section: self.isInfinite ? self.numberOfSections/2 : 0)
+        let currentIndex = pagerView.currentIndex
+        let newIndexPath = IndexPath(item: currentIndex, section: pagerView.isInfinite ? self.numberOfSections/2 : 0)
         let contentOffset = self.contentOffset(for: newIndexPath)
         let newBounds = CGRect(origin: contentOffset, size: collectionView.frame.size)
         collectionView.bounds = newBounds
-        pagerView.currentIndex = currentIndex
     }
     
     fileprivate func applyTransform(to attributes: FSPagerViewLayoutAttributes, with transformer: FSPagerViewTransformer?) {

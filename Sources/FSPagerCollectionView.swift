@@ -1,5 +1,5 @@
 //
-//  FSPagerViewCollectionView.swift
+//  FSPagerCollectionView.swift
 //  FSPagerView
 //
 //  Created by Wenchao Ding on 24/12/2016.
@@ -10,11 +10,7 @@
 
 import UIKit
 
-class FSPagerViewCollectionView: UICollectionView {
-    
-    fileprivate var pagerView: FSPagerView? {
-        return self.superview?.superview as? FSPagerView
-    }
+class FSPagerCollectionView: UICollectionView {
     
     #if !os(tvOS)
     override var scrollsToTop: Bool {
