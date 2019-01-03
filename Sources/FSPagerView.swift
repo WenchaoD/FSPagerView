@@ -12,65 +12,50 @@
 
 import UIKit
 
-@objc
 public protocol FSPagerViewDataSource: NSObjectProtocol {
     
     /// Asks your data source object for the number of items in the pager view.
-    @objc(numberOfItemsInPagerView:)
     func numberOfItems(in pagerView: FSPagerView) -> Int
     
     /// Asks your data source object for the cell that corresponds to the specified item in the pager view.
-    @objc(pagerView:cellForItemAtIndex:)
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell
     
 }
 
-@objc
 public protocol FSPagerViewDelegate: NSObjectProtocol {
     
     /// Asks the delegate if the item should be highlighted during tracking.
-    @objc(pagerView:shouldHighlightItemAtIndex:)
-    optional func pagerView(_ pagerView: FSPagerView, shouldHighlightItemAt index: Int) -> Bool
+    func pagerView(_ pagerView: FSPagerView, shouldHighlightItemAt index: Int) -> Bool
     
     /// Tells the delegate that the item at the specified index was highlighted.
-    @objc(pagerView:didHighlightItemAtIndex:)
-    optional func pagerView(_ pagerView: FSPagerView, didHighlightItemAt index: Int)
+    func pagerView(_ pagerView: FSPagerView, didHighlightItemAt index: Int)
     
     /// Asks the delegate if the specified item should be selected.
-    @objc(pagerView:shouldSelectItemAtIndex:)
-    optional func pagerView(_ pagerView: FSPagerView, shouldSelectItemAt index: Int) -> Bool
+    func pagerView(_ pagerView: FSPagerView, shouldSelectItemAt index: Int) -> Bool
     
     /// Tells the delegate that the item at the specified index was selected.
-    @objc(pagerView:didSelectItemAtIndex:)
-    optional func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int)
+    func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int)
     
     /// Tells the delegate that the specified cell is about to be displayed in the pager view.
-    @objc(pagerView:willDisplayCell:forItemAtIndex:)
-    optional func pagerView(_ pagerView: FSPagerView, willDisplay cell: FSPagerViewCell, forItemAt index: Int)
+    func pagerView(_ pagerView: FSPagerView, willDisplay cell: FSPagerViewCell, forItemAt index: Int)
     
     /// Tells the delegate that the specified cell was removed from the pager view.
-    @objc(pagerView:didEndDisplayingCell:forItemAtIndex:)
-    optional func pagerView(_ pagerView: FSPagerView, didEndDisplaying cell: FSPagerViewCell, forItemAt index: Int)
+    func pagerView(_ pagerView: FSPagerView, didEndDisplaying cell: FSPagerViewCell, forItemAt index: Int)
     
     /// Tells the delegate when the pager view is about to start scrolling the content.
-    @objc(pagerViewWillBeginDragging:)
-    optional func pagerViewWillBeginDragging(_ pagerView: FSPagerView)
+    func pagerViewWillBeginDragging(_ pagerView: FSPagerView)
     
     /// Tells the delegate when the user finishes scrolling the content.
-    @objc(pagerViewWillEndDragging:targetIndex:)
-    optional func pagerViewWillEndDragging(_ pagerView: FSPagerView, targetIndex: Int)
+    func pagerViewWillEndDragging(_ pagerView: FSPagerView, targetIndex: Int)
     
     /// Tells the delegate when the user scrolls the content view within the receiver.
-    @objc(pagerViewDidScroll:)
-    optional func pagerViewDidScroll(_ pagerView: FSPagerView)
+    func pagerViewDidScroll(_ pagerView: FSPagerView)
     
     /// Tells the delegate when a scrolling animation in the pager view concludes.
-    @objc(pagerViewDidEndScrollAnimation:)
-    optional func pagerViewDidEndScrollAnimation(_ pagerView: FSPagerView)
+    func pagerViewDidEndScrollAnimation(_ pagerView: FSPagerView)
     
     /// Tells the delegate that the pager view has ended decelerating the scrolling movement.
-    @objc(pagerViewDidEndDecelerating:)
-    optional func pagerViewDidEndDecelerating(_ pagerView: FSPagerView)
+    func pagerViewDidEndDecelerating(_ pagerView: FSPagerView)
     
 }
 
@@ -80,10 +65,10 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     // MARK: - Public properties
 
     /// The object that acts as the data source of the pager view.
-    @IBOutlet open weak var dataSource: FSPagerViewDataSource?
+    open weak var dataSource: FSPagerViewDataSource?
     
     /// The object that acts as the delegate of the pager view.
-    @IBOutlet open weak var delegate: FSPagerViewDelegate?
+    open weak var delegate: FSPagerViewDelegate?
     
     /// The scroll direction of the pager view. Default is horizontal.
     @objc
