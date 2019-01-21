@@ -480,6 +480,39 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         self.collectionViewLayout.needsReprepare = true;
         self.collectionView.reloadData()
     }
+
+    /// Animates multiple insert, delete, reload, and move operations as a group.
+    ///
+    /// - Parameters:
+    ///   - updates: The block that performs the relevant insert, delete, reload, or move operations.
+    ///   - completion: A completion handler block to execute when all of the operations are finished. This block takes a single Boolean parameter that contains the value `true` if all of the related animations completed successfully or `false` if they were interrupted. This parameter may be `nil`.
+    open func performBatchUpdates(_ updates: (() -> Void)?, completion: ((Bool) -> Void)?) {
+        self.collectionView.performBatchUpdates(updates, completion: completion)
+    }
+
+    /// Reloads just the items at the specified index paths.
+    ///
+    /// - Parameters:
+    ///   - indexPaths: An array of `IndexPath` objects identifying the items you want to update.
+    open func reloadItems(at indexPaths: [IndexPath]) {
+        self.collectionView.reloadItems(at: indexPaths)
+    }
+
+    /// Inserts new items at the specified index paths.
+    ///
+    /// - Parameters:
+    ///   - indexPaths: An array of `IndexPath` objects, each of which contains a section index and item index at which to insert a new cell. This parameter must not be `nil`.
+    open func insertItems(at indexPaths: [IndexPath]) {
+        self.collectionView.insertItems(at: indexPaths)
+    }
+
+    /// Deletes the items at the specified index paths.
+    ///
+    /// - Parameters:
+    ///   - indexPaths: An array of `IndexPath` objects, each of which contains a section index and item index for the item you want to delete from the collection view. This parameter must not be `nil`.
+    open func deleteItems(at indexPaths: [IndexPath]) {
+        self.collectionView.deleteItems(at: indexPaths)
+    }
     
     /// Selects the item at the specified index and optionally scrolls it into view.
     ///
