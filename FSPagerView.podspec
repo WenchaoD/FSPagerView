@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.screenshots      = "https://cloud.githubusercontent.com/assets/5186464/22686432/19b567f8-ed5f-11e6-885d-bd660c98b507.gif"
   s.license          = 'MIT'
   s.author           = { "Wenchao Ding" => "f33chobits@gmail.com" }
-  s.source           = { :git => "https://github.com/WenchaoD/FSPagerView.git", :tag => s.version.to_s }
+  s.source           = { :git => "git@github.com:ChengLuffy/FSPagerView.git", :tag => s.version.to_s }
 
   s.platform     = :ios
   s.ios.deployment_target = '8.0'
