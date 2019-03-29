@@ -216,6 +216,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     
     @objc open fileprivate(set) dynamic var currentIndex: Int = 0
     
+    /// Animate duration at constant velocity to new offset
     @objc open var contentOffsetAnimationDuration: CGFloat = 0
     
     // MARK: - Private properties
