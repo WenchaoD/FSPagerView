@@ -565,6 +565,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = UIColor.clear
+        collectionView.setValue(1.5, forKey: "contentOffsetAnimationDuration")
         self.contentView.addSubview(collectionView)
         self.collectionView = collectionView
         self.collectionViewLayout = collectionViewLayout

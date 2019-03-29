@@ -34,7 +34,7 @@ open class FSPagerViewTransformer: NSObject {
         self.type = type
         switch type {
         case .zoomOut:
-            self.minimumScale = 0.85
+            self.minimumScale = 0.55
         case .depth:
             self.minimumScale = 0.5
         default:
