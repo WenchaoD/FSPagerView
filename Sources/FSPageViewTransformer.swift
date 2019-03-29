@@ -26,7 +26,9 @@ open class FSPagerViewTransformer: NSObject {
     open internal(set) weak var pagerView: FSPagerView?
     open internal(set) var type: FSPagerViewTransformerType
     
+    @objc
     open var minimumScale: CGFloat = 0.65
+    @objc
     open var minimumAlpha: CGFloat = 0.6
     
     @objc
@@ -34,7 +36,7 @@ open class FSPagerViewTransformer: NSObject {
         self.type = type
         switch type {
         case .zoomOut:
-            self.minimumScale = 0.55
+            self.minimumScale = 0.85
         case .depth:
             self.minimumScale = 0.5
         default:

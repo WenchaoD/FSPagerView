@@ -216,6 +216,8 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     
     @objc open fileprivate(set) dynamic var currentIndex: Int = 0
     
+    @objc open var contentOffsetAnimationDuration: CGFloat = 0
+    
     // MARK: - Private properties
     
     internal weak var collectionViewLayout: FSPagerViewLayout!
@@ -565,7 +567,9 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = UIColor.clear
-        collectionView.setValue(1.5, forKey: "contentOffsetAnimationDuration")
+        if self.contentOffsetAnimationDuration != 0 {
+            collectionView.setValue(self.contentOffsetAnimationDuration, forKey: "contentOffsetAnimationDuration")
+        }
         self.contentView.addSubview(collectionView)
         self.collectionView = collectionView
         self.collectionViewLayout = collectionViewLayout
