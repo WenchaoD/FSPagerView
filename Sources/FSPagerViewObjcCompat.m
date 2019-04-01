@@ -10,3 +10,4 @@
 
 NSUInteger const FSPagerViewAutomaticDistance = 0;
 CGSize const FSPagerViewAutomaticSize = { .width = 0, .height = 0 };
+CGFloat const FSPagerViewContentOffsetAnimationDefualtDuration = 0.3;

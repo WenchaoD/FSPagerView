@@ -192,6 +192,15 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         }
     }
     
+    /// Animate duration at constant velocity to new offset
+    @objc open var contentOffsetAnimationDuration: CGFloat = contentOffsetAnimationDefualtDuration {
+        didSet {
+            if self.collectionView != nil {
+                self.collectionView.setValue(self.contentOffsetAnimationDuration, forKey: "contentOffsetAnimationDuration")
+            }
+        }
+    }
+    
     // MARK: - Public readonly-properties
     
     /// Returns whether the user has touched the content to initiate scrolling.
@@ -565,6 +574,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = UIColor.clear
+        collectionView.setValue(self.contentOffsetAnimationDuration, forKey: "contentOffsetAnimationDuration")
         self.contentView.addSubview(collectionView)
         self.collectionView = collectionView
         self.collectionViewLayout = collectionViewLayout
@@ -632,5 +642,7 @@ extension FSPagerView {
     
     /// Requests that FSPagerView use the default value for a given size.
     public static let automaticSize: CGSize = .zero
+    
+    public static let contentOffsetAnimationDefualtDuration: CGFloat = 0.3
     
 }

@@ -240,7 +240,7 @@ open class FSPageControl: UIControl {
     }
     
     fileprivate func updateIndicatorAttributes(for layer: CAShapeLayer) {
-        let index = self.indicatorLayers.index(of: layer)
+        let index = self.indicatorLayers.firstIndex(of: layer)
         let state: UIControl.State = index == self.currentPage ? .selected : .normal
         if let image = self.images[state] {
             layer.strokeColor = nil

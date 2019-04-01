@@ -21,3 +21,8 @@ FSPagerViewExtern NSUInteger const FSPagerViewAutomaticDistance;
  */
 FSPagerViewExtern CGSize const FSPagerViewAutomaticSize;
 
+/**
+ Requests that FSPagerView use the default value for ContentOffsetAnimationDuration.
+ */
+FSPagerViewExtern CGFloat const FSPagerViewContentOffsetAnimationDefualtDuration;
+
