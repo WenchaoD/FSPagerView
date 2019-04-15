@@ -241,10 +241,9 @@
 			};
 			buildConfigurationList = F97C96721E1FDE25002D9E7E /* Build configuration list for PBXProject "FSPagerViewExample" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
