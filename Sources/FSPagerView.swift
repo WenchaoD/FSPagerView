@@ -445,6 +445,10 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         }
     }
     
+    public func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
+        return false;
+    }
+    
     // MARK: - Public functions
     
     /// Register a class for use in creating new pager view cells.
