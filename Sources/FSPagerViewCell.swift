@@ -48,7 +48,12 @@ open class FSPagerViewCell: UICollectionViewCell {
     fileprivate weak var _imageView: UIImageView?
     
     fileprivate let kvoContext = UnsafeMutableRawPointer(bitPattern: 0)
-    fileprivate let selectionColor = UIColor(white: 0.2, alpha: 0.2)
+    var selectionColor = UIColor(white: 0.2, alpha: 0.2) {
+        didSet {
+            isSelected = isSelected
+            isHighlighted = isHighlighted
+        }
+    }
     
     fileprivate weak var _selectedForegroundView: UIView?
     fileprivate var selectedForegroundView: UIView? {
