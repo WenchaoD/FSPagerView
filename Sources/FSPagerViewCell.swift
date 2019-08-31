@@ -44,11 +44,22 @@ open class FSPagerViewCell: UICollectionViewCell {
         return imageView
     }
     
+    /// Returns the selectionColor which is applied to selectedForegroundView. Default is UIColor(white: 0.2, alpha: 0.2).
+    @objc
+    open var selectionColor: UIColor {
+        set {
+            _selectionColor = newValue
+        }
+        get {
+            return _selectionColor ?? UIColor(white: 0.2, alpha: 0.2)
+        }
+    }
+
     fileprivate weak var _textLabel: UILabel?
     fileprivate weak var _imageView: UIImageView?
-    
+    fileprivate var _selectionColor: UIColor?
+
     fileprivate let kvoContext = UnsafeMutableRawPointer(bitPattern: 0)
-    fileprivate let selectionColor = UIColor(white: 0.2, alpha: 0.2)
     
     fileprivate weak var _selectedForegroundView: UIView?
     fileprivate var selectedForegroundView: UIView? {
