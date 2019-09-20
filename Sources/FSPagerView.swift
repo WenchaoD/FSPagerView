@@ -417,7 +417,17 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         if let function = self.delegate?.pagerViewWillEndDragging(_:targetIndex:) {
             let contentOffset = self.scrollDirection == .horizontal ? targetContentOffset.pointee.x : targetContentOffset.pointee.y
             let targetItem = lround(Double(contentOffset/self.collectionViewLayout.itemSpacing))
-            function(self, targetItem % self.numberOfItems)
+            var targetIndex: Int
+            if isInfinite {
+                targetIndex = targetItem % self.numberOfItems
+            } else {
+                if targetItem < self.numberOfItems {
+                    targetIndex = targetItem % self.numberOfItems
+                } else {
+                    targetIndex = max(self.numberOfItems - 1, 0)
+                }
+            }
+            function(self, targetIndex)
         }
         if self.automaticSlidingInterval > 0 {
             self.startTimer()
