@@ -208,7 +208,7 @@
     return self.numberOfItems;
 }
 
-- (FSPagerViewBaseCell *)pagerView:(FSPagerView *)pagerView cellForItemAtIndex:(NSInteger)index
+- (UICollectionViewCell *)pagerView:(FSPagerView *)pagerView cellForItemAtIndex:(NSInteger)index
 {
     FSPagerViewCell *cell = (FSPagerViewCell *)[pagerView dequeueReusableCellWithReuseIdentifier:@"cell" atIndex:index];
     cell.imageView.image = [UIImage imageNamed:self.imageNames[index]];

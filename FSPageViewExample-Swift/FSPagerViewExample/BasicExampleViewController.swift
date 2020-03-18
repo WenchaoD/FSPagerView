@@ -163,7 +163,7 @@ class BasicExampleViewController: UIViewController,UITableViewDataSource,UITable
         return self.numberOfItems
     }
     
-    public func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewBaseCell {
+    public func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> UICollectionViewCell {
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index) as! FSPagerViewCell
         cell.imageView?.image = UIImage(named: self.imageNames[index])
         cell.imageView?.contentMode = .scaleAspectFill
