@@ -309,7 +309,7 @@ public func numberOfItems(in pagerView: FSPagerView) -> Int {
     return numberOfItems
 }
     
-public func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewBaseCell {
+public func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> UICollectionViewCell {
     let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index) as! FSPagerViewCell
     cell.imageView?.image = ...
     cell.textLabel?.text = ...
@@ -348,14 +348,14 @@ func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int)
 ---
     
 ```swift
-func pagerView(_ pagerView: FSPagerView, willDisplay cell: FSPagerViewBaseCell, forItemAt index: Int)
+func pagerView(_ pagerView: FSPagerView, willDisplay cell: UICollectionViewCell, forItemAt index: Int)
 ```
 > Tells the delegate that the specified cell is about to be displayed in the pager view.
     
 ---
     
 ```swift
-func pagerView(_ pagerView: FSPagerView, didEndDisplaying cell: FSPagerViewBaseCell, forItemAt index: Int)
+func pagerView(_ pagerView: FSPagerView, didEndDisplaying cell: UICollectionViewCell, forItemAt index: Int)
 ```
 > Tells the delegate that the specified cell was removed from the pager view.
     
