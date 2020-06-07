@@ -117,6 +117,8 @@ open class FSPageControl: UIControl {
             case .right, .trailing:
                 let contentWidth = diameter*CGFloat(self.numberOfPages) + CGFloat(self.numberOfPages-1)*spacing
                 return contentView.frame.width - contentWidth
+            default:
+                return 0
             }
         }()
         for (index,value) in self.indicatorLayers.enumerated() {
@@ -240,7 +242,7 @@ open class FSPageControl: UIControl {
     }
     
     fileprivate func updateIndicatorAttributes(for layer: CAShapeLayer) {
-        let index = self.indicatorLayers.index(of: layer)
+        let index = self.indicatorLayers.firstIndex(of: layer)
         let state: UIControl.State = index == self.currentPage ? .selected : .normal
         if let image = self.images[state] {
             layer.strokeColor = nil
