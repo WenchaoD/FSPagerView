@@ -21,7 +21,8 @@ let package = Package(
         .target(
             name: "FSPagerView",
             dependencies: [],
-            path: "Sources"),
+            path: "Sources",
+            exclude: ["FSPagerViewObjcCompat.h", "FSPagerViewObjcCompat.m"]),
         .testTarget(
             name: "FSPagerViewTests",
             dependencies: ["FSPagerView"]),
