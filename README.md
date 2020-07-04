@@ -85,7 +85,7 @@ pagerView.interitemSpacing = 10
 | ![1](https://cloud.githubusercontent.com/assets/5186464/22686429/1983b97e-ed5f-11e6-9a32-44c1830df7ac.gif) |
 
 ```swift
-pagerView.transformer = FSPagerViewTransformer(type: .crossfading)
+pagerView.transformer = FSPagerViewTransformer(type: .crossFading)
 ```
 ---
 
@@ -96,7 +96,7 @@ pagerView.transformer = FSPagerViewTransformer(type: .crossfading)
 | ![2](https://cloud.githubusercontent.com/assets/5186464/22686426/19830862-ed5f-11e6-90be-8fb1319cd125.gif) |
 
 ```swift
-pagerView.transformer = FSPagerViewTransformer(type: .zoomout)
+pagerView.transformer = FSPagerViewTransformer(type: .zoomOut)
 ```
 ---
 
