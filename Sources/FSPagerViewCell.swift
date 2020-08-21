@@ -24,6 +24,7 @@ open class FSPagerViewCell: UICollectionViewCell {
         textLabel.textColor = .white
         textLabel.font = UIFont.preferredFont(forTextStyle: .body)
         self.contentView.addSubview(view)
+        textLabel.numberOfLines = 0
         view.addSubview(textLabel)
         
         textLabel.addObserver(self, forKeyPath: "font", options: [.old,.new], context: kvoContext)
@@ -31,7 +32,7 @@ open class FSPagerViewCell: UICollectionViewCell {
         _textLabel = textLabel
         return textLabel
     }
-    
+    open var customTextLabelFrame: CGRect? = nil
     /// Returns the image view of the pager view cell. Default is nil.
     @objc
     open var imageView: UIImageView? {
@@ -112,28 +113,35 @@ open class FSPagerViewCell: UICollectionViewCell {
             textLabel.removeObserver(self, forKeyPath: "font", context: kvoContext)
         }
     }
-    
+    private func updateTextLabelLayout() {
+          if let textLabel = _textLabel {
+            if let fr = customTextLabelFrame {
+              textLabel.frame = fr
+            } else {
+              textLabel.superview!.frame = {
+                  var rect = self.contentView.bounds
+                  let height = (textLabel.font.pointSize*1.5) * CGFloat(textLabel.numberOfVisibleLines)
+                  rect.size.height = height
+                  rect.origin.y = self.contentView.frame.height-height
+                  return rect
+              }()
+              textLabel.frame = {
+                  var rect = textLabel.superview!.bounds
+                  rect = rect.insetBy(dx: 8, dy: 0)
+                  rect.size.height -= 1
+                  rect.origin.y += 1
+                  return rect
+              }()
+            }
+          }
+      }
+
     override open func layoutSubviews() {
         super.layoutSubviews()
         if let imageView = _imageView {
             imageView.frame = self.contentView.bounds
         }
-        if let textLabel = _textLabel {
-            textLabel.superview!.frame = {
-                var rect = self.contentView.bounds
-                let height = textLabel.font.pointSize*1.5
-                rect.size.height = height
-                rect.origin.y = self.contentView.frame.height-height
-                return rect
-            }()
-            textLabel.frame = {
-                var rect = textLabel.superview!.bounds
-                rect = rect.insetBy(dx: 8, dy: 0)
-                rect.size.height -= 1
-                rect.origin.y += 1
-                return rect
-            }()
-        }
+        updateTextLabelLayout()
         if let selectedForegroundView = _selectedForegroundView {
             selectedForegroundView.frame = self.contentView.bounds
         }
@@ -143,10 +151,20 @@ open class FSPagerViewCell: UICollectionViewCell {
         if context == kvoContext {
             if keyPath == "font" {
                 self.setNeedsLayout()
+                updateTextLabelLayout()
             }
         } else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
     }
-    
+
+}
+
+extension UILabel {
+    var numberOfVisibleLines: Int {
+        let textSize = CGSize(width: CGFloat(self.frame.size.width), height: CGFloat(MAXFLOAT))
+        let rHeight: Int = lroundf(Float(self.sizeThatFits(textSize).height))
+        let charSize: Int = lroundf(Float(self.font.pointSize))
+        return rHeight / charSize
+    }
 }
