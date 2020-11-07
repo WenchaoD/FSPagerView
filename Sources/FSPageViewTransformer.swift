@@ -26,8 +26,8 @@ open class FSPagerViewTransformer: NSObject {
     open internal(set) weak var pagerView: FSPagerView?
     open internal(set) var type: FSPagerViewTransformerType
     
-    open var minimumScale: CGFloat = 0.65
-    open var minimumAlpha: CGFloat = 0.6
+    @objc open var minimumScale: CGFloat = 0.65
+    @objc open var minimumAlpha: CGFloat = 0.6
     
     @objc
     public init(type: FSPagerViewTransformerType) {
