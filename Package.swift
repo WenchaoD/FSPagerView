@@ -9,6 +9,5 @@ let package = Package(
     ],
     targets: [
         .target(name: "FSPagerView", path: "Sources", exclude: ["FSPagerViewObjcCompat.h", "FSPagerViewObjcCompat.m"]),
-    ],
-    swiftLanguageVersions: [.v5]
+    ]
 )
