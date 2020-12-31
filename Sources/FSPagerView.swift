@@ -339,7 +339,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     // MARK: - UICollectionViewDelegate
     
     public func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        guard let function = self.delegate?.pagerView(_:shouldHighlightItemAt:) else {
+        guard let function = self.delegate?.pagerView(_:shouldHighlightItemAt:), self.numberOfItems > 0 else {
             return true
         }
         let index = indexPath.item % self.numberOfItems
@@ -347,7 +347,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     }
     
     public func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        guard let function = self.delegate?.pagerView(_:didHighlightItemAt:) else {
+        guard let function = self.delegate?.pagerView(_:didHighlightItemAt:), self.numberOfItems > 0 else {
             return
         }
         let index = indexPath.item % self.numberOfItems
@@ -355,7 +355,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     }
     
     public func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        guard let function = self.delegate?.pagerView(_:shouldSelectItemAt:) else {
+        guard let function = self.delegate?.pagerView(_:shouldSelectItemAt:), self.numberOfItems > 0 else {
             return true
         }
         let index = indexPath.item % self.numberOfItems
@@ -363,7 +363,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     }
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let function = self.delegate?.pagerView(_:didSelectItemAt:) else {
+        guard let function = self.delegate?.pagerView(_:didSelectItemAt:), self.numberOfItems > 0 else {
             return
         }
         self.possibleTargetingIndexPath = indexPath
@@ -375,7 +375,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     }
     
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard let function = self.delegate?.pagerView(_:willDisplay:forItemAt:) else {
+        guard let function = self.delegate?.pagerView(_:willDisplay:forItemAt:), self.numberOfItems > 0 else {
             return
         }
         let index = indexPath.item % self.numberOfItems
@@ -383,7 +383,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     }
     
     public func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard let function = self.delegate?.pagerView(_:didEndDisplaying:forItemAt:) else {
+        guard let function = self.delegate?.pagerView(_:didEndDisplaying:forItemAt:), self.numberOfItems > 0 else {
             return
         }
         let index = indexPath.item % self.numberOfItems
@@ -414,7 +414,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     }
     
     public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        if let function = self.delegate?.pagerViewWillEndDragging(_:targetIndex:) {
+        if let function = self.delegate?.pagerViewWillEndDragging(_:targetIndex:), self.numberOfItems > 0 {
             let contentOffset = self.scrollDirection == .horizontal ? targetContentOffset.pointee.x : targetContentOffset.pointee.y
             let targetItem = lround(Double(contentOffset/self.collectionViewLayout.itemSpacing))
             function(self, targetItem % self.numberOfItems)
