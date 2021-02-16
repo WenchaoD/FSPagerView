@@ -150,9 +150,9 @@
     return self.imageNames.count;
 }
 
-- (FSPagerViewCell *)pagerView:(FSPagerView *)pagerView cellForItemAtIndex:(NSInteger)index
+- (UICollectionViewCell *)pagerView:(FSPagerView *)pagerView cellForItemAtIndex:(NSInteger)index
 {
-    FSPagerViewCell *cell = [pagerView dequeueReusableCellWithReuseIdentifier:@"cell" atIndex:index];
+    FSPagerViewCell *cell = (FSPagerViewCell *)[pagerView dequeueReusableCellWithReuseIdentifier:@"cell" atIndex:index];
     cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
     cell.imageView.image = [UIImage imageNamed:self.imageNames[index]];
     return cell;

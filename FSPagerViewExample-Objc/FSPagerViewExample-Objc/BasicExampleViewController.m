@@ -208,9 +208,9 @@
     return self.numberOfItems;
 }
 
-- (FSPagerViewCell *)pagerView:(FSPagerView *)pagerView cellForItemAtIndex:(NSInteger)index
+- (UICollectionViewCell *)pagerView:(FSPagerView *)pagerView cellForItemAtIndex:(NSInteger)index
 {
-    FSPagerViewCell *cell = [pagerView dequeueReusableCellWithReuseIdentifier:@"cell" atIndex:index];
+    FSPagerViewCell *cell = (FSPagerViewCell *)[pagerView dequeueReusableCellWithReuseIdentifier:@"cell" atIndex:index];
     cell.imageView.image = [UIImage imageNamed:self.imageNames[index]];
     cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
     cell.imageView.clipsToBounds = YES;
