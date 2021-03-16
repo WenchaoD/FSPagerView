@@ -93,6 +93,13 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         }
     }
     
+    /// A Boolean value indicates that whether the pager view allowsSelection
+    @objc
+    open var allowsSelection: Bool {
+        set { self.collectionView.allowsSelection = newValue }
+        get { return self.collectionView.allowsSelection }
+    }
+    
     /// The time interval of automatic sliding. 0 means disabling automatic sliding. Default is 0.
     @IBInspectable
     open var automaticSlidingInterval: CGFloat = 0.0 {
