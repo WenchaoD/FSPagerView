@@ -103,16 +103,19 @@ open class FSPageControl: UIControl {
     
     open override func layoutSublayers(of layer: CALayer) {
         super.layoutSublayers(of: layer)
-        
-        let diameter = self.itemSpacing
+        let selectedWidth = self.images[.selected]?.size.width ?? self.paths[.selected]?.bounds.width ?? 0
+        let normalWidth = self.images[.normal]?.size.width ?? self.paths[.normal]?.bounds.width ?? 0
+        let totalWidth = (selectedWidth + (normalWidth * CGFloat((self.numberOfPages - 1))))
+        let diameter = totalWidth / CGFloat(self.numberOfPages)
         let spacing = self.interitemSpacing
+        let totalSpacing = spacing*CGFloat((self.numberOfPages-1))
         var x: CGFloat = {
             switch self.contentHorizontalAlignment {
             case .left, .leading:
                 return 0
             case .center, .fill:
                 let midX = self.contentView.bounds.midX
-                let amplitude = CGFloat(self.numberOfPages/2) * diameter + spacing*CGFloat((self.numberOfPages-1)/2)
+                let amplitude = (totalWidth + totalSpacing) / 2
                 return midX - amplitude
             case .right, .trailing:
                 let contentWidth = diameter*CGFloat(self.numberOfPages) + CGFloat(self.numberOfPages-1)*spacing
@@ -124,7 +127,9 @@ open class FSPageControl: UIControl {
         for (index,value) in self.indicatorLayers.enumerated() {
             let state: UIControl.State = (index == self.currentPage) ? .selected : .normal
             let image = self.images[state]
-            let size = image?.size ?? CGSize(width: diameter, height: diameter)
+            let path = self.paths[state]
+            let diameter = image?.size.width ?? path?.bounds.width ?? 0
+            let size = image?.size ?? path?.bounds.size ?? CGSize(width: diameter, height: diameter)
             let origin = CGPoint(x: x - (size.width-diameter)*0.5, y: self.contentView.bounds.midY-size.height*0.5)
             value.frame = CGRect(origin: origin, size: size)
             x = x + spacing + diameter
