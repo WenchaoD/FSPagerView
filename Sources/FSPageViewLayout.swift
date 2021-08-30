@@ -96,6 +96,10 @@ class FSPagerViewLayout: UICollectionViewLayout {
                     return contentSize
             }
         }()
+        
+        // fix pixel
+        self.contentSize = CGSize.init(width: FSPagerViewLayout.fixPixel(value: self.contentSize.width), height: FSPagerViewLayout.fixPixel(value: self.contentSize.height))
+        
         self.adjustCollectionViewBounds()
     }
     
@@ -243,6 +247,11 @@ class FSPagerViewLayout: UICollectionViewLayout {
         let origin = CGPoint(x: originX, y: originY)
         let frame = CGRect(origin: origin, size: self.actualItemSize)
         return frame
+    }
+    
+    static func fixPixel(value: CGFloat) -> CGFloat {
+        let scale = UIScreen.main.scale
+        return CGFloat(Int(value * scale)) / scale
     }
     
     // MARK:- Notification
