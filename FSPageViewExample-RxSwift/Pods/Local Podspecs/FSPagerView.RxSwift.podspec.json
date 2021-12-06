@@ -1,0 +1,46 @@
+{
+  "name": "FSPagerView.RxSwift",
+  "version": "0.0.1",
+  "summary": "Add RxSwift to common three party libraries.",
+  "homepage": "https://github.com/yangKJ/FSPagerView",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "yangkejun": "ykj310@126.com"
+  },
+  "source": {
+    "git": "https://github.com/yangKJ/FSPagerView.git",
+    "tag": "0.0.1"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "swift_versions": "5.0",
+  "requires_arc": true,
+  "static_framework": true,
+  "module_name": "FSPagerViewRxSwift",
+  "subspecs": [
+    {
+      "name": "FSPagerView",
+      "source_files": "Sources/*.{swift,h,m}"
+    },
+    {
+      "name": "RxSwift",
+      "source_files": "RxSwift/*.swift",
+      "dependencies": {
+        "FSPagerView.RxSwift/FSPagerView": [
+
+        ],
+        "RxSwift": [
+
+        ],
+        "RxCocoa": [
+
+        ]
+      }
+    }
+  ],
+  "swift_version": "5.0"
+}

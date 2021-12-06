@@ -1,0 +1,14 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+install! 'cocoapods', :deterministic_uuids => false
+#install! 'cocoapods', deterministic_uuids: false, generate_multiple_pod_projects: true
+
+target 'FSPagerView.RxSwift_Example' do
+  pod 'FSPagerView.RxSwift', :path => '..'
+
+  target 'FSPagerView.RxSwift_Tests' do
+    inherit! :search_paths
+  end
+end

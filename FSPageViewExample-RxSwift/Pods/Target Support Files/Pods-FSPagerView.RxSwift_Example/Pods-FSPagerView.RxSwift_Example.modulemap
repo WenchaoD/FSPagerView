@@ -1,0 +1,6 @@
+framework module Pods_FSPagerView_RxSwift_Example {
+  umbrella header "Pods-FSPagerView.RxSwift_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

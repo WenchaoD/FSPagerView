@@ -1,0 +1,6 @@
+framework module FSPagerViewRxSwift {
+  umbrella header "FSPagerView.RxSwift-umbrella.h"
+
+  export *
+  module * { export * }
+}

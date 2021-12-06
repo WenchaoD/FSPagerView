@@ -1,0 +1,49 @@
+{
+  "name": "RxExtensions",
+  "version": "0.0.1",
+  "summary": "Add RxSwift to common three party libraries.",
+  "homepage": "https://github.com/yangKJ/RxExtensions",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "yangkejun": "ykj310@126.com"
+  },
+  "source": {
+    "git": "https://github.com/yangKJ/RxExtensions.git",
+    "tag": "0.0.1"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "swift_versions": "5.0",
+  "requires_arc": true,
+  "ios": {
+    "source_files": "RxExtensions/Classes/RxExtensionsHeader.h"
+  },
+  "dependencies": {
+    "RxSwift": [
+
+    ],
+    "RxCocoa": [
+
+    ]
+  },
+  "pod_target_xcconfig": {
+    "DEFINES_MODULE": "YES",
+    "VALID_ARCHS[sdk=iphonesimulator*]": "x86_64"
+  },
+  "subspecs": [
+    {
+      "name": "FSPagerView",
+      "source_files": "RxExtensions/Classes/FSPagerView/*.swift",
+      "dependencies": {
+        "FSPagerView": [
+
+        ]
+      }
+    }
+  ],
+  "swift_version": "5.0"
+}
