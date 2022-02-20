@@ -74,8 +74,21 @@ public protocol FSPagerViewDelegate: NSObjectProtocol {
     
 }
 
+@objc
+public protocol FSPagerViewDataSourcePrefetching : NSObjectProtocol {
+
+    // indexes are ordered ascending by geometric distance from the pager view
+    @available(iOS 10.0, *)
+    func pagerView(_ pagerView: FSPagerView, prefetchItemsAt indexes: [Int])
+
+
+    // indexes that previously were considered as candidates for pre-fetching, but were not actually used; may be a subset of the previous call to -pagerView:prefetchItemsAt:
+    @objc @available(iOS 10.0, *)
+    optional func pagerView(_ pagerView: FSPagerView, cancelPrefetchingForItemsAt indexes: [Int])
+}
+
 @IBDesignable
-open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelegate {
+open class FSPagerView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDataSourcePrefetching {
     
     // MARK: - Public properties
 
@@ -84,12 +97,23 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     
     /// The object that acts as the delegate of the pager view.
     @IBOutlet open weak var delegate: FSPagerViewDelegate?
+    @IBOutlet open weak var prefetchDataSource: FSPagerViewDataSourcePrefetching?
     
     /// The scroll direction of the pager view. Default is horizontal.
     @objc
     open var scrollDirection: FSPagerView.ScrollDirection = .horizontal {
         didSet {
             self.collectionViewLayout.forceInvalidate()
+        }
+    }
+
+    @available(iOS 10.0, *)
+    open var prefetchingEnabled: Bool {
+        set {
+            collectionView.isPrefetchingEnabled = newValue
+        }
+        get {
+            return collectionView.isPrefetchingEnabled
         }
     }
     
@@ -309,6 +333,25 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     deinit {
         self.collectionView.dataSource = nil
         self.collectionView.delegate = nil
+        if #available(iOS 10.0, *) {
+            self.collectionView.prefetchDataSource = nil
+        }
+    }
+
+    // MARK: - UICollectionView exposing
+
+    public func indexForItem(at point: CGPoint) -> Int? {
+        guard numberOfItems > 0 else { return nil }
+        return collectionView.indexPathForItem(at: point).map { $0.item % numberOfItems }
+    }
+
+    public var visibleCells: [UICollectionViewCell] {
+        return collectionView.visibleCells.compactMap { $0 as? FSPagerViewCell }
+    }
+
+    public var indexesForVisibleItems: [Int] {
+        guard numberOfItems > 0 else { return [] }
+        return collectionView.indexPathsForVisibleItems.map { $0.item % numberOfItems }
     }
 
     // MARK: - UICollectionViewDataSource
@@ -334,6 +377,26 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         self.dequeingSection = indexPath.section
         let cell = self.dataSource!.pagerView(self, cellForItemAt: index)
         return cell
+    }
+
+    // MARK: - UICollectionViewDataSourcePrefetching
+
+    @available(iOS 10.0, *)
+    public func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        guard let function = self.prefetchDataSource?.pagerView(_:prefetchItemsAt:), numberOfItems > 0 else {
+            return
+        }
+        let indexes = indexPaths.map { indexPath in indexPath.item % self.numberOfItems }
+        return function(self, indexes)
+    }
+
+    @available(iOS 10.0, *)
+    public func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+        guard let function = self.prefetchDataSource?.pagerView(_:cancelPrefetchingForItemsAt:), numberOfItems > 0 else {
+            return
+        }
+        let indexes = indexPaths.map { indexPath in indexPath.item % self.numberOfItems }
+        return function(self, indexes)
     }
     
     // MARK: - UICollectionViewDelegate
@@ -564,6 +627,9 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         let collectionView = FSPagerCollectionView(frame: CGRect.zero, collectionViewLayout: collectionViewLayout)
         collectionView.dataSource = self
         collectionView.delegate = self
+        if #available(iOS 10.0, *) {
+            collectionView.prefetchDataSource = self
+        }
         collectionView.backgroundColor = UIColor.clear
         self.contentView.addSubview(collectionView)
         self.collectionView = collectionView
