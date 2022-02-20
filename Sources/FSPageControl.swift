@@ -245,10 +245,25 @@ open class FSPageControl: UIControl {
         let index = self.indicatorLayers.firstIndex(of: layer)
         let state: UIControl.State = index == self.currentPage ? .selected : .normal
         if let image = self.images[state] {
+            
+            let imageLayer = CALayer()
+            imageLayer.backgroundColor = UIColor.clear.cgColor
+            imageLayer.frame = CGRect(origin: CGPoint.zero, size: image.size)
+            imageLayer.contentsGravity = .resize
+            imageLayer.contents = image.cgImage
+            imageLayer.setNeedsLayout()
+                        
             layer.strokeColor = nil
-            layer.fillColor = nil
+            layer.fillColor = UIColor(patternImage: image).cgColor
             layer.path = nil
-            layer.contents = image.cgImage
+            
+            for s in 0..<(layer.sublayers?.count ?? 0) {
+                if ((layer.sublayers?[s].isEqual(imageLayer)) != nil) {
+                    layer.sublayers?[s].removeFromSuperlayer()
+                }
+            }
+            layer.addSublayer(imageLayer)
+            
         } else {
             layer.contents = nil
             let strokeColor = self.strokeColors[state]
