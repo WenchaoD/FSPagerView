@@ -192,6 +192,14 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         }
     }
     
+    /// The spacing to use leading items in the pager view. Default is 0.
+    @IBInspectable
+    open var leadingSpacing: CGFloat = 0 {
+        didSet {
+            self.collectionViewLayout.forceInvalidate()
+        }
+    }
+    
     // MARK: - Public readonly-properties
     
     /// Returns whether the user has touched the content to initiate scrolling.
