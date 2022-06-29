@@ -511,9 +511,8 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     ///   - animated: Specify true to animate the scrolling behavior or false to adjust the pager view’s visible content immediately.
     @objc(scrollToItemAtIndex:animated:)
     open func scrollToItem(at index: Int, animated: Bool) {
-        guard index < self.numberOfItems else {
-            fatalError("index \(index) is out of range [0...\(self.numberOfItems-1)]")
-        }
+        guard self.numberOfItems > 0, index >= 0 else { return }
+        let index = min(index, self.numberOfItems - 1)
         let indexPath = { () -> IndexPath in
             if let indexPath = self.possibleTargetingIndexPath, indexPath.item == index {
                 defer {
