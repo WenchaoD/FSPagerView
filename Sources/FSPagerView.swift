@@ -225,6 +225,8 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     internal var numberOfItems: Int = 0
     internal var numberOfSections: Int = 0
     
+    internal var identifier: String = ""
+
     fileprivate var dequeingSection = 0
     fileprivate var centermostIndexPath: IndexPath {
         guard self.numberOfItems > 0, self.collectionView.contentSize != .zero else {
@@ -332,7 +334,9 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let index = indexPath.item
         self.dequeingSection = indexPath.section
-        let cell = self.dataSource!.pagerView(self, cellForItemAt: index)
+        guard let cell = self.dataSource?.pagerView(self, cellForItemAt: index) else {
+            return self.collectionView.dequeueReusableCell(withReuseIdentifier: self.identifier, for: indexPath)
+        }
         return cell
     }
     
@@ -445,6 +449,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     ///   - identifier: The reuse identifier to associate with the specified class. This parameter must not be nil and must not be an empty string.
     @objc(registerClass:forCellWithReuseIdentifier:)
     open func register(_ cellClass: Swift.AnyClass?, forCellWithReuseIdentifier identifier: String) {
+        self.identifier = identifier
         self.collectionView.register(cellClass, forCellWithReuseIdentifier: identifier)
     }
     
@@ -455,6 +460,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     ///   - identifier: The reuse identifier to associate with the specified nib file. This parameter must not be nil and must not be an empty string.
     @objc(registerNib:forCellWithReuseIdentifier:)
     open func register(_ nib: UINib?, forCellWithReuseIdentifier identifier: String) {
+        self.identifier = identifier
         self.collectionView.register(nib, forCellWithReuseIdentifier: identifier)
     }
     
@@ -511,9 +517,8 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     ///   - animated: Specify true to animate the scrolling behavior or false to adjust the pager view’s visible content immediately.
     @objc(scrollToItemAtIndex:animated:)
     open func scrollToItem(at index: Int, animated: Bool) {
-        guard index < self.numberOfItems else {
-            fatalError("index \(index) is out of range [0...\(self.numberOfItems-1)]")
-        }
+        guard self.numberOfItems > 0, index >= 0 else { return }
+        let index = min(index, self.numberOfItems - 1)
         let indexPath = { () -> IndexPath in
             if let indexPath = self.possibleTargetingIndexPath, indexPath.item == index {
                 defer {
