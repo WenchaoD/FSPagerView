@@ -20,6 +20,12 @@ class FSPagerViewLayout: UICollectionViewLayout {
         return FSPagerViewLayoutAttributes.self
     }
     
+    override var flipsHorizontallyInOppositeLayoutDirection: Bool {
+        let currentLanguage = String((Bundle.main.preferredLocalizations.first ?? "").prefix(2))?.uppercased()
+        let rtlLanguages = ["AR", "AZ", "DV", "HE", "KU", "FA", "UR"]
+        return rtlLanguages.contains(currentLanguage)
+    }
+
     fileprivate var pagerView: FSPagerView? {
         return self.collectionView?.superview?.superview as? FSPagerView
     }
