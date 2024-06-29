@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "FSPagerView",
     platforms: [
-        .iOS(.v10)
+        .iOS(.v13)
     ],
     products: [
         .library(name: "FSPagerView", targets: ["FSPagerView"]),
