@@ -112,6 +112,15 @@ open class FSPageControl: UIControl {
                 return 0
             case .center, .fill:
                 let midX = self.contentView.bounds.midX
+                if let norImage = self.images[.normal], let selImage = self.images[.selected] {
+                    let totalWidth = CGFloat((numberOfPages - 1)) * (norImage.size.width + spacing) + selImage.size.width
+                    let amplitude = (self.contentView.bounds.width - totalWidth) / 2.0
+                    return amplitude
+                } else if let norPath = self.paths[.normal], let selPath = self.paths[.selected] {
+                    let totalWidth = CGFloat((numberOfPages - 1)) * (norPath.bounds.size.width + spacing) + selPath.bounds.size.width
+                    let amplitude = (self.contentView.bounds.width - totalWidth) / 2.0
+                    return amplitude
+                }
                 let amplitude = CGFloat(self.numberOfPages/2) * diameter + spacing*CGFloat((self.numberOfPages-1)/2)
                 return midX - amplitude
             case .right, .trailing:
@@ -125,9 +134,15 @@ open class FSPageControl: UIControl {
             let state: UIControl.State = (index == self.currentPage) ? .selected : .normal
             let image = self.images[state]
             let size = image?.size ?? CGSize(width: diameter, height: diameter)
-            let origin = CGPoint(x: x - (size.width-diameter)*0.5, y: self.contentView.bounds.midY-size.height*0.5)
+            let origin = CGPoint(x: x, y: self.contentView.bounds.midY-size.height*0.5)
             value.frame = CGRect(origin: origin, size: size)
-            x = x + spacing + diameter
+            if let image = self.images[state] {
+                x = x + spacing + image.size.width
+            } else if let path = self.paths[state] {
+                x = x + spacing + path.bounds.size.width
+            } else {
+                x = x + spacing + diameter
+            }
         }
         
     }

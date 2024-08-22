@@ -11,7 +11,7 @@ import UIKit
 class PageControlExampleViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,FSPagerViewDataSource,FSPagerViewDelegate {
     
     fileprivate let imageNames = ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg"]
-    fileprivate let pageControlStyles = ["Default", "Ring", "UIImage", "UIBezierPath - Star", "UIBezierPath - Heart"]
+    fileprivate let pageControlStyles = ["Default", "Ring", "UIImage", "UIBezierPath - Star", "UIBezierPath - Heart", "Circle not same Width"]
     fileprivate let pageControlAlignments = ["Right", "Center", "Left"]
     fileprivate let sectionTitles = ["Style", "Item Spacing", "Interitem Spacing", "Horizontal Alignment"]
     
@@ -54,6 +54,13 @@ class PageControlExampleViewController: UIViewController,UITableViewDataSource,U
                 self.pageControl.setFillColor(color, for: .selected)
                 self.pageControl.setPath(self.heartPath, for: .normal)
                 self.pageControl.setPath(self.heartPath, for: .selected)
+            case 5:
+                self.pageControl.setPath(UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: 8, height: 8), cornerRadius: 4), for: .normal)
+                self.pageControl.setPath(UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: 12, height: 8), cornerRadius: 4), for: .selected)
+                self.pageControl.setStrokeColor(.red, for: .normal)
+                self.pageControl.setStrokeColor(.blue, for: .selected)
+                self.pageControl.setFillColor(.red, for: .normal)
+                self.pageControl.setFillColor(.blue, for: .selected)
             default:
                 break
             }
