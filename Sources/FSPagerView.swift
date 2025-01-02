@@ -191,6 +191,13 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
             self.collectionViewLayout.forceInvalidate()
         }
     }
+
+    /// Whether or not the pager clipsToBounds/masksToBounds. Set to false if you want the cells to be able to bleed outside the collection view.  The default is true.
+    open var collectionViewClipsToBounds: Bool = true {
+        didSet {
+            self.collectionView.clipsToBounds = self.collectionViewClipsToBounds
+        }
+    }
     
     // MARK: - Public readonly-properties
     
